@@ -44,7 +44,7 @@
     "snippets": [
       {
         "language": "php",
-        "path": "./snippets/bloc.json"
+        "path": "./snippets/tg.json"
       }
     ]
   },
