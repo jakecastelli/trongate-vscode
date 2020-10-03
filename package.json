@@ -18,7 +18,8 @@
   "icon": "assets/logo.png",
   "homepage": "https://trongate.io",
   "activationEvents": [
-    "onCommand:trongate.newTrongate"
+    "onCommand:trongate.newTrongate",
+    "onCommand:trongate.selectSnippet"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -30,6 +31,10 @@
       {
         "command": "trongate.newTrongate",
         "title": "New Trongate Module"
+      },
+      {
+        "command": "trongate.selectSnippet",
+        "title": "CSS Framework"
       }
     ],
     "menus": {
@@ -49,6 +54,30 @@
       {
         "language": "php",
         "path": "./snippets/tg.json"
+      },
+      {
+        "language": "html",
+        "path": "./snippets/bootstrap.json"
+      },
+      {
+        "language": "php",
+        "path": "./snippets/bootstrap.json"
+      },
+      {
+        "language": "html",
+        "path": "./snippets/defiant.json"
+      },
+      {
+        "language": "php",
+        "path": "./snippets/defiant.json"
+      },
+      {
+        "language": "html",
+        "path": "./snippets/materialize.json"
+      },
+      {
+        "language": "php",
+        "path": "./snippets/materialize.json"
       }
     ]
   },

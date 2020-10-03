@@ -1,0 +1,8 @@
+{
+  "Print to console": {
+    "scope": "html,php",
+    "prefix": "defiant",
+    "body": ["hello from public defiant!!"],
+    "description": "Create a template from defiant framework"
+  }
+}
