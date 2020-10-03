@@ -1,13 +1,63 @@
 {
-  "Trongate": {
-    "prefix": "tg-",
+  "Trongate Foreach": {
+    "scope": "window",
+    "prefix": "tg:for",
     "body": [
-      "class ${1:Subject}Bloc extends Bloc<$1Event, $1State> {",
-      "\t${1:Subject}Bloc() : super(${1:Subject}Initial());",
-      "",
-      "\t@override",
-      "\tStream<$1State> mapEventToState($1Event event) async* {",
-      "\t\t${3:// TODO: implement mapEventToState}",
+      "<?php ",
+      "foreach (\\$rows as \\$row) {",
+      "?>",
+      "\t${1}",
+      "\t\t",
+      "<?php",
+      "}",
+      "?>"
+    ]
+  },
+  "Trongate IF": {
+    "prefix": "tg:if",
+    "body": ["<?php", "if (${1}) {", "?>", "\t${2}", "<?php", "}", "?>"]
+  },
+
+  "Trongate IFELSE": {
+    "prefix": "tg:ifelse",
+    "body": [
+      "<?php",
+      "if (${1}) {",
+      "?>",
+      "\t${2}",
+      "<?php",
+      "} else {",
+      "?>",
+      "\t${3}",
+      "<?php",
+      "}",
+      "?>"
+    ]
+  },
+  "Trongate Submit": {
+    "prefix": "tg:submit",
+    "body": [
+      "function submit() {",
+      "\t//Uncomment the following as your need",
+      "\t//\\$this->module('security');",
+      "\t//\\$this->security->_make_sure_allowed();",
+      "\t",
+      "\t\\$submit = \\$this->input('submit', true);",
+      "\t",
+      "\tif (\\$submit == 'Submit') {",
+      "\t",
+      "\t\t\\$this->validation_helper->set_rules('', '', '');",
+      "\t",
+      "\t\t\\$result = \\$this->validation_helper->run();",
+      "\t",
+      "\t\tif (\\$result == true) {",
+      "\t\t\t",
+      "\t\t} else {",
+      "\t\t\t",
+      "\t\t}",
+      "\t//set_flashdata(\\$flash_msg);\n \t//redirect('store_accounts/show/'.\\$update_id);",
+      "\t} else {",
+      "\t\t",
       "\t}",
       "}"
     ]

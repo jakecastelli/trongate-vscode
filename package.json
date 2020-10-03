@@ -43,6 +43,10 @@
     },
     "snippets": [
       {
+        "language": "html",
+        "path": "./snippets/tg.json"
+      },
+      {
         "language": "php",
         "path": "./snippets/tg.json"
       }
