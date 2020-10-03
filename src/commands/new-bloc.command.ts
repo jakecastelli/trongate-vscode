@@ -100,7 +100,7 @@ async function createTrongateModuleTemplate(
   await createDirectory(`${targetDirectory}/assets`);
 
   const targetControllerPath = `${targetDirectory}/controllers/${upperModuleName}.php`;
-  const targetApiPath = `${targetDirectory}/assets/${moduleName}.json`;
+  const targetApiPath = `${targetDirectory}/assets/api.json`;
   if (existsSync(targetControllerPath)) {
     throw Error(`Module ${moduleName} already exists`);
   }
