@@ -11,6 +11,9 @@ export const newModule = async (uri: Uri) => {
   if (_.isNil(moduleName) || moduleName.trim() === "") {
     window.showErrorMessage("The module name must not be empty");
     return;
+  } else if (moduleName == "modules") {
+    // If user names the new module -> modules, we probably should prohibit it
+    // TODO: Wait for a discussion
   }
 
   let targetDirectory;
@@ -22,6 +25,15 @@ export const newModule = async (uri: Uri) => {
     }
   } else {
     targetDirectory = uri.fsPath;
+  }
+
+  // Check if the parent dir name is modules
+  const parentDirName = targetDirectory.split("/").slice(-1).join("");
+  if (parentDirName != "modules") {
+    window.showErrorMessage(
+      "The new module needs to be directly under the framework modules folder, hint: you might choose a wrong folder to create the new trongate module"
+    );
+    return;
   }
   //   console.log(targetDirectory); - works
   const pascalCaseBlocName = validateModuleName(moduleName); // implement this later - change all the space to underscore

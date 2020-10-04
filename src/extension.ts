@@ -40,11 +40,17 @@ export function activate(context: vscode.ExtensionContext) {
     // Display a message box to the user
     //   vscode.window.showInformationMessage("Hello Trongate User!");
     //Works!
-    switchSnippet
+    () => {
+      //TODO: Implement the function
+      //CURRENTLY:
+      // Passing the context to the function which can provide the user data file of VSCode
+      switchSnippet("", context);
+    }
   );
 
   context.subscriptions.push(disposable, newTrongate, selectSnippet);
 }
 
 // this method is called when your extension is deactivated
+// After user deactivate the code, the scaffold function and snippet should be deactivated
 export function deactivate() {}

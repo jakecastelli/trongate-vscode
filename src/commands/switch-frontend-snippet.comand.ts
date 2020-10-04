@@ -1,6 +1,12 @@
 import * as _ from "lodash";
 // import * as changeCase from "change-case";
-import { QuickPickItem, Uri, window, workspace } from "vscode";
+import {
+  QuickPickItem,
+  Uri,
+  window,
+  workspace,
+  ExtensionContext,
+} from "vscode";
 import { copyFile } from "fs";
 
 let items: QuickPickItem[] = [];
@@ -16,12 +22,17 @@ keys.forEach((key) => {
   });
 });
 
-export const switchSnippet = async (uri: Uri) => {
+export const switchSnippet = async (uri = "", context: ExtensionContext) => {
   console.log(uri + "11");
   const userOption = await window.showQuickPick(items);
   if (!userOption) {
     return;
   }
+
+  //test out
+  const pathArr = context.globalStorageUri.path.split("/");
+  const pathStr = pathArr.slice(0, 6).join("/") + "/snippets";
+  console.log(pathStr);
 
   console.log(userOption);
   window.showInformationMessage("The function is still under development.");
