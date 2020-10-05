@@ -1,0 +1,8 @@
+{
+  "Print to console": {
+    "scope": "html,php",
+    "prefix": "materialize",
+    "body": ["hello from materialize"],
+    "description": "Create a template from defiant materialize"
+  }
+}

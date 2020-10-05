@@ -1,0 +1,8 @@
+{
+  "Print to console": {
+    "scope": "html,php",
+    "prefix": "milligram",
+    "body": ["hello from milligram"],
+    "description": "Create a template from defiant milligram"
+  }
+}

@@ -1,65 +1,31 @@
-# trongate README
+# Trongate Scaffold & Code Snippets
 
-This is the README for your extension "trongate". After writing up a brief description, we recommend including the following sections.
+Would you like to code faster?  I know I certainly would! 👀️
+
+A Visual Studio Code extension to compliment the Trongate ecosystem.   Consisting of the Trongate framework , Desktop-app and Nitro.  All tirelessly written by David Connelly, who I'd like to make special mention here for his continued dedication and commitment in keeping web development doors open to everyone.
+
+### The One-V framework that will make PHP great again!
+
+![Trongate Ecosystem image](images/tg-eco.png)
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+This extension will allow you to:
 
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+* Create a blank directory scaffold similar to the Desktop-app when creating a module.  Complete with asset.json and a starter class ready for you to create a module.
+* Add PHP and custom Trongate code snippets to speed up your development.
+* Insert popular frontend frameworks and their elements into your view and template files - akin to Nitro
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
-
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
+You will need the Trongate Framework of course! ❤️
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+No known issues to report 👍
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
+### .001
 
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
------------------------------------------------------------------------------------------------------------
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+Initial release

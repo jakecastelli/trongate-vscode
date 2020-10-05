@@ -1,7 +1,7 @@
 {
   "name": "trongate",
   "displayName": "Trongate",
-  "description": "Trongate vscode Support",
+  "description": "VS Code extension to compliment the Trongate ecosystem",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.49.0"
