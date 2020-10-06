@@ -6,7 +6,7 @@ A Visual Studio Code extension to compliment the Trongate ecosystem.   Consistin
 
 ### The One-V framework that will make PHP great again!
 
-![Trongate Ecosystem image](images/tg-eco.png)
+![Trongate ecosystem image](https://user-images.githubusercontent.com/7813262/95190011-6749e500-081a-11eb-8317-5561a7241e6e.png)
 
 ## Features
 
