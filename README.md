@@ -13,6 +13,8 @@ A Visual Studio Code extension to compliment the Trongate ecosystem.   Consistin
 This extension will allow you to:
 
 * Create a blank directory scaffold similar to the Desktop-app when creating a module.  Complete with asset.json and a starter class ready for you to create a module.
+![Create Module Demo](https://user-images.githubusercontent.com/7813262/95195307-13db9500-0822-11eb-8fd0-149295b3b00f.gif)
+
 * Add PHP and custom Trongate code snippets to speed up your development.
 * Insert popular frontend frameworks and their elements into your view and template files - akin to Nitro
 
