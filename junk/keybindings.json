@@ -1,0 +1,59 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+  {
+    "key": "ctrl+win+/",
+    "command": "macros.commentDown"
+  },
+  {
+    "key": "ctrl+win+alt+b",
+    "command": "macros.tgButton"
+  },
+  {
+    "key": "ctrl+win+alt+u",
+    "command": "macros.tgButtonAlt"
+  },
+  {
+    "key": "ctrl+win+alt+c",
+    "command": "macros.tgContactForm"
+  },
+  {
+    "key": "ctrl+win+alt+d",
+    "command": "macros.tgDownloadURL"
+  },
+  {
+    "key": "ctrl+win+alt+f",
+    "command": "macros.tgForm"
+  },
+  {
+    "key": "ctrl+win+alt+g",
+    "command": "macros.tgGrid"
+  },
+  {
+    "key": "ctrl+win+alt+i",
+    "command": "macros.tgInfoPage"
+  },
+  {
+    "key": "ctrl+win+alt+l",
+    "command": "macros.tgLoginForm"
+  },
+  {
+    "key": "ctrl+win+alt+m",
+    "command": "macros.tgModal"
+  },
+  {
+    "key": "ctrl+win+alt+p",
+    "command": "macros.tgPasswordForm"
+  },
+  {
+    "key": "ctrl+win+alt+t",
+    "command": "macros.tgTable"
+  },
+  {
+    "key": "ctrl+win+alt+a",
+    "command": "macros.tgTableAlt"
+  },
+  {
+    "key": "ctrl+win+alt+e",
+    "command": "macros.tgTemplate"
+  }  
+]
