@@ -1,8 +1,91 @@
 {
-  "Print to console": {
-    "scope": "html,php",
-    "prefix": "materialize",
-    "body": ["hello from materialize"],
-    "description": "Create a template from defiant materialize"
+  "Materialize Button": {
+    "scope": "window",
+    "prefix": "tg:ma:button",
+    "body": [
+      "<!-- Materialize Buttons (more info at: https:\/\/materializecss.com\/buttons.html) -->\r\n<button class=\"btn waves-effect waves-light\" type=\"submit\" name=\"action\">Submit<i class=\"material-icons right\">send<\/i><\/button>\r\n\r\n<!-- adding color (more options at:  https:\/\/materializecss.com\/color.html) -->\r\n<button class=\"btn waves-effect waves-light red darken-4\" type=\"submit\" name=\"action\">Submit<i class=\"material-icons right\">send<\/i><\/button>\r\n"
+    ]
+  },"Materialize Button Alt": {
+    "scope": "window",
+    "prefix": "tg:ma:button-alt",
+    "body": [
+      "<!-- alternative Materialize buttons (more at: https:\/\/materializecss.com\/buttons.html ) -->\r\n\r\n<!-- large -->\r\n<a class=\"waves-effect waves-light btn-large\">Button<\/a>\r\n<a class=\"waves-effect waves-light btn-large\"><i class=\"material-icons left\">cloud<\/i>button<\/a>\r\n<a class=\"waves-effect waves-light btn-large\"><i class=\"material-icons right\">cloud<\/i>button<\/a>\r\n\r\n<!-- small -->\r\n<a class=\"waves-effect waves-light btn-small\">Button<\/a>\r\n<a class=\"waves-effect waves-light btn-small\"><i class=\"material-icons left\">cloud<\/i>button<\/a>\r\n<a class=\"waves-effect waves-light btn-small\"><i class=\"material-icons right\">cloud<\/i>button<\/a>\r\n\r\n<!-- disabled -->\r\n<a class=\"btn-large disabled\">Button<\/a>\r\n<a class=\"btn disabled\">Button<\/a>\r\n<a class=\"btn-flat disabled\">Button<\/a>\r\n<a class=\"btn-floating disabled\"><i class=\"material-icons\">add<\/i><\/a>\r\n\r\n<!-- flat -->\r\n<a class=\"waves-effect waves-teal btn-flat\">Button<\/a>\r\n\r\n<!-- raised -->\r\n<a class=\"waves-effect waves-light btn\">button<\/a>\r\n<a class=\"waves-effect waves-light btn\"><i class=\"material-icons left\">cloud<\/i>button<\/a>\r\n<a class=\"waves-effect waves-light btn\"><i class=\"material-icons right\">cloud<\/i>button<\/a>\r\n"
+    ]
+  },
+  "Materialize Contact Form": {
+    "scope": "window",
+    "prefix": "tg:ma:contact",
+    "body": [
+      "<!-- Materialize contact form example (more examples at https:\/\/materializecss.com\/text-inputs.html) -->\r\n<div class=\"row\">\r\n\t<form class=\"col s12\">\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"input-field col s6\">\r\n\t\t\t\t<input placeholder=\"Placeholder\" id=\"your_name\" type=\"text\" class=\"validate\">\r\n\t\t\t\t<label for=\"first_name\">Your Name<\/label>\r\n\t\t\t<\/div>\r\n\t\t\t<div class=\"input-field col s12\">\r\n\t\t\t\t<input id=\"email\" type=\"email\" class=\"validate\">\r\n\t\t\t\t<label for=\"email\">Email<\/label>\r\n\t\t\t<\/div>\r\n\t\t<\/div>\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"input-field col s12\">\r\n\t\t\t\t<textarea id=\"textarea1\" name=\"message\" class=\"materialize-textarea\"><\/textarea>\r\n\t\t\t\t<label for=\"textarea1\">Message<\/label>\r\n\t\t\t<\/div>\r\n\t\t<\/div>\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"input-field col s12\">\r\n\t\t\t\t<button class=\"btn waves-effect waves-light\" type=\"submit\" name=\"action\">Submit<i class=\"material-icons right\">send<\/i><\/button>\r\n\t\t\t<\/div>\r\n\t\t<\/div>\r\n\t<\/form>\r\n<\/div>\r\n"
+    ]
+  },
+  "Materialize Download URL": {
+    "scope": "window",
+    "prefix": "tg:ma:url",
+    "body": ["https:\/\/materializecss.com\/getting-started.html"]
+  },
+  "Materialize Form": {
+    "scope": "window",
+    "prefix": "tg:ma:form",
+    "body": [
+      "<!-- Materialize form example (more examples at https:\/\/materializecss.com\/text-inputs.html) -->\r\n<div class=\"row\">\r\n\t<form class=\"col s12\">\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"input-field col s6\">\r\n\t\t\t\t<input placeholder=\"Placeholder\" id=\"first_name\" type=\"text\" class=\"validate\">\r\n\t\t\t\t<label for=\"first_name\">First Name<\/label>\r\n\t\t\t<\/div>\r\n\t\t\t<div class=\"input-field col s6\">\r\n\t\t\t\t<input id=\"last_name\" type=\"text\" class=\"validate\">\r\n\t\t\t\t<label for=\"last_name\">Last Name<\/label>\r\n\t\t\t<\/div>\r\n\t\t<\/div>\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"input-field col s12\">\r\n\t\t\t\t<input disabled value=\"I am not editable\" id=\"disabled\" type=\"text\" class=\"validate\">\r\n\t\t\t\t<label for=\"disabled\">Disabled<\/label>\r\n\t\t\t<\/div>\r\n\t\t<\/div>\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"input-field col s12\">\r\n\t\t\t\t<input id=\"password\" type=\"password\" class=\"validate\">\r\n\t\t\t\t<label for=\"password\">Password<\/label>\r\n\t\t\t<\/div>\r\n\t\t<\/div>\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"input-field col s12\">\r\n\t\t\t\t<input id=\"email\" type=\"email\" class=\"validate\">\r\n\t\t\t\t<label for=\"email\">Email<\/label>\r\n\t\t\t<\/div>\r\n\t\t<\/div>\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"col s12\">\r\n\t\t\t\tThis is an inline input field:\r\n\t\t\t\t<div class=\"input-field inline\">\r\n\t\t\t\t\t<input id=\"email_inline\" type=\"email\" class=\"validate\">\r\n\t\t\t\t\t<label for=\"email_inline\">Email<\/label>\r\n\t\t\t\t\t<span class=\"helper-text\" data-error=\"wrong\" data-success=\"right\">Helper text<\/span>\r\n\t\t\t\t<\/div>\r\n\t\t\t<\/div>\r\n\t\t<\/div>\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"col s12\">\r\n\t\t\t\t<button class=\"btn waves-effect waves-light\" type=\"submit\" name=\"action\">Submit<i class=\"material-icons right\">send<\/i><\/button>\r\n\t\t\t<\/div>\r\n\t\t<\/div>\r\n\t<\/form>\r\n<\/div>\r\n"
+    ]
+  },
+  "Materialize Grid": {
+    "scope": "window",
+    "prefix": "tg:ma:grid",
+    "body": [
+      "<!-- Materialize grid example (more examples to be found at https:\/\/materializecss.com\/grid.html) -->\r\n<div class=\"row\">\r\n\t<div class=\"col s12\">This div is 12-columns wide on all screen sizes<\/div>\r\n\t<div class=\"col s6\">6-columns (one-half)<\/div>\r\n\t<div class=\"col s6\">6-columns (one-half)<\/div>\r\n<\/div>\r\n<div class=\"row\">\r\n\t<div class=\"col s1\">1<\/div>\r\n\t<div class=\"col s1\">2<\/div>\r\n\t<div class=\"col s1\">3<\/div>\r\n\t<div class=\"col s1\">4<\/div>\r\n\t<div class=\"col s1\">5<\/div>\r\n\t<div class=\"col s1\">6<\/div>\r\n\t<div class=\"col s1\">7<\/div>\r\n\t<div class=\"col s1\">8<\/div>\r\n\t<div class=\"col s1\">9<\/div>\r\n\t<div class=\"col s1\">10<\/div>\r\n\t<div class=\"col s1\">11<\/div>\r\n\t<div class=\"col s1\">12<\/div>\r\n<\/div>\r\n\r\n<!-- offsets -->\r\n<div class=\"row\">\r\n\t<div class=\"col s12\"><span class=\"flow-text\">This div is 12-columns wide on all screen sizes<\/span><\/div>\r\n\t<div class=\"col s6 offset-s6\"><span class=\"flow-text\">6-columns (offset-by-6)<\/span><\/div>\r\n<\/div>\r\n"
+    ]
+  },
+  "Materialize Info Page": {
+    "scope": "window",
+    "prefix": "tg:ma:info",
+    "body": [
+      "<!-- Materialize basic template -->\r\n<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n\t<meta charset=\"UTF-8\">\r\n\t<title>Document<\/title>\r\n\t<!-- Compiled and minified CSS -->\r\n\t<link rel=\"stylesheet\" href=\"https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/materialize\/1.0.0\/css\/materialize.min.css\">\r\n\t<!--Let browser know website is optimized for mobile-->\r\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"\/>\r\n<\/head>\r\n<body>\r\n\t<div class=\"container\">\r\n\t\t<div class=\"section\">\r\n\t\t\t<h2 class=\"center light-blue-text\">Materialize<\/h2>\r\n\t\t\t<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque accusamus cum nostrum provident ullam quia enim, accusantium possimus fuga laudantium nulla natus, illo vel ipsa, error maxime recusandae distinctio voluptates!<\/p>\r\n\t\t<\/div>\r\n\t<\/div>\r\n\t<!--JavaScript at end of body for optimized loading-->\r\n\t<script src=\"https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/materialize\/1.0.0\/js\/materialize.min.js\"><\/script>\r\n<\/body>\r\n<\/html>\r\n"
+    ]
+  },
+  "Materialize Login Form": {
+    "scope": "window",
+    "prefix": "tg:ma:login",
+    "body": [
+      "<div class=\"row\">\r\n\t<form class=\"col s12\">\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"input-field col s12\">\r\n\t\t\t\t<input id=\"username\" name=\"username\" type=\"text\" class=\"validate\">\r\n\t\t\t\t<label for=\"username\">Username<\/label>\r\n\t\t\t<\/div>\r\n\t\t<\/div>\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"input-field col s12\">\r\n\t\t\t\t<input id=\"password\" name=\"pword\" type=\"password\" class=\"validate\">\r\n\t\t\t\t<label for=\"password\">Password<\/label>\r\n\t\t\t<\/div>\r\n\t\t<\/div>\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"input-field col s12\">\r\n\t\t\t\t<button class=\"btn waves-effect waves-light\" type=\"submit\" name=\"action\">Submit<\/button>\r\n\t\t\t<\/div>\r\n\t\t<\/div>\r\n\t<\/form>\r\n<\/div>\r\n"
+    ]
+  },
+  "Materialize Modal": {
+    "scope": "window",
+    "prefix": "tg:ma:modal",
+    "body": [
+      "<!-- Materialize Modal Trigger -->\r\n<a class=\"waves-effect waves-light btn modal-trigger\" href=\"#modal1\">Modal<\/a>\r\n\r\n<!-- Modal Structure -->\r\n<div id=\"modal1\" class=\"modal\">\r\n\t<div class=\"modal-content\">\r\n\t\t<h4>Modal Header<\/h4>\r\n\t\t<p>A bunch of text<\/p>\r\n\t<\/div>\r\n\t<div class=\"modal-footer\">\r\n\t\t<a href=\"#!\" class=\"modal-close waves-effect waves-green btn-flat\">Agree<\/a>\r\n\t<\/div>\r\n<\/div>\r\n\r\n<!-- initialization -->\r\n<script>\r\n\tdocument.addEventListener('DOMContentLoaded', function() {\r\n\t\tvar elems = document.querySelectorAll('.modal');\r\n\t\tvar instances = M.Modal.init(elems, options);\r\n\t});\r\n\r\n\t\/\/ Or with jQuery\r\n\t$(document).ready(function(){\r\n\t\t$('.modal').modal();\r\n\t});\r\n<\/script>\r\n"
+    ]
+  },
+  "Materialize Password Form": {
+    "scope": "window",
+    "prefix": "tg:ma:password-form",
+    "body": [
+      "<div class=\"row\">\r\n\t<form class=\"col s12\">\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"input-field col s12\">\r\n\t\t\t\t<input id=\"password\" name=\"pword\" type=\"password\" class=\"validate\">\r\n\t\t\t\t<label for=\"password\">Password<\/label>\r\n\t\t\t<\/div>\r\n\t\t<\/div>\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"input-field col s12\">\r\n\t\t\t\t<input id=\"repeat-password\" name=\"pword_repeat\" type=\"password\" class=\"validate\">\r\n\t\t\t\t<label for=\"repeat-password\">Repeat Password<\/label>\r\n\t\t\t<\/div>\r\n\t\t<\/div>\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"input-field col s12\">\r\n\t\t\t\t<button class=\"btn waves-effect waves-light\" type=\"submit\" name=\"action\">Submit<\/button>\r\n\t\t\t<\/div>\r\n\t\t<\/div>\r\n\t<\/form>\r\n<\/div>\r\n"
+    ]
+  },
+  "Materialize Table": {
+    "scope": "window",
+    "prefix": "tg:ma:table",
+    "body": [
+      "<!-- Materialize table example (yes, it IS virtually the same as skeleton) -->\r\n<table>\r\n\t<thead>\r\n\t\t<tr>\r\n\t\t\t<th>Name<\/th>\r\n\t\t\t<th>Age<\/th>\r\n\t\t\t<th>Sex<\/th>\r\n\t\t\t<th>Location<\/th>\r\n\t\t<\/tr>\r\n\t<\/thead>\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td>David Gamache<\/td>\r\n\t\t\t<td>26<\/td>\r\n\t\t\t<td>male<\/td>\r\n\t\t\t<td>San Francisco<\/td>\r\n\t\t<\/tr>\r\n\t<\/tbody>\r\n<\/table>\r\n"
+    ]
+  },
+  "Materialize Table Alt": {
+    "scope": "window",
+    "prefix": "tg:ma:table-alt",
+    "body": [
+      "<!--Materialize alternative table - more examples at; https:\/\/materializecss.com\/table.html -->\r\n<table class=\"striped\">\r\n\t<thead>\r\n\t\t<tr>\r\n\t\t\t<th>Item Name<\/th>\r\n\t\t\t<th>Inventory<\/th>\r\n\t\t\t<th>Item Price<\/th>\r\n\t\t\t<th>Action<\/th>\r\n\t\t<\/tr>\r\n\t<\/thead>\r\n    <tbody>\r\n    \t<?php \r\n    \tforeach ($rows as $row) {\r\n    \t?>\r\n    \t<tr>\r\n    \t\t<td><?= $row->$item_name ?><\/td>\r\n    \t\t<td><?= $row->inventory ?><\/td>\r\n    \t\t<td><?= $row->item_price ?><\/td>\r\n    \t\t<td><a class=\"waves-effect waves-teal btn-flat\">Button<\/a><\/td>\r\n    \t<\/tr>\r\n    \t<?php\r\n    \t}\r\n    \t?>\r\n    <\/tbody>\r\n<\/table>\r\n"
+    ]
+  },
+  "Materialize Template": {
+    "scope": "window",
+    "prefix": "tg:ma:template",
+    "body": [
+      "<!-- Materialize basic template -->\r\n<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n\t<meta charset=\"UTF-8\">\r\n\t<title>Document<\/title>\r\n\t<!-- Compiled and minified CSS -->\r\n\t<link rel=\"stylesheet\" href=\"https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/materialize\/1.0.0\/css\/materialize.min.css\">\r\n\t<!--Let browser know website is optimized for mobile-->\r\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"\/>\r\n<\/head>\r\n<body>\r\n\t<div class=\"container\">\r\n\t\t<div class=\"section\">\r\n\t\t\t<h2 class=\"center light-blue-text\">Materialize<\/h2>\r\n\t\t\t<p class=\"center\">We are living in a Materialize world and I am a Materialize girl.<\/p>\r\n\t\t<\/div>\r\n\t<\/div>\r\n\t<!--JavaScript at end of body for optimized loading-->\r\n\t<script src=\"https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/materialize\/1.0.0\/js\/materialize.min.js\"><\/script>\r\n<\/body>\r\n<\/html>\r\n"
+    ]
   }
 }
+

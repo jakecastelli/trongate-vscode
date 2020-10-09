@@ -1,8 +1,91 @@
 {
-  "Print to console": {
-    "scope": "html,php",
-    "prefix": "milligram",
-    "body": ["hello from milligram"],
-    "description": "Create a template from defiant milligram"
+  "Milligram Button": {
+    "scope": "window",
+    "prefix": "tg:mi:button",
+    "body": [
+      "<!-- Milligram buttons examples -->\r\n<a class=\"button\" href=\"#\">Default Button<\/a>\r\n<button class=\"button button-outline\">Outlined Button<\/button>\r\n<input class=\"button button-clear\" type=\"submit\" value=\"Clear Button\">\r\n"
+    ]
+  },"Milligram Button Alt": {
+    "scope": "window",
+    "prefix": "tg:mi:button-alt",
+    "body": [
+      "<style>\r\n\t\/* Extending The Inheritances (Milligram) *\/\r\n\r\n\t\/* Custom color *\/\r\n\t.button-black {\r\n\t\tbackground-color: black;\r\n\t\tborder-color: black;\r\n\t}\r\n\r\n\t.button-black.button-clear,.button-black.button-outline {\r\n\t\tbackground-color: transparent;\r\n\t\tcolor: black;\r\n\t}\r\n\r\n\t.button-black.button-clear {\r\n\t\tborder-color: transparent;\r\n\t}\r\n\r\n\t\/* Custom size *\/\r\n\t.button-small {\r\n\t\tfont-size: .8rem;\r\n\t\theight: 2.8rem;\r\n\t\tline-height: 2.8rem;\r\n\t\tpadding: 0 1.5rem;\r\n\t}\r\n\r\n\t.button-large {\r\n\t\tfont-size: 1.4rem;\r\n\t\theight: 4.5rem;\r\n\t\tline-height: 4.5rem;\r\n\t\tpadding: 0 2rem;\r\n\t}\r\n<\/style>\r\n\r\n<p><strong>Extending The Inheritances<\/strong><\/p>\r\n\r\n<p>The style of an element can be defined in several different locations, which interact in a complex way.  It is this form of interaction makes CSS powerful, but it can make it confusing and difficult to debug.<\/p>\r\n\r\n<div class=\"example\">\r\n\t<div class=\"row\">\r\n\t\t<div class=\"column\">\r\n\t\t\t<a class=\"button\" href=\"#\">Default .button<\/a>\r\n\t\t\t<a class=\"button button-outline\" href=\"#\">Outlined .button<\/a>\r\n\t\t\t<a class=\"button button-clear\" href=\"#\">Clear .button<\/a>\r\n\t<div class=\"column\">\r\n\t\t<a class=\"button button-black\" href=\"#\">.button-black<\/a>\r\n\t\t<a class=\"button button-black button-outline\" href=\"#\">.button-black<\/a>\r\n\t\t<a class=\"button button-black button-clear\" href=\"#\">.button-black<\/a><\/div>\r\n\t\t<div class=\"column column-20\">\r\n\t\t\t<a class=\"button button-small\" href=\"#\">.button-small<\/a>\r\n\t\t\t<a class=\"button button-small button-outline\" href=\"#\">.button-small<\/a>\r\n\t\t\t<a class=\"button button-small button-clear\" href=\"#\">.button-small<\/a>\r\n\t\t<\/div>\r\n\t\t<div class=\"column\">\r\n\t\t\t<a class=\"button button-large\" href=\"#\">.button-large<\/a>\r\n\t\t\t<a class=\"button button-large button-outline\" href=\"#\">.button-large<\/a>\r\n\t\t\t<a class=\"button button-large button-clear\" href=\"#\">.button-large<\/a>\r\n\t\t<\/div>\r\n\t<\/div>\r\n<\/div>\r\n"
+    ]
+  },
+  "Milligram Contact Form": {
+    "scope": "window",
+    "prefix": "tg:mi:contact",
+    "body": [
+      "<!-- Milligram contact us form -->\r\n<form>\r\n\t<h1>Contact Us<\/h1>\r\n\t<p>Please fill out the form below and then hit 'Submit'<\/p>\r\n\t<fieldset>\r\n\t\t<label>Name<\/label>\r\n\t\t<input type=\"text\" name=\"your_name\" placeholder=\"Enter your name here\">\r\n\r\n\t\t<label>Email Address<\/label>\r\n\t\t<input type=\"email\" name=\"email\" placeholder=\"Enter your contact email address here\">\r\n\r\n\t\t<label>Telephone Number<\/label>\r\n\t\t<input type=\"text\" name=\"telnum\" placeholder=\"Enter your contact telephone number here\">\r\n\r\n\t\t<label>Message<\/label>\r\n\t\t<textarea placeholder=\"Enter your message here...\" name=\"message\"><\/textarea>\r\n\r\n\t\t<div class=\"float-right\">\r\n\t\t\t<input type=\"checkbox\" id=\"confirmField\">\r\n\t\t\t<label class=\"label-inline\" for=\"confirmField\">Send a copy to yourself<\/label>\r\n\t\t<\/div>\r\n\r\n\t\t<input class=\"button-primary\" type=\"submit\" value=\"Send\">\r\n\t\t<input class=\"button-outline\" type=\"submit\" value=\"Cancel\">\r\n\t<\/fieldset>\r\n<\/form>\r\n"
+    ]
+  },
+  "Milligram Download URL": {
+    "scope": "window",
+    "prefix": "tg:mi:url",
+    "body": ["https:\/\/milligram.io\/#getting-started"]
+  },
+  "Milligram Form": {
+    "scope": "window",
+    "prefix": "tg:mi:form",
+    "body": [
+      "<form>\r\n\t<fieldset>\r\n\t\t<label for=\"nameField\">Name<\/label>\r\n\t\t<input type=\"text\" placeholder=\"CJ Patoilo\" id=\"nameField\">\r\n\r\n\t\t<label for=\"ageRangeField\">Age Range<\/label>\r\n\t\t<select id=\"ageRangeField\">\r\n\t\t\t<option value=\"0-13\">0-13<\/option>\r\n\t\t\t<option value=\"14-17\">14-17<\/option>\r\n\t\t\t<option value=\"18-23\">18-23<\/option>\r\n\t\t\t<option value=\"24+\">24+<\/option>\r\n\t\t<\/select>\r\n\r\n\t\t<label for=\"commentField\">Comment<\/label>\r\n\t\t<textarea placeholder=\"Hi CJ \u2026\" id=\"commentField\"><\/textarea>\r\n\t\t<div class=\"float-right\">\r\n\t\t\t<input type=\"checkbox\" id=\"confirmField\">\r\n\r\n\t\t\t<label class=\"label-inline\" for=\"confirmField\">Send a copy to yourself<\/label>\r\n\t\t<\/div>\r\n\r\n\t\t<input class=\"button-primary\" type=\"submit\" value=\"Send\">\r\n\t<\/fieldset>\r\n<\/form>\r\n"
+    ]
+  },
+  "Milligram Grid": {
+    "scope": "window",
+    "prefix": "tg:mi:grid",
+    "body": [
+      "<!--The Grid is a fluid system with a max width of 112.0rem (1120px), that shrinks with the browser\/device at smaller sizes. The max width can be changed with one line of CSS and all columns will resize accordingly. Milligram is different than most because of its use of the CSS Flexible Box Layout Module standard. The advantage is the simplicity, and we know that a functional code is very important for maintainability and scalability. Simply add columns you want in a row, and they'll evenly take up the available space. If you want three columns, add three columns, if you want five columns, add five columns. There is no restriction on number of columns, but we advise you to follow a design pattern of grid system. See more tips on best practices in the tips. (https:\/\/milligram.io\/grids.html#tips)-->\r\n<div class=\"container\">\r\n\t<div class=\"row\">\r\n\t\t<div class=\"column\">.column<\/div>\r\n\t\t<div class=\"column\">.column<\/div>\r\n\t\t<div class=\"column\">.column<\/div>\r\n\t\t<div class=\"column\">.column<\/div>\r\n\t<\/div>\r\n\t<div class=\"row\">\r\n\t\t<div class=\"column\">.column<\/div>\r\n\t\t<div class=\"column column-50 column-offset-25\">.column column-50 column-offset-25<\/div>\r\n\t<\/div>\r\n<\/div>\r\n<div class=\"container\">\r\n\t<div class=\"row\">\r\n\t\t<div class=\"column column-10\">10%<\/div>\r\n\t<\/div>\r\n\t<div class=\"row\">\r\n\t\t<div class=\"column column-20\">20%<\/div>\r\n\t<\/div>\r\n\t<div class=\"row\">\r\n\t\t<div class=\"column column-25\">25%<\/div>\r\n\t<\/div>\r\n\t<div class=\"row\">\r\n\t\t<div class=\"column column-33\">33%<\/div>\r\n\t<\/div>\r\n\t<div class=\"row\">\r\n\t\t<div class=\"column column-40\">40%<\/div>\r\n\t<\/div>\r\n\t<div class=\"row\">\r\n\t\t<div class=\"column column-50\">50%<\/div>\r\n\t<\/div>\r\n\t<div class=\"row\">\r\n\t\t<div class=\"column column-60\">60%<\/div>\r\n\t<\/div>\r\n\t<div class=\"row\">\r\n\t\t<div class=\"column column-67\">67%<\/div>\r\n\t<\/div>\r\n\t<div class=\"row\">\r\n\t\t<div class=\"column column-75\">75%<\/div>\r\n\t<\/div>\r\n\t<div class=\"row\">\r\n\t\t<div class=\"column column-80\">80%<\/div>\r\n\t<\/div>\r\n\t<div class=\"row\">\r\n\t\t<div class=\"column column-90\">90%<\/div>\r\n\t<\/div>\r\n\t<div class=\"row\">\r\n\t\t<div class=\"column\">100%<\/div>\r\n\t<\/div>\r\n<\/div>\r\n"
+    ]
+  },
+  "Milligram Info Page": {
+    "scope": "window",
+    "prefix": "tg:mi:info",
+    "body": [
+      "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n\t<meta charset=\"UTF-8\">\r\n\t<title>Milligram CSS Basic Template<\/title>\r\n\t<link rel=\"stylesheet\" href=\"\/\/fonts.googleapis.com\/css?family=Roboto:300,300italic,700,700italic\">\r\n\t<link rel=\"stylesheet\" href=\"\/\/cdnjs.cloudflare.com\/ajax\/libs\/normalize\/8.0.1\/normalize.css\">\r\n\t<link rel=\"stylesheet\" href=\"\/\/cdnjs.cloudflare.com\/ajax\/libs\/milligram\/1.4.0\/milligram.css\"> <\/head>\r\n\t<body>\r\n\t\t<section class=\"container\">\r\n\t\t\t<h1>Headline<\/h1>\r\n\t\t\t<h3>One Column Information Page<\/h3>\r\n\t\t\t<p>Milligram provides a minimal setup of styles for a fast and clean starting point. Just it! <strong>Only 2kb gzipped!<\/strong> It's not about a UI framework. Specially designed for better performance and higher productivity with fewer properties to reset resulting in cleaner code. Hope you enjoy!<\/p>\r\n\t\t\t<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa optio dolore, totam assumenda aut ad libero autem, suscipit saepe architecto similique obcaecati. Rerum quis, accusamus eius corporis inventore quos laboriosam.<\/p>\r\n\t\t<\/section>\r\n\t<\/body>\r\n<\/html>\r\n"
+    ]
+  },
+  "Milligram Login Form": {
+    "scope": "window",
+    "prefix": "tg:mi:login",
+    "body": [
+      "<form>\r\n\t<p>Enter your username and password then hit 'Submit'.<\/p>\r\n\t<fieldset>\r\n\t\t<label>Username<\/label>\r\n\t\t<input type=\"text\" placeholder=\"Enter your username here\" name=\"username\">\r\n\r\n\t\t<label>Password<\/label>\r\n\t\t<input type=\"password\" placeholder=\"Enter your new password here\" name=\"pword\">\r\n\r\n\t\t<button class=\"button\" type=\"submit\" value=\"Submit\">Submit<\/button>\r\n\t\t<button class=\"button button-outline\" type=\"submit\" value=\"Cancel\">Cancel<\/button>\r\n\t<\/fieldset>\r\n<\/form>\r\n<p><a href=\"#\">Forgotten your password?<\/a><\/p>\r\n"
+    ]
+  },
+  "Milligram Modal": {
+    "scope": "window",
+    "prefix": "tg:mi:modal",
+    "body": [
+      "The Milligram Framework does not come with a modal example.\r\n"
+    ]
+  },
+  "Milligram Password Form": {
+    "scope": "window",
+    "prefix": "tg:mi:password-form",
+    "body": [
+      "<form>\r\n\t<fieldset>\r\n\t\t<label>Password<\/label>\r\n\t\t<input type=\"password\" placeholder=\"Enter your password here\" name=\"pword\">\r\n\r\n\t\t<label>Repeat Password<\/label>\r\n\t\t<input type=\"password\" placeholder=\"Enter your new password again\" name=\"repeat_pword\">\r\n\r\n\t\t<button class=\"button\" type=\"submit\" value=\"Submit\">Submit<\/button>\r\n\t\t<button class=\"button button-outline\" type=\"submit\" value=\"Cancel\">Cancel<\/button>\r\n\t<\/fieldset>\r\n<\/form>\r\n<p><a href=\"#\">Forgotten your password?<\/a><\/p>\r\n"
+    ]
+  },
+  "Milligram Table": {
+    "scope": "window",
+    "prefix": "tg:mi:table",
+    "body": [
+      "<!-- table example using Milligram -->\r\n<table>\r\n\t<thead>\r\n\t\t<tr>\r\n\t\t\t<th>Name<\/th>\r\n\t\t\t<th>Age<\/th>\r\n\t\t\t<th>Height<\/th>\r\n\t\t\t<th>Location<\/th>\r\n\t\t<\/tr>\r\n\t<\/thead>\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td>Stephen Curry<\/td>\r\n\t\t\t<td>27<\/td>\r\n\t\t\t<td>1,91<\/td>\r\n\t\t\t<td>Akron, OH<\/td>\r\n\t\t<\/tr>\r\n\t\t<tr>\r\n\t\t\t<td>Klay Thompson<\/td>\r\n\t\t\t<td>25<\/td>\r\n\t\t\t<td>2,01<\/td>\r\n\t\t\t<td>Los Angeles, CA<\/td>\r\n\t\t<\/tr>\r\n\t<\/tbody>\r\n<\/table>\r\n"
+    ]
+  },
+  "Milligram Table Alt": {
+    "scope": "window",
+    "prefix": "tg:mi:table-alt",
+    "body": [
+      "<!-- alternative table layout using Milligram -->\r\n<table class=\"u-full-width\">\r\n\t<thead>\r\n\t\t<tr>\r\n\t\t\t<th>Name<\/th>\r\n\t\t\t<th>Age<\/th>\r\n\t\t\t<th>Height<\/th>\r\n\t\t\t<th>Location<\/th>\r\n\t\t<\/tr>\r\n\t<\/thead>\r\n\t<tbody>\r\n\t\t<?php \r\n\t\tforeach ($rows as $row) {\r\n\t\t?>\r\n\t\t<tr>\r\n\t\t\t<td><?= $row->name ?><\/td>\r\n\t\t\t<td><?= $row->age ?><\/td>\r\n\t\t\t<td><?= $row->height ?><\/td>\r\n\t\t\t<td><?= $row->location ?><\/td>\r\n\t\t<\/tr>\r\n\t<?php\r\n\t}\r\n\t?>\r\n\t<\/tbody>\r\n<\/table>\r\n"
+    ]
+  },
+  "Milligram Template": {
+    "scope": "window",
+    "prefix": "tg:mi:template",
+    "body": [
+      "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n<meta charset=\"UTF-8\">\r\n<title>Milligram CSS Basic Template<\/title>\r\n<link rel=\"stylesheet\" href=\"\/\/fonts.googleapis.com\/css?family=Roboto:300,300italic,700,700italic\">\r\n<link rel=\"stylesheet\" href=\"\/\/cdnjs.cloudflare.com\/ajax\/libs\/normalize\/8.0.1\/normalize.css\">\r\n<link rel=\"stylesheet\" href=\"\/\/cdnjs.cloudflare.com\/ajax\/libs\/milligram\/1.4.0\/milligram.css\"> <\/head>\r\n<body>\r\n\t<section class=\"container\">\r\n\t\t<h3 class=\"title\">Why it's awesome<\/h3>\r\n\t\t<p>Milligram provides a minimal setup of styles for a fast and clean starting point. Just it! <strong>Only 2kb gzipped!<\/strong> It's not about a UI framework. Specially designed for better performance and higher productivity with fewer properties to reset resulting in cleaner code. Hope you enjoy!<\/p>\r\n\t<\/section>\r\n\t<div class=\"container\">\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"column\">.column<\/div>\r\n\t\t\t<div class=\"column\">.column<\/div>\r\n\t\t\t<div class=\"column\">.column<\/div>\r\n\t\t\t<div class=\"column\">.column<\/div>\r\n\t\t<\/div>\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"column\">.column<\/div>\r\n\t\t\t<div class=\"column column-50 column-offset-25\">.column column-50 column-offset-25<\/div>\r\n\t\t<\/div>\r\n\t<\/div>\r\n<\/body>\r\n<\/html>\r\n"
+    ]
   }
 }
+

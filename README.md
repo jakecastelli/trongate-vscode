@@ -19,14 +19,39 @@ This extension will allow you to:
 * Add PHP and custom Trongate code snippets to speed up your development.
 
 #### Table of Trongate snippets:
-| Snippet Name | Shortcut 
+| Snippet Name | Prefix 
 | ------------- | ------------- 
 | Trongate For Loop In View File | `tg:for` |
 | Trongate if condition in View File | `tg:if` | 
 | Trongate if else in View File | `tg:ifelse` | 
 | Trongate Submit Function Scaffold | `tg:submit` | 
 
-* Insert popular frontend frameworks and their elements into your view and template files - akin to Nitro (Currently under development)
+
+* Insert popular frontend frameworks and their elements into your view and template files - akin to Nitro (Currently under development > `ctrl+win+alt+n` to bring up the dropdown selector)
+    * Bootstrap 4 > tg:b
+    * Defiant > tg:d
+    * Materialize > tg:ma
+    * Milligram > tg:mi
+    * Skeleton > tg:s
+
+#### Table of Nitro Frameworks Inserts > Showing Bootstrap 4:
+| Command | Shortcut | Prefix
+| ------------- | ------------- | -------------
+| Buttons | `ctrl+win+alt+b` | `tg:b:button`
+| BUttons Alternative | `ctrl+win+alt+u` | `tg:b:button-alt`
+| Contact Form | `ctrl+win+alt+c` | `tg:b:contact`
+| Download URL | `ctrl+win+alt+d` | `tg:b:url`
+| Form | `ctrl+win+alt+f` | `tg:b:form`
+| Grid | `ctrl+win+alt+g` | `tg:b:grid`
+| Info Page | `ctrl+win+alt+i` | `tg:b:info`
+| Login Form | `ctrl+win+alt+l` | `tg:b:login`
+| Modal | `ctrl+win+alt+m` | `tg:b:modal`
+| Password Form | `ctrl+win+alt+p` | `tg:b:password-form`
+| Table | `ctrl+win+alt+p` | `tg:b:table`
+| TAble Alternative | `ctrl+win+alt+a` | `tg:b:table-alt`
+| TEmplate | `ctrl+win+alt+e` | `tg:b:template`
+
+PLEASE NOTE: The 'win' key is the same as 'super' in Linux and 'cmd' on Mac
 
 ## Requirements
 

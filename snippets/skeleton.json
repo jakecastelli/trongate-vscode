@@ -1,8 +1,91 @@
 {
-  "Print to console": {
-    "scope": "html,php",
-    "prefix": "sleleton",
-    "body": ["hello from sleleton"],
-    "description": "Create a template from defiant sleleton"
+  "Skeleton Button": {
+    "scope": "window",
+    "prefix": "tg:s:button",
+    "body": [
+      "<!-- Standard Skeleton CSS buttons -->\r\n<a class=\"button\" href=\"#\">Anchor button<\/a>\r\n<button>Button element<\/button>\r\n<input type=\"submit\" value=\"submit input\">\r\n<input type=\"button\" value=\"button input\">\r\n\r\n<!-- Primary buttons -->\r\n<a class=\"button button-primary\" href=\"#\">Anchor button<\/a>\r\n<button class=\"button-primary\">Button element<\/button>\r\n<input class=\"button-primary\" type=\"submit\" value=\"submit input\">\r\n<input class=\"button-primary\" type=\"button\" value=\"button input\">\r\n"
+    ]
+  },"Skeleton Button Alt": {
+    "scope": "window",
+    "prefix": "tg:s:button-alt",
+    "body": [
+      "<style>\r\n\/* Extending The SkeletonCSS Buttons *\/\r\n\r\n\/* Custom color *\/\r\n.button-black {\r\n\tbackground-color: black;\r\n\tborder-color: black;\r\n}\r\n\r\n.button-black.button-clear,\r\n.button-black.button-outline {\r\n\tbackground-color: transparent;\r\n\tcolor: black;\r\n}\r\n\r\n.button-black.button-clear {\r\n\tborder-color: transparent;\r\n}\r\n\r\n\/* Custom size *\/\r\n.button-small {\r\n\tfont-size: .8rem;\r\n\theight: 2.8rem;\r\n\tline-height: 2.8rem;\r\n\tpadding: 0 1.5rem;\r\n}\r\n\r\n.button-large {\r\n\tfont-size: 1.4rem;\r\n\theight: 4.5rem;\r\n\tline-height: 4.5rem;\r\n\tpadding: 0 2rem;\r\n}\r\n<\/style>\r\n\r\n<!-- * Example of large button (two different methods) * -->\r\n<a class=\"button button-large\" href=\"\">.button-large<\/a>\r\n<button class=\"button-large\">Large Button<\/button>\r\n<button>Default Button<\/button> (for comparison)\r\n"
+    ]
+  },
+  "Skeleton Contact Form": {
+    "scope": "window",
+    "prefix": "tg:s:contact",
+    "body": [
+      "<!-- SkeletonCSS contact us form -->\r\n<div class=\"container\">\r\n\t<form action=\"<?= $form_location ?>\" method=\"post\">\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"six columns\">\r\n\t\t\t\t<h1>Contact Us<\/h1>\r\n\t\t\t\t<p>Please fill out the form below and then hit 'Submit'<\/p>\r\n\t\t\t\t<label>Name<\/label>\r\n\t\t\t\t<input type=\"text\" value=\"<?= $your_name ?>\" class=\"u-full-width\" name=\"your_name\" placeholder=\"Enter your name here\">\r\n\t\t\t\t<label>Email Address<\/label>\r\n\t\t\t\t<input type=\"email\" value=\"<?= $email ?>\" class=\"u-full-width\" name=\"email\" placeholder=\"Enter your contact email address here\">\r\n\t\t\t\t<label>Telephone Number<\/label>\r\n\t\t\t\t<input type=\"text\" value=\"<?= $telnum ?>\" class=\"u-full-width\" name=\"telnum\" placeholder=\"Enter your contact telephone number here\">\r\n\t\t\t\t<label for=\"exampleMessage\">Message<\/label>\r\n\t\t\t\t<textarea class=\"u-full-width\" placeholder=\"Hi Dave \u2026\"><?= $message ?><\/textarea>\r\n\t\t\t\t<input class=\"button-primary\" name=\"submit\" type=\"submit\" value=\"Submit\">\r\n\t\t\t\t<input class=\"button\" name=\"submit\" type=\"submit\" value=\"Cancel\">\r\n\t\t\t<\/div>\r\n\t\t<\/div>\r\n\t<\/form>\r\n<\/div>\r\n"
+    ]
+  },
+  "Skeleton Download URL": {
+    "scope": "window",
+    "prefix": "tg:s:url",
+    "body": ["http:\/\/getskeleton.com\r\n"]
+  },
+  "Skeleton Form": {
+    "scope": "window",
+    "prefix": "tg:s:form",
+    "body": [
+      "<!-- SkeletonCSS Sample Form -->\r\n<form>\r\n\t<div class=\"row\">\r\n\t\t<div class=\"six columns\">\r\n\t\t\t<label for=\"exampleEmailInput\">Your email<\/label>\r\n\t\t\t<input class=\"u-full-width\" type=\"email\" placeholder=\"test@mailbox.com\" id=\"exampleEmailInput\">\r\n\t\t<\/div>\r\n\t\t<div class=\"six columns\">\r\n\t\t\t<label for=\"exampleRecipientInput\">Reason for contacting<\/label>\r\n\t\t\t<select class=\"u-full-width\" id=\"exampleRecipientInput\">\r\n\t\t\t\t<option value=\"Option 1\">Questions<\/option>\r\n\t\t\t\t<option value=\"Option 2\">Admiration<\/option>\r\n\t\t\t\t<option value=\"Option 3\">Can I get your number?<\/option>\r\n\t\t\t<\/select>\r\n\t\t<\/div>\r\n\t<\/div>\r\n\t<label for=\"exampleMessage\">Message<\/label>\r\n\t<textarea class=\"u-full-width\" placeholder=\"Hi Dave \u2026\" id=\"exampleMessage\"><\/textarea>\r\n\t<label class=\"example-send-yourself-copy\">\r\n\t\t<input type=\"checkbox\">\r\n\t\t<span class=\"label-body\">Send a copy to yourself<\/span>\r\n\t<\/label>\r\n\t<input class=\"button-primary\" type=\"submit\" value=\"Submit\">\r\n<\/form>\r\n<!-- Always wrap checkbox and radio inputs in a label and use a <span class=\"label-body\"> inside of it -->\r\n<!-- Note: The class .u-full-width is just a utility class shorthand for width: 100% -->\r\n"
+    ]
+  },
+  "Skeleton Grid": {
+    "scope": "window",
+    "prefix": "tg:s:grid",
+    "body": [
+      "<!-- SkeletonCSS grid example -->\r\n<div class=\"container\">\r\n\t<div class=\"row\">\r\n\t\t<div class=\"one column\">\r\n\t\t\tOne\r\n\t\t<\/div>\r\n\t\t<div class=\"eleven columns\">\r\n\t\t\tEleven\r\n\t\t<\/div>\r\n\t<\/div>\r\n\t<div class=\"row\">\r\n\t\t<div class=\"one-third column\">\r\n\t\t\t1\/3\r\n\t\t<\/div>\r\n\t\t<div class=\"two-thirds column\">\r\n\t\t\t2\/3\r\n\t\t<\/div>\r\n\t<\/div>\r\n\t<div class=\"row\">\r\n\t\t<div class=\"one-half column\">\r\n\t\t\t1\/2\r\n\t\t<\/div>\r\n\t\t<div class=\"one-half column\">\r\n\t\t\t1\/2\r\n\t\t<\/div>\r\n\t<\/div>\r\n<\/div>\r\n<!-- \r\n\tNote: columns can be nested, but it's not recommended since Skeleton's grid has %-based gutters, meaning a nested grid results in variable with gutters (which can end up being *really* small on certain browser\/device sizes)\r\n\tOFFSETS:\r\n\t        .offset-by-one\r\n\t        .offset-by-eleven\r\n\t        .offset-by-one-third\r\n\t        .offset-by-two-thirds\r\n\t        .offset-by-half\r\n-->\r\n"
+    ]
+  },
+  "Skeleton Info Page": {
+    "scope": "window",
+    "prefix": "tg:s:info",
+    "body": [
+      "<!-- simple info page layout in SkeletonCSS -->\r\n<div class=\"container\">\r\n\t<div class=\"row\">\r\n\t\t<div class=\"ten columns offset-by-one\">\r\n\t\t\t<h1>Headline<\/h1>\r\n\t\t\t<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus sapiente fugiat ut iure, ducimus. At suscipit quod in omnis, illo, excepturi assumenda officiis dicta porro officia dolor alias veritatis nulla?<\/p>\r\n\t\t<\/div>\r\n\t\t<div class=\"eleven columns\">\r\n\t\t\tEleven\r\n\t\t<\/div>\r\n\t<\/div>\r\n<\/div>\r\n<!--\r\n\tNote: columns can be nested, but it's not recommended since Skeleton's grid has %-based gutters, meaning a nested grid results in variable with gutters (which can end up being *really* small on certain browser\/device sizes)\r\n\tOFFSETS:\r\n\t        .offset-by-one\r\n\t        .offset-by-eleven\r\n\t        .offset-by-one-third\r\n\t        .offset-by-two-thirds\r\n\t        .offset-by-half\r\n-->\r\n"
+    ]
+  },
+  "Skeleton Login Form": {
+    "scope": "window",
+    "prefix": "tg:s:login",
+    "body": [
+      "<!-- login form with SkeletonCSS -->\r\n<div class=\"container\">\r\n\t<div class=\"row\">\r\n\t\t<div class=\"ten columns offset-by-one\">\r\n\t\t\t<h1>Member Login<\/h1>\r\n\t\t\t<p>Enter your username and password then hit 'Submit'.<\/p>\r\n\t\t\t<form action=\"<?= $form_location ?>\" method=\"post\">\r\n\t\t\t\t<label>Username<\/label>\r\n\t\t\t\t<input type=\"text\" class=\"u-full-width\" name=\"username\" placeholder=\"Enter your username here\">\r\n\t\t\t\t<label>Password<\/label>\r\n\t\t\t\t<input type=\"password\" class=\"u-full-width\" name=\"pword\" placeholder=\"Enter your password here\">\r\n\t\t\t\t<input class=\"button-primary\" name=\"submit\" type=\"submit\" value=\"Submit\">\r\n\t\t\t\t<input class=\"button\" name=\"submit\" type=\"submit\" value=\"Cancel\">\r\n\t\t\t<\/form>\r\n\t\t\t<p class=\"center\"><a href=\"#\">Forgotten your password?<\/a><\/p>\r\n\t\t<\/div>\r\n\t<\/div>\r\n<\/div>\r\n"
+    ]
+  },
+  "Skeleton Modal": {
+    "scope": "window",
+    "prefix": "tg:s:modal",
+    "body": [
+      "The Skeleton Framework does not come with a modal example.\r\n"
+    ]
+  },
+  "Skeleton Password Form": {
+    "scope": "window",
+    "prefix": "tg:s:password-form",
+    "body": [
+      "<!-- password recovery with SkeletonCSS -->\r\n<div class=\"container\">\r\n\t<div class=\"row\">\r\n\t\t<div class=\"ten columns offset-by-one\">\r\n\t\t\t<h1>Recover Your Password<\/h1>\r\n\t\t\t<p>Please fill out the form below and then hit 'Submit'.<\/p>\r\n\t\t\t<form action=\"<?= $form_location ?>\" method=\"post\">\r\n\t\t\t\t<fieldset>\r\n\t\t\t\t\t<label>Password<\/label>\r\n\t\t\t\t\t<input type=\"password\" class=\"u-full-width\" placeholder=\"Enter your new password here\" name=\"pword\">\r\n\t\t\t\t\t<label>Repeat Password<\/label>\r\n\t\t\t\t\t<input type=\"password\" class=\"u-full-width\" placeholder=\"Enter your new password again\" name=\"repeat_pword\">\r\n\t\t\t\t\t<input class=\"button-primary\" type=\"submit\" name=\"submit\" value=\"Submit\">\r\n\t\t\t\t\t<input class=\"button-outline\" type=\"submit\" name=\"submit\" value=\"Cancel\">\r\n\t\t\t\t<\/fieldset>\r\n\t\t\t<\/form>\r\n\t\t\t<p><a href=\"#\">Forgotten your password?<\/a><\/p>\r\n\t\t<\/div>\r\n\t<\/div>\r\n<\/div>\r\n"
+    ]
+  },
+  "Skeleton Table": {
+    "scope": "window",
+    "prefix": "tg:s:table",
+    "body": [
+      "<!-- SkeletonCSS table example -->\r\n<table class=\"u-full-width\">\r\n\t<thead>\r\n\t\t<tr>\r\n\t\t\t<th>Name<\/th>\r\n\t\t\t<th>Age<\/th>\r\n\t\t\t<th>Height<\/th>\r\n\t\t\t<th>Location<\/th>\r\n\t\t<\/tr>\r\n\t<\/thead>\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td>Stephen Curry<\/td>\r\n\t\t\t<td>27<\/td>\r\n\t\t\t<td>1,91<\/td>\r\n\t\t\t<td>Akron, OH<\/td>\r\n\t\t<\/tr>\r\n\t\t<tr>\r\n\t\t\t<td>Klay Thompson<\/td>\r\n\t\t\t<td>25<\/td>\r\n\t\t\t<td>2,01<\/td>\r\n\t\t\t<td>Los Angeles, CA<\/td>\r\n\t\t<\/tr>\r\n\t<\/tbody>\r\n<\/table>\r\n"
+    ]
+  },
+  "Skeleton Table Alt": {
+    "scope": "window",
+    "prefix": "tg:s:table-alt",
+    "body": [
+      "<!-- alternative table layout using SkeletonCSS -->\r\n<table class=\"u-full-width\">\r\n\t<thead>\r\n\t\t<tr>\r\n\t\t\t<th>Name<\/th>\r\n\t\t\t<th>Age<\/th>\r\n\t\t\t<th>Height<\/th>\r\n\t\t\t<th>Location<\/th>\r\n\t\t<\/tr>\r\n\t<\/thead>\r\n\t<tbody>\r\n\t\t<?php \r\n\t\tforeach ($rows as $row) {\r\n\t\t?>\r\n\t\t<tr>\r\n\t\t\t<td><?= $row->name ?><\/td>\r\n\t\t\t<td><?= $row->age ?><\/td>\r\n\t\t\t<td><?= $row->height ?><\/td>\r\n\t\t\t<td><?= $row->location ?><\/td>\r\n\t\t<\/tr>\r\n\t<?php\r\n\t}\r\n\t?>\r\n\t<\/tbody>\r\n<\/table>\r\n"
+    ]
+  },
+  "Skeleton Template": {
+    "scope": "window",
+    "prefix": "tg:s:template",
+    "body": [
+      "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n\t<meta charset=\"UTF-8\">\r\n\t<title>SkeletonCSS<\/title>\r\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\r\n\t<link rel=\"stylesheet\" href=\"\/\/fonts.googleapis.com\/css?family=Raleway:400,300,600\">\r\n\t<link rel=\"stylesheet\" href=\"<?= BASE_URL ?>css\/normalize.css\">\r\n\t<link rel=\"stylesheet\" href=\"<?= BASE_URL ?>css\/skeleton.css\">\r\n\t<link rel=\"stylesheet\" href=\"\/\/cdnjs.cloudflare.com\/ajax\/libs\/font-awesome\/4.7.0\/css\/font-awesome.min.css\">\r\n\t<link rel=\"stylesheet\" href=\"<?= BASE_URL ?>css\/custom.css\">\r\n\t<link rel=\"icon\" type=\"image\/png\" href=\"<?= BASE_URL ?>images\/favicon.png\">\r\n<\/head>\r\n<body>\r\n\t<!-- .container is main centered wrapper -->\r\n\t<div class=\"container\">\r\n\t\t<!-- columns should be the immediate child of a .row -->\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"one column\">One<\/div>\r\n\t\t\t<div class=\"eleven columns\">Eleven<\/div>\r\n\t\t<\/div>\r\n\r\n\t\t<!-- just use a number and class 'column' or 'columns' -->\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"two columns\">Two<\/div>\r\n\t\t\t<div class=\"ten columns\">Ten<\/div>\r\n\t\t<\/div>\r\n\r\n\t\t<!-- there are a few shorthand columns widths as well -->\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"one-third column\">1\/3<\/div>\r\n\t\t\t<div class=\"two-thirds column\">2\/3<\/div>\r\n\t\t<\/div>\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"one-half column\">1\/2<\/div>\r\n\t\t\t<div class=\"one-half column\">1\/2<\/div>\r\n\t\t<\/div>\r\n\t<\/div>\r\n<\/body>\r\n<\/html>\r\n"
+    ]
   }
 }
+
