@@ -4,6 +4,7 @@ import * as vscode from "vscode";
 import { newModule } from "./commands";
 import { switchSnippet } from "./commands";
 
+let userFrameworkOption = "Boostrap 4";
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
@@ -16,35 +17,33 @@ export function activate(context: vscode.ExtensionContext) {
   // The commandId parameter must match the command field in package.json
   let disposable = vscode.commands.registerCommand(
     "trongate.helloWorld",
-    () => {
+    (args) => {
+      console.log(args);
+      console.log(userFrameworkOption);
+      console.log(" --- --- --- ");
+      vscode.commands.executeCommand(`editor.action.insertSnippet`, {
+        name: `${userFrameworkOption} ${args.name}`,
+      });
       // The code you place here will be executed every time your command is executed
-
-      // Display a message box to the user
-      console.log();
-      vscode.window.showInformationMessage("Hello World from Trongate!");
     }
   );
 
   let newTrongate = vscode.commands.registerCommand(
     "trongate.newTrongate",
-    // The code you place here will be executed every time your command is executed
-    // Display a message box to the user
-    //   vscode.window.showInformationMessage("Hello Trongate User!");
-    //Works!
     newModule
   );
 
   let selectSnippet = vscode.commands.registerCommand(
     "trongate.selectSnippet",
     // The code you place here will be executed every time your command is executed
-    // Display a message box to the user
-    //   vscode.window.showInformationMessage("Hello Trongate User!");
-    //Works!
     () => {
       //TODO: Implement the function
       //CURRENTLY:
-      // Passing the context to the function which can provide the user data file of VSCode
-      switchSnippet("", context);
+      switchSnippet().then((opt) => {
+        if (!opt) return;
+        //@ts-ignore
+        userFrameworkOption = opt;
+      });
     }
   );
 

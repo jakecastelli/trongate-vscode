@@ -1,3 +1,4 @@
+//@ts-nocheck
 import * as _ from "lodash";
 // import * as changeCase from "change-case";
 import * as mkdirp from "mkdirp";

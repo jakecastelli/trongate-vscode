@@ -1,222 +1,251 @@
 {
-	"name": "trongate",
-	"displayName": "Trongate",
-	"description": "VS Code extension to compliment the Trongate ecosystem",
-	"version": "0.0.1",
-	"engines": {
-		"vscode": "^1.49.0"
-	},
-	"categories": [
-		"Programming Languages",
-		"Snippets",
-		"Keymaps"
-	],
-	"publisher": "jc-sf",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/jakecastelli/trongate-vscode"
-	},
-	"icon": "assets/logo.png",
-	"homepage": "https://trongate.io",
-	"activationEvents": [
-		"onCommand:trongate.newTrongate",
-		"onCommand:trongate.selectSnippet"
-	],
-	"main": "./out/extension.js",
-	"contributes": {
-		"commands": [
-			{
-				"command": "trongate.helloWorld",
-				"title": "Hello World"
-			},
-			{
-				"command": "trongate.newTrongate",
-				"title": "New Trongate Module"
-			},
-			{
-				"command": "trongate.selectSnippet",
-				"title": "CSS Framework"
-			}
-		],
-		"menus": {
-			"explorer/context": [
-				{
-					"command": "trongate.newTrongate",
-					"group": "trongateGroup@1",
-					"when": "explorerResourceIsFolder"
-				}
-			]
-		},
-		"snippets": [
-			{
-				"language": "html",
-				"path": "./snippets/tg.json"
-			},
-			{
-				"language": "php",
-				"path": "./snippets/tg.json"
-			},
-			{
-				"language": "html",
-				"path": "./snippets/bootstrap.json"
-			},
-			{
-				"language": "php",
-				"path": "./snippets/bootstrap.json"
-			},
-			{
-				"language": "html",
-				"path": "./snippets/defiant.json"
-			},
-			{
-				"language": "php",
-				"path": "./snippets/defiant.json"
-			},
-			{
-				"language": "html",
-				"path": "./snippets/materialize.json"
-			},
-			{
-				"language": "php",
-				"path": "./snippets/materialize.json"
-			},
-			{
-				"language": "html",
-				"path": "./snippets/milligram.json"
-			},
-			{
-				"language": "php",
-				"path": "./snippets/milligram.json"
-			},
-			{
-				"language": "html",
-				"path": "./snippets/skeleton.json"
-			},
-			{
-				"language": "php",
-				"path": "./snippets/skeleton.json"
-			}
-		],
-		"keybindings": [
-			{
-				"key": "ctrl+win+alt+n",
-				"command": "trongate.selectSnippet"
-			},
-			{
-				"key": "ctrl+win+alt+b",
-				"command": "editor.action.insertSnippet",
-				"when": "editorTextFocus",
-				"args": { "name": "Defiant Button" }
-			},
-			{
-				"key": "ctrl+win+alt+u",
-				"command": "editor.action.insertSnippet",
-				"when": "editorTextFocus",
-				"args": { "name": "Boostrap 4 Button Alt" }
-			},
-			{
-				"key": "ctrl+win+alt+c",
-				"command": "editor.action.insertSnippet",
-				"when": "editorTextFocus",
-				"args": { "name": "Boostrap 4 Contact Form" }
-			},
-			{
-				"key": "ctrl+win+alt+d",
-				"command": "editor.action.insertSnippet",
-				"when": "editorTextFocus",
-				"args": { "name": "Boostrap 4 Download URL" }
-			},
-			{
-				"key": "ctrl+win+alt+f",
-				"command": "editor.action.insertSnippet",
-				"when": "editorTextFocus",
-				"args": { "name": "Boostrap 4 Form" }
-			},
-			{
-				"key": "ctrl+win+alt+g",
-				"command": "editor.action.insertSnippet",
-				"when": "editorTextFocus",
-				"args": { "name": "Boostrap 4 Grid" }
-			},
-			{
-				"key": "ctrl+win+alt+i",
-				"command": "editor.action.insertSnippet",
-				"when": "editorTextFocus",
-				"args": { "name": "Boostrap 4 Info Page" }
-			},
-			{
-				"key": "ctrl+win+alt+l",
-				"command": "editor.action.insertSnippet",
-				"when": "editorTextFocus",
-				"args": { "name": "Boostrap 4 Login Form" }
-			},
-			{
-				"key": "ctrl+win+alt+m",
-				"command": "editor.action.insertSnippet",
-				"when": "editorTextFocus",
-				"args": { "name": "Boostrap 4 Modal" }
-			},
-			{
-				"key": "ctrl+win+alt+p",
-				"command": "editor.action.insertSnippet",
-				"when": "editorTextFocus",
-				"args": { "name": "Boostrap 4 Password Form" }
-			},
-			{
-				"key": "ctrl+win+alt+t",
-				"command": "editor.action.insertSnippet",
-				"when": "editorTextFocus",
-				"args": { "name": "Boostrap 4 Table" }
-			},
-			{
-				"key": "ctrl+win+alt+a",
-				"command": "editor.action.insertSnippet",
-				"when": "editorTextFocus",
-				"args": { "name": "Boostrap 4 Table Alt" }
-			},
-			{
-				"key": "ctrl+win+alt+e",
-				"command": "editor.action.insertSnippet",
-				"when": "editorTextFocus",
-				"args": { "name": "Boostrap 4 Template" }
-			} 
-		]
-	},
-	"scripts": {
-		"vscode:prepublish": "npm run compile",
-		"compile": "tsc -p ./",
-		"lint": "eslint src --ext ts",
-		"watch": "tsc -watch -p ./",
-		"pretest": "npm run compile && npm run lint",
-		"test": "node ./out/test/runTest.js"
-	},
-	"devDependencies": {
-		"@types/vscode": "^1.49.0",
-		"@types/glob": "^7.1.3",
-		"@types/mocha": "^8.0.0",
-		"@types/node": "^12.11.7",
-		"eslint": "^7.9.0",
-		"@typescript-eslint/eslint-plugin": "^4.1.1",
-		"@typescript-eslint/parser": "^4.1.1",
-		"glob": "^7.1.6",
-		"mocha": "^8.1.3",
-		"typescript": "^4.0.2",
-		"vscode-test": "^1.4.0"
-	},
-	"dependencies": {
-		"@types/lodash": "^4.14.161",
-		"@types/mkdirp": "^1.0.1",
-		"@types/vscode": "^1.49.0",
-		"@types/glob": "^7.1.3",
-		"@types/mocha": "^8.0.0",
-		"@types/node": "^12.11.7",
-		"eslint": "^7.9.0",
-		"@typescript-eslint/eslint-plugin": "^4.1.1",
-		"@typescript-eslint/parser": "^4.1.1"
-	},
-	"__metadata": {
-		"id": "b082ed32-362d-47e2-b312-8504849483c9",
-		"publisherId": "c4e42984-f95b-4460-8364-7dba22bc8b7f",
-		"publisherDisplayName": "jc-sf"
-	}
+  "name": "trongate",
+  "displayName": "Trongate",
+  "description": "VS Code extension to compliment the Trongate ecosystem",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.49.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets",
+    "Keymaps"
+  ],
+  "publisher": "jc-sf",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jakecastelli/trongate-vscode"
+  },
+  "icon": "assets/logo.png",
+  "homepage": "https://trongate.io",
+  "activationEvents": [
+    "onCommand:trongate.helloWorld",
+    "onCommand:trongate.newTrongate",
+    "onCommand:trongate.selectSnippet"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "trongate.helloWorld",
+        "title": "Hello World"
+      },
+      {
+        "command": "trongate.newTrongate",
+        "title": "New Trongate Module"
+      },
+      {
+        "command": "trongate.selectSnippet",
+        "title": "CSS Framework"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "trongate.newTrongate",
+          "group": "trongateGroup@1",
+          "when": "explorerResourceIsFolder"
+        }
+      ]
+    },
+    "snippets": [
+      {
+        "language": "html",
+        "path": "./snippets/tg.json"
+      },
+      {
+        "language": "php",
+        "path": "./snippets/tg.json"
+      },
+      {
+        "language": "html",
+        "path": "./snippets/bootstrap.json"
+      },
+      {
+        "language": "php",
+        "path": "./snippets/bootstrap.json"
+      },
+      {
+        "language": "html",
+        "path": "./snippets/defiant.json"
+      },
+      {
+        "language": "php",
+        "path": "./snippets/defiant.json"
+      },
+      {
+        "language": "html",
+        "path": "./snippets/materialize.json"
+      },
+      {
+        "language": "php",
+        "path": "./snippets/materialize.json"
+      },
+      {
+        "language": "html",
+        "path": "./snippets/milligram.json"
+      },
+      {
+        "language": "php",
+        "path": "./snippets/milligram.json"
+      },
+      {
+        "language": "html",
+        "path": "./snippets/skeleton.json"
+      },
+      {
+        "language": "php",
+        "path": "./snippets/skeleton.json"
+      }
+    ],
+    "keybindings": [
+      {
+        "mac": "ctrl+cmd+alt+/",
+        "key": "ctrl+win+alt+n",
+        "when": "editorTextFocus",
+        "command": "trongate.selectSnippet"
+      },
+      {
+        "key": "ctrl+win+alt+b",
+        "command": "trongate.helloWorld",
+        "when": "editorTextFocus",
+        "args": {
+          "name": "Button"
+        }
+      },
+      {
+        "key": "ctrl+win+alt+u",
+        "command": "trongate.helloWorld",
+        "when": "editorTextFocus",
+        "args": {
+          "name": "Button Alt"
+        }
+      },
+      {
+        "key": "ctrl+win+alt+c",
+        "command": "trongate.helloWorld",
+        "when": "editorTextFocus",
+        "args": {
+          "name": "Contact Form"
+        }
+      },
+      {
+        "key": "ctrl+win+alt+d",
+        "command": "trongate.helloWorld",
+        "when": "editorTextFocus",
+        "args": {
+          "name": "Download URL"
+        }
+      },
+      {
+        "key": "ctrl+win+alt+f",
+        "command": "trongate.helloWorld",
+        "when": "editorTextFocus",
+        "args": {
+          "name": "Form"
+        }
+      },
+      {
+        "key": "ctrl+win+alt+g",
+        "command": "trongate.helloWorld",
+        "when": "editorTextFocus",
+        "args": {
+          "name": "Grid"
+        }
+      },
+      {
+        "key": "ctrl+win+alt+i",
+        "command": "trongate.helloWorld",
+        "when": "editorTextFocus",
+        "args": {
+          "name": "Info Page"
+        }
+      },
+      {
+        "key": "ctrl+win+alt+l",
+        "command": "trongate.helloWorld",
+        "when": "editorTextFocus",
+        "args": {
+          "name": "Login Form"
+        }
+      },
+      {
+        "key": "ctrl+win+alt+m",
+        "command": "trongate.helloWorld",
+        "when": "editorTextFocus",
+        "args": {
+          "name": "Modal"
+        }
+      },
+      {
+        "key": "ctrl+win+alt+p",
+        "command": "trongate.helloWorld",
+        "when": "editorTextFocus",
+        "args": {
+          "name": "Password Form"
+        }
+      },
+      {
+        "key": "ctrl+win+alt+t",
+        "command": "trongate.helloWorld",
+        "when": "editorTextFocus",
+        "args": {
+          "name": "Table"
+        }
+      },
+      {
+        "key": "ctrl+win+alt+a",
+        "command": "trongate.helloWorld",
+        "when": "editorTextFocus",
+        "args": {
+          "name": "Table Alt"
+        }
+      },
+      {
+        "key": "ctrl+win+alt+e",
+        "command": "trongate.helloWorld",
+        "when": "editorTextFocus",
+        "args": {
+          "name": "Template"
+        }
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "lint": "eslint src --ext ts",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.49.0",
+    "@types/glob": "^7.1.3",
+    "@types/mocha": "^8.0.0",
+    "@types/node": "^12.11.7",
+    "eslint": "^7.9.0",
+    "@typescript-eslint/eslint-plugin": "^4.1.1",
+    "@typescript-eslint/parser": "^4.1.1",
+    "glob": "^7.1.6",
+    "mocha": "^8.1.3",
+    "typescript": "^4.0.2",
+    "vscode-test": "^1.4.0"
+  },
+  "dependencies": {
+    "@types/lodash": "^4.14.161",
+    "@types/mkdirp": "^1.0.1",
+    "@types/vscode": "^1.49.0",
+    "@types/glob": "^7.1.3",
+    "@types/mocha": "^8.0.0",
+    "@types/node": "^12.11.7",
+    "eslint": "^7.9.0",
+    "@typescript-eslint/eslint-plugin": "^4.1.1",
+    "@typescript-eslint/parser": "^4.1.1"
+  },
+  "__metadata": {
+    "id": "b082ed32-362d-47e2-b312-8504849483c9",
+    "publisherId": "c4e42984-f95b-4460-8364-7dba22bc8b7f",
+    "publisherDisplayName": "jc-sf"
+  }
 }
