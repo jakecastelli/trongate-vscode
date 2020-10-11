@@ -7,8 +7,9 @@
 		"vscode": "^1.49.0"
 	},
 	"categories": [
+		"Programming Languages",
 		"Snippets",
-		"Programming Languages"
+		"Keymaps"
 	],
 	"publisher": "jc-sf",
 	"repository": {
@@ -95,6 +96,90 @@
 				"language": "php",
 				"path": "./snippets/skeleton.json"
 			}
+		],
+		"keybindings": [
+			{
+				"key": "ctrl+win+alt+n",
+				"command": "trongate.selectSnippet"
+			},
+			{
+				"key": "ctrl+win+alt+b",
+				"command": "editor.action.insertSnippet",
+				"when": "editorTextFocus",
+				"args": { "name": "Defiant Button" }
+			},
+			{
+				"key": "ctrl+win+alt+u",
+				"command": "editor.action.insertSnippet",
+				"when": "editorTextFocus",
+				"args": { "name": "Boostrap 4 Button Alt" }
+			},
+			{
+				"key": "ctrl+win+alt+c",
+				"command": "editor.action.insertSnippet",
+				"when": "editorTextFocus",
+				"args": { "name": "Boostrap 4 Contact Form" }
+			},
+			{
+				"key": "ctrl+win+alt+d",
+				"command": "editor.action.insertSnippet",
+				"when": "editorTextFocus",
+				"args": { "name": "Boostrap 4 Download URL" }
+			},
+			{
+				"key": "ctrl+win+alt+f",
+				"command": "editor.action.insertSnippet",
+				"when": "editorTextFocus",
+				"args": { "name": "Boostrap 4 Form" }
+			},
+			{
+				"key": "ctrl+win+alt+g",
+				"command": "editor.action.insertSnippet",
+				"when": "editorTextFocus",
+				"args": { "name": "Boostrap 4 Grid" }
+			},
+			{
+				"key": "ctrl+win+alt+i",
+				"command": "editor.action.insertSnippet",
+				"when": "editorTextFocus",
+				"args": { "name": "Boostrap 4 Info Page" }
+			},
+			{
+				"key": "ctrl+win+alt+l",
+				"command": "editor.action.insertSnippet",
+				"when": "editorTextFocus",
+				"args": { "name": "Boostrap 4 Login Form" }
+			},
+			{
+				"key": "ctrl+win+alt+m",
+				"command": "editor.action.insertSnippet",
+				"when": "editorTextFocus",
+				"args": { "name": "Boostrap 4 Modal" }
+			},
+			{
+				"key": "ctrl+win+alt+p",
+				"command": "editor.action.insertSnippet",
+				"when": "editorTextFocus",
+				"args": { "name": "Boostrap 4 Password Form" }
+			},
+			{
+				"key": "ctrl+win+alt+t",
+				"command": "editor.action.insertSnippet",
+				"when": "editorTextFocus",
+				"args": { "name": "Boostrap 4 Table" }
+			},
+			{
+				"key": "ctrl+win+alt+a",
+				"command": "editor.action.insertSnippet",
+				"when": "editorTextFocus",
+				"args": { "name": "Boostrap 4 Table Alt" }
+			},
+			{
+				"key": "ctrl+win+alt+e",
+				"command": "editor.action.insertSnippet",
+				"when": "editorTextFocus",
+				"args": { "name": "Boostrap 4 Template" }
+			} 
 		]
 	},
 	"scripts": {
