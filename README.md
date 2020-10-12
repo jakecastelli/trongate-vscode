@@ -14,9 +14,11 @@ This extension will allow you to:
 
 * Create a blank directory scaffold similar to the Desktop-app when creating a module.  Complete with asset.json and a starter class ready for you to create a module.
 
-![Create Module Demo](https://user-images.githubusercontent.com/7813262/95195307-13db9500-0822-11eb-8fd0-149295b3b00f.gif)
+![scaffold](https://user-images.githubusercontent.com/7813262/95719555-b92bb880-0cbb-11eb-9579-f8a85675226a.gif)
 
 * Add PHP and custom Trongate code snippets to speed up your development.
+
+
 
 #### Table of Trongate snippets:
 | Snippet Name | Prefix 
@@ -26,6 +28,7 @@ This extension will allow you to:
 | Trongate if else in View File | `tg:ifelse` | 
 | Trongate Submit Function Scaffold | `tg:submit` | 
 
+![css](https://user-images.githubusercontent.com/7813262/95720033-6ef70700-0cbc-11eb-98b2-ba4eb908dd48.gif)
 
 * Insert popular frontend frameworks and their elements into your view and template files - akin to Nitro (Currently under development > `ctrl+win+alt+n` to bring up the dropdown selector)
     * Bootstrap 4 > tg:b
@@ -33,6 +36,8 @@ This extension will allow you to:
     * Materialize > tg:ma
     * Milligram > tg:mi
     * Skeleton > tg:s
+
+![snippets2](https://user-images.githubusercontent.com/7813262/95720453-fd6b8880-0cbc-11eb-9eb7-bf7e170e0090.gif)
 
 #### Table of Nitro Frameworks Inserts > Showing Bootstrap 4:
 | Command | Shortcut | Prefix
