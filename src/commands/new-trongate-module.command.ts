@@ -1,6 +1,5 @@
 //@ts-nocheck
 import * as _ from "lodash";
-// import * as changeCase from "change-case";
 import * as mkdirp from "mkdirp";
 
 import { InputBoxOptions, OpenDialogOptions, Uri, window } from "vscode";
@@ -12,9 +11,6 @@ export const newModule = async (uri: Uri) => {
   if (_.isNil(moduleName) || moduleName.trim() === "") {
     window.showErrorMessage("The module name must not be empty");
     return;
-  } else if (moduleName == "modules") {
-    // If user names the new module -> modules, we probably should prohibit it
-    // TODO: Wait for a discussion
   }
 
   let targetDirectory;
@@ -28,7 +24,6 @@ export const newModule = async (uri: Uri) => {
     targetDirectory = uri.fsPath;
   }
 
-  //   console.log(targetDirectory); - works
   const pascalCaseBlocName = validateModuleName(moduleName); // implement this later - change all the space to underscore
   try {
     await generateModuleCode(moduleName, targetDirectory);

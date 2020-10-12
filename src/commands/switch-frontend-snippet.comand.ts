@@ -1,5 +1,3 @@
-import * as _ from "lodash";
-// import * as changeCase from "change-case";
 import { QuickPickItem, window } from "vscode";
 
 let items: QuickPickItem[] = [];
@@ -27,5 +25,4 @@ export const switchSnippet = async () => {
   console.log(userOption);
   // window.showInformationMessage("The function is still under development.");
   return userOption.label;
-  // overWriteCurrentSnippet(userOption.label);
 };

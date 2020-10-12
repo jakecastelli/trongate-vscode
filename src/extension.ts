@@ -15,8 +15,8 @@ export function activate(context: vscode.ExtensionContext) {
   // The command has been defined in the package.json file
   // Now provide the implementation of the command with registerCommand
   // The commandId parameter must match the command field in package.json
-  let disposable = vscode.commands.registerCommand(
-    "trongate.helloWorld",
+  let nitro = vscode.commands.registerCommand(
+    "trongate.selectFramework",
     (args) => {
       console.log(args);
       console.log(userFrameworkOption);
@@ -43,11 +43,15 @@ export function activate(context: vscode.ExtensionContext) {
         if (!opt) return;
         //@ts-ignore
         userFrameworkOption = opt;
+        vscode.window.showInformationMessage(
+          `You have successfully selected ${userFrameworkOption} Framework`
+        );
+        vscode.window.setStatusBarMessage(`${userFrameworkOption} in use`);
       });
     }
   );
 
-  context.subscriptions.push(disposable, newTrongate, selectSnippet);
+  context.subscriptions.push(nitro, newTrongate, selectSnippet);
 }
 
 // this method is called when your extension is deactivated
