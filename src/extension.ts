@@ -40,7 +40,7 @@ export function activate(context: vscode.ExtensionContext) {
       //TODO: Implement the function
       //CURRENTLY:
       switchSnippet().then((opt) => {
-        if (!opt) return;
+        if (!opt) {return;}
         //@ts-ignore
         userFrameworkOption = opt;
         vscode.window.showInformationMessage(
