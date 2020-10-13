@@ -28,16 +28,17 @@ This extension will allow you to:
 | Trongate if else in View File | `tg:ifelse` | 
 | Trongate Submit Function Scaffold | `tg:submit` | 
 
-![css](https://user-images.githubusercontent.com/7813262/95720033-6ef70700-0cbc-11eb-98b2-ba4eb908dd48.gif)
+![snippets2](https://user-images.githubusercontent.com/7813262/95720453-fd6b8880-0cbc-11eb-9eb7-bf7e170e0090.gif)
 
-* Insert popular frontend frameworks and their elements into your view and template files - akin to Nitro (Currently under development > `ctrl+win+alt+n` to bring up the dropdown selector)
+* Insert popular frontend frameworks and their elements into your view and template files - akin to the Nitro desktop app developed by David Connelly and can be downloaded at https://www.speedcodingacademy.com/ if you are a member of course.
+
+(On Windows use `ctrl+win+alt+n`) and (On Mac use `ctrl+win+alt+/`)
+to bring up the dropdown selector
     * Bootstrap 4 > tg:b
     * Defiant > tg:d
     * Materialize > tg:ma
     * Milligram > tg:mi
     * Skeleton > tg:s
-
-![snippets2](https://user-images.githubusercontent.com/7813262/95720453-fd6b8880-0cbc-11eb-9eb7-bf7e170e0090.gif)
 
 #### Table of Nitro Frameworks Inserts > Showing Bootstrap 4:
 | Command | Shortcut | Prefix
@@ -58,6 +59,8 @@ This extension will allow you to:
 
 PLEASE NOTE: The 'win' key is the same as 'super' in Linux and 'cmd' on Mac
 
+![css](https://user-images.githubusercontent.com/7813262/95720033-6ef70700-0cbc-11eb-98b2-ba4eb908dd48.gif)
+
 ## Requirements
 
 You will need the Trongate Framework of course! ❤️
@@ -71,3 +74,9 @@ No known issues to report 👍
 ### .001
 
 Initial release
+
+### .002
+
+* added full support akin to the Nitro desktop app
+    * Dropdown selector and notifications when switched
+    * See above table for full keyboard shortcuts and prefixes
