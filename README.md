@@ -32,13 +32,12 @@ This extension will allow you to:
 
 * Insert popular frontend frameworks and their elements into your view and template files - akin to the Nitro desktop app developed by David Connelly and can be downloaded at https://www.speedcodingacademy.com/ if you are a member of course.
 
-(On Windows use `ctrl+win+alt+n`) and (On Mac use `ctrl+win+alt+/`)
-to bring up the dropdown selector
-    * Bootstrap 4 > tg:b
-    * Defiant > tg:d
-    * Materialize > tg:ma
-    * Milligram > tg:mi
-    * Skeleton > tg:s
+(On Windows use `ctrl+win+alt+n`) and (On Mac use `ctrl+win+alt+/`) to bring up the dropdown selector
+* Bootstrap 4 > tg:b
+* Defiant > tg:d
+* Materialize > tg:ma
+* Milligram > tg:mi
+* Skeleton > tg:s
 
 #### Table of Nitro Frameworks Inserts > Showing Bootstrap 4:
 | Command | Shortcut | Prefix
