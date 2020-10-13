@@ -17,7 +17,6 @@
     "prefix": "tg:if",
     "body": ["<?php", "if (${1}) {", "?>", "\t${2}", "<?php", "}", "?>"]
   },
-
   "Trongate IFELSE": {
     "prefix": "tg:ifelse",
     "body": [
@@ -61,5 +60,95 @@
       "\t}",
       "}"
     ]
+  },
+  "tgClass": {
+		"scope": "php",
+		"prefix": "tgc",
+		"body": [
+			"class ${1:Name} extends Trongate {",
+			"\t${2:Your code goes here}",
+			"}"
+		],
+		"description": "Insert new Class that extends Trongate"
+  },
+  "tgMethod": {
+		"scope": "php",
+		"prefix": "tgm",
+		"body": [
+			"function ${1:name} () {",
+			"\t${2:Your method goes here}",
+			"}"
+		],
+		"description": "Insert new method without parameters"
+  },
+  "tgMethod1": {
+		"scope": "php",
+		"prefix": "tgm1",
+		"body": [
+			"function ${1:name} ($${2:arg}) {",
+			"\t${3:Your method goes here}",
+			"}"
+		],
+		"description": "Insert new method with one parameter"
+  },
+  "tgMethod2": {
+		"scope": "php",
+		"prefix": "tgm2",
+		"body": [
+			"function ${1:name} ($${2:arg_1}, $${3:arg_2}) {",
+			"\t${4:Your method goes here}",
+			"}"
+		],
+		"description": "Insert new method with two parameters"
+  },
+  "tgMethod3": {
+		"scope": "php",
+		"prefix": "tgm3",
+		"body": [
+			"function ${1:name} ($${2:arg_1}, $${3:arg_2}, $${4:arg_3}) {",
+			"\t${5:Your method goes here}",
+			"}"
+		],
+		"description": "Insert new method with three parameters"
+  },
+  "tgAnchor": {
+		"scope": "php",
+		"prefix": "tga",
+		"body": [
+			"anchor('${1:link}');"
+		],
+		"description": "Get Trongate to insert anchor tags"
+  },
+  "tgTemplate": {
+		"scope": "php",
+		"prefix": "tgt",
+		"body": [
+			"\\$this->template('${1:name}', \\$data);"
+		],
+		"description": "Get Trongate to insert a template passing in $data"
+  },
+  "tgDataThis": {
+		"scope": "php",
+		"prefix": "tgdl",
+		"body": [
+			"\\$data['${1:key}'] = \\$this->${2:loading up};"
+		],
+		"description": "$data, loading up..."
+  },
+  "tgDataEqual": {
+		"scope": "php",
+		"prefix": "tgde", 
+		"body": [
+			"\\$data['${1:key}'] = '${2:value}';"
+		],
+		"description": "$data[$key]=> $value"
+  },
+  "tgEchoVar": {
+		"scope": "window",
+		"prefix": "tgev", 
+		"body": [
+			"<?= $${1:variable} ?>"
+		],
+		"description": "echo variable"
   }
 }
