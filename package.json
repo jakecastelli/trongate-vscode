@@ -19,12 +19,25 @@
   "icon": "assets/logo.png",
   "homepage": "https://trongate.io",
   "activationEvents": [
+    "onStartupFinished",
     "onCommand:trongate.selectFramework",
     "onCommand:trongate.newTrongate",
     "onCommand:trongate.selectSnippet"
   ],
   "main": "./out/extension.js",
   "contributes": {
+    "configuration":[
+      {
+        "title": "Trongate",
+        "properties": {
+          "trongate.userFrameworkOption": {
+            "type": "string",
+            "default": "Boostrap 4",
+            "description": "User's nitro framework option"
+          }
+        }
+      }
+    ],
     "commands": [
       {
         "command": "trongate.selectFramework",
@@ -101,7 +114,7 @@
     "keybindings": [
       {
         "mac": "ctrl+cmd+alt+/",
-        "key": "ctrl+win+alt+n",
+        "key": "ctrl+win+alt+/",
         "when": "editorTextFocus",
         "command": "trongate.selectSnippet"
       },

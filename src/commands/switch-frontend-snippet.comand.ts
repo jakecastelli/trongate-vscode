@@ -1,7 +1,7 @@
 import { QuickPickItem, window } from "vscode";
 
 let items: QuickPickItem[] = [];
-const cssFramework = {
+export const cssFramework = {
   "Boostrap 4": "Boostrap 4 CSS Framework",
   Defiant: "Defiant Frontend Framework",
   Milligram: "Milligram Framework",
