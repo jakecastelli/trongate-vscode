@@ -22,7 +22,7 @@ export function activate(context: vscode.ExtensionContext) {
   // Now provide the implementation of the command with registerCommand
   // The commandId parameter must match the command field in package.json
   let nitro = vscode.commands.registerCommand(
-    "trongate.selectFramework",
+    "trongate.insertSnippet",
     (args) => {
       vscode.commands.executeCommand(`editor.action.insertSnippet`, {
         name: `${userFrameworkOption} ${args.name}`,
@@ -37,7 +37,7 @@ export function activate(context: vscode.ExtensionContext) {
   );
 
   let selectSnippet = vscode.commands.registerCommand(
-    "trongate.selectSnippet",
+    "trongate.selectNitroFramework",
     // The code you place here will be executed every time your command is executed
    () => {
       //TODO: Implement the function
