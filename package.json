@@ -19,15 +19,28 @@
   "icon": "assets/logo.png",
   "homepage": "https://trongate.io",
   "activationEvents": [
-    "onCommand:trongate.selectFramework",
+    "onStartupFinished",
+    "onCommand:trongate.insertSnippet",
     "onCommand:trongate.newTrongate",
-    "onCommand:trongate.selectSnippet"
+    "onCommand:trongate.selectNitroFramework"
   ],
   "main": "./out/extension.js",
   "contributes": {
+    "configuration":[
+      {
+        "title": "Trongate",
+        "properties": {
+          "trongate.userFrameworkOption": {
+            "type": "string",
+            "default": "Boostrap 4",
+            "description": "User's nitro framework option"
+          }
+        }
+      }
+    ],
     "commands": [
       {
-        "command": "trongate.selectFramework",
+        "command": "trongate.insertSnippet",
         "title": "Select a front-end framework"
       },
       {
@@ -35,7 +48,7 @@
         "title": "New Trongate Module"
       },
       {
-        "command": "trongate.selectSnippet",
+        "command": "trongate.selectNitroFramework",
         "title": "CSS Framework"
       }
     ],
@@ -101,13 +114,13 @@
     "keybindings": [
       {
         "mac": "ctrl+cmd+alt+/",
-        "key": "ctrl+win+alt+n",
+        "key": "ctrl+win+alt+/",
         "when": "editorTextFocus",
-        "command": "trongate.selectSnippet"
+        "command": "trongate.selectNitroFramework"
       },
       {
         "key": "ctrl+win+alt+b",
-        "command": "trongate.selectFramework",
+        "command": "trongate.insertSnippet",
         "when": "editorTextFocus",
         "args": {
           "name": "Button"
@@ -115,7 +128,7 @@
       },
       {
         "key": "ctrl+win+alt+u",
-        "command": "trongate.selectFramework",
+        "command": "trongate.insertSnippet",
         "when": "editorTextFocus",
         "args": {
           "name": "Button Alt"
@@ -123,7 +136,7 @@
       },
       {
         "key": "ctrl+win+alt+c",
-        "command": "trongate.selectFramework",
+        "command": "trongate.insertSnippet",
         "when": "editorTextFocus",
         "args": {
           "name": "Contact Form"
@@ -131,7 +144,7 @@
       },
       {
         "key": "ctrl+win+alt+d",
-        "command": "trongate.selectFramework",
+        "command": "trongate.insertSnippet",
         "when": "editorTextFocus",
         "args": {
           "name": "Download URL"
@@ -139,7 +152,7 @@
       },
       {
         "key": "ctrl+win+alt+f",
-        "command": "trongate.selectFramework",
+        "command": "trongate.insertSnippet",
         "when": "editorTextFocus",
         "args": {
           "name": "Form"
@@ -147,7 +160,7 @@
       },
       {
         "key": "ctrl+win+alt+g",
-        "command": "trongate.selectFramework",
+        "command": "trongate.insertSnippet",
         "when": "editorTextFocus",
         "args": {
           "name": "Grid"
@@ -155,7 +168,7 @@
       },
       {
         "key": "ctrl+win+alt+i",
-        "command": "trongate.selectFramework",
+        "command": "trongate.insertSnippet",
         "when": "editorTextFocus",
         "args": {
           "name": "Info Page"
@@ -163,7 +176,7 @@
       },
       {
         "key": "ctrl+win+alt+l",
-        "command": "trongate.selectFramework",
+        "command": "trongate.insertSnippet",
         "when": "editorTextFocus",
         "args": {
           "name": "Login Form"
@@ -171,7 +184,7 @@
       },
       {
         "key": "ctrl+win+alt+m",
-        "command": "trongate.selectFramework",
+        "command": "trongate.insertSnippet",
         "when": "editorTextFocus",
         "args": {
           "name": "Modal"
@@ -180,7 +193,7 @@
       {
         "mac": "ctrl+win+alt+o",
         "key": "ctrl+win+alt+p",
-        "command": "trongate.selectFramework",
+        "command": "trongate.insertSnippet",
         "when": "editorTextFocus",
         "args": {
           "name": "Password Form"
@@ -188,7 +201,7 @@
       },
       {
         "key": "ctrl+win+alt+t",
-        "command": "trongate.selectFramework",
+        "command": "trongate.insertSnippet",
         "when": "editorTextFocus",
         "args": {
           "name": "Table"
@@ -196,7 +209,7 @@
       },
       {
         "key": "ctrl+win+alt+a",
-        "command": "trongate.selectFramework",
+        "command": "trongate.insertSnippet",
         "when": "editorTextFocus",
         "args": {
           "name": "Table Alt"
@@ -204,7 +217,7 @@
       },
       {
         "key": "ctrl+win+alt+e",
-        "command": "trongate.selectFramework",
+        "command": "trongate.insertSnippet",
         "when": "editorTextFocus",
         "args": {
           "name": "Template"
