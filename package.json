@@ -2,7 +2,7 @@
   "name": "trongate",
   "displayName": "Trongate",
   "description": "VS Code extension to compliment the Trongate ecosystem",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.31.0"
   },
@@ -249,10 +249,7 @@
   "dependencies": {
     "@types/lodash": "^4.14.161",
     "@types/mkdirp": "^1.0.1",
-    "@types/vscode": "^1.31.0",
-    "@types/glob": "^7.1.3",
-    "@types/mocha": "^8.0.0",
-    "@types/node": "^12.11.7"
+    "eslint": "^7.9.0"
   },
   "__metadata": {
     "id": "b082ed32-362d-47e2-b312-8504849483c9",
