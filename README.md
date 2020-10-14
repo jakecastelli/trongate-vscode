@@ -89,4 +89,4 @@ Initial release
 * Dropdown selector and notifications when switched<br>
 * See above table for full keyboard shortcuts and prefixes<br>
 * Added persistence when frontend framework is chosen<br>
-* Added status bar message to remind you which frontend framework is activ
+* Added status bar message to remind you which frontend framework is active
