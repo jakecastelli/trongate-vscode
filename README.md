@@ -84,8 +84,14 @@ Initial release
 
 ### 1.0.0
 
+### 1.0.0
+
 * Added full support akin to the Nitro desktop app
-    * Dropdown selector and notifications when switched
-    * See above table for full keyboard shortcuts and prefixes
-    * Added persistence when frontend framework is chosen
-    * Added status bar message to remind you which frontend framework is active
+
+* Dropdown selector and notifications when switched
+
+* See above table for full keyboard shortcuts and prefixes
+
+* Added persistence when frontend framework is chosen
+
+* Added status bar message to remind you which frontend framework is activ
