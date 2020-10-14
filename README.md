@@ -59,12 +59,12 @@ Use `ctrl+win+alt+/` to bring up the dropdown selector to select your frontend f
 | Info Page | `ctrl+win+alt+i` | `tg:b:info`
 | Login Form | `ctrl+win+alt+l` | `tg:b:login`
 | Modal | `ctrl+win+alt+m` | `tg:b:modal`
-| Password Form | `ctrl+win+alt+p` | `tg:b:password-form`
+| Password Form | `ctrl+win+alt+p` <hr> `ctrl+cmd+alt+o` (mac) | `tg:b:password-form`
 | Table | `ctrl+win+alt+p` | `tg:b:table`
 | TAble Alternative | `ctrl+win+alt+a` | `tg:b:table-alt`
 | TEmplate | `ctrl+win+alt+e` | `tg:b:template`
 
-PLEASE NOTE: The 'win' key is the same as 'super' in Linux and 'cmd' on Mac
+PLEASE NOTE: The `win` key is the same as `super` in Linux and `cmd` on Mac
 
 ![css](https://user-images.githubusercontent.com/7813262/95720033-6ef70700-0cbc-11eb-98b2-ba4eb908dd48.gif)
 
@@ -82,7 +82,7 @@ No known issues to report 👍
 
 Initial release
 
-### .002
+### 1.0.0
 
 * Added full support akin to the Nitro desktop app
     * Dropdown selector and notifications when switched
