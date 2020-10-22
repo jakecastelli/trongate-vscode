@@ -100,6 +100,7 @@ async function createTrongateModuleTemplate(
   await createDirectory(`${targetDirectory}/assets`);
 
   const targetControllerPath = `${targetDirectory}/controllers/${upperModuleName}.php`;
+  const targetViewPath = `${targetDirectory}/views/${moduleName}.php`;
   const targetApiPath = `${targetDirectory}/assets/api.json`;
   if (existsSync(targetControllerPath)) {
     throw Error(`Module ${moduleName} already exists`);
@@ -113,6 +114,14 @@ async function createTrongateModuleTemplate(
         console.log(error);
       }
     ),
+    writeFile(
+      targetViewPath,
+      getTrongateViewTemplate(moduleName),
+      "utf8",
+      (error) => {
+        console.log(error);
+      }
+    ),    
     writeFile(targetApiPath, getTrongateAssets(moduleName), "utf8", (error) => {
       console.log(error);
     }),
@@ -126,7 +135,28 @@ function getTrongateModuleTemplate(moduleName: string): string {
   return `<?php
 class ${upperModuleName} extends Trongate {
 
+  function index () {
+    $data['module_name'] = '${moduleName}';
+    $this->view('${moduleName}', $data);
+  }
+
 } `;
+}
+
+function getTrongateViewTemplate(moduleName: string): string {
+  return `<!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>My new Trongate module</title>
+  </head>
+  <body>
+      <h1>Hello from <?= $module_name ?></h1>
+      <p>This view was generated using Trongate Scaffold & Code Snippets!</p>
+      <a href="https://github.com/jakecastelli/trongate-vscode">Keep updated here</a>
+  </body>
+  </html>`;
 }
 
 function makeFirstLetterGoUpper(name: string): string {
