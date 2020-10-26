@@ -150,5 +150,13 @@
 			"<?= $${1:variable} ?>"
 		],
 		"description": "echo variable"
+  },
+  "tgEchoVars": {
+		"scope": "window",
+		"prefix": "tge", 
+		"body": [
+			"<?= ${1|BASE_URL,WEBSITE_NAME,OUR_NAME,OUR_TELNUM,OUR_ADDRESS,OUR_EMAIL_ADDRESS|} ?>"
+		],
+		"description": "echo variable"
   }
 }
