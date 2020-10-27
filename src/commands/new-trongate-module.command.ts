@@ -248,7 +248,8 @@ function openEditorAndPutCursorAtGoodPosition(targetDirectory, moduleName) {
   const validatedModuleName = validateModuleName(moduleName);
   const upperModuleName = makeFirstLetterGoUpper(validatedModuleName);
   const controllerLocation = `${targetDirectory}/${validatedModuleName}/controllers/${upperModuleName}.php`;
-  var setting: vscode.Uri = Uri.file(encodeURI(controllerLocation));
+  var setting: vscode.Uri = Uri.file(controllerLocation);
+  setting = setting.fsPath;
   workspace.openTextDocument(setting).then((document) =>
     window.showTextDocument(document).then((e) => {
       e.selections = [new Selection(new Position(2, 4), new Position(2, 4))];

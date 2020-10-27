@@ -4,17 +4,26 @@ Would you like to code faster?  I know I certainly would! 👀️
 
 This is a Visual Studio Code extension to compliment the Trongate ecosystem.   Consisting of the Trongate framework, Desktop-app and Nitro.  All tirelessly written by David Connelly, who I'd like to make special mention here for his continued dedication and commitment in keeping the web development doors open to everyone.
 
-### TRONGATE is the One-V framework that will make PHP great again!
+* Imagine a PHP framework that allowed you to build large scale enterprise applications in minutes instead of months.
+* Imagine a framework that did NOT get rewritten constantly.
+* Imagine a framework that you could learn once and use for a lifetime.
+* Imagine a framework that was V1 forever!
 
-![Scaffold](https://user-images.githubusercontent.com/7813262/95190011-6749e500-081a-11eb-8317-5561a7241e6e.png)
+# You've just imagined [Trongate](https://trongate.io)
+
+
+![intro](https://user-images.githubusercontent.com/7813262/95190011-6749e500-081a-11eb-8317-5561a7241e6e.png)
 
 ## Features
 
 This extension will allow you to:
 
-* Create a blank module directory scaffold similar to the Desktop-app but with a starter class and asset.json ready for you to create whatever is on your mind - enjoy!
+* Create a module directory scaffold
+  * with a starter class, complete with asset.json ready for you to create whatever is on your mind - enjoy!
+  * now with v1.0.2+ you can create a view, complete with linked CSS and JavaScript files
 
-![scaffold](https://user-images.githubusercontent.com/7813262/95719555-b92bb880-0cbb-11eb-9579-f8a85675226a.gif)
+![vsc-102-view](https://user-images.githubusercontent.com/7813262/97399997-6c461400-1942-11eb-91c0-41658b5664ec.gif)
+
 
 * Add PHP and custom Trongate code snippets to speed up your development.
 
@@ -34,6 +43,7 @@ This extension will allow you to:
 | Add [$data] = '' | `tgde` |
 | Add [$data] = $this-> | `tgdl` |
 | Quick php insert variable | `tgev` |
+| Quick php insert environment variable | `tge` |
 
 
 ![snippets2](https://user-images.githubusercontent.com/7813262/95720453-fd6b8880-0cbc-11eb-9eb7-bf7e170e0090.gif)
@@ -79,14 +89,20 @@ No known issues to report 👍
 ## Release Notes
 
 ### .0.0.1
-
-Initial release
+* Initial release
 
 
 ### 1.0.0
+* Added full support akin to the Nitro desktop app
+* Dropdown selector and notifications when switched
+* See above table for full keyboard shortcuts and prefixes
+* Added persistence when frontend framework is chosen
+* Added status bar message to remind you which frontend framework is active
 
-* Added full support akin to the Nitro desktop app<br>
-* Dropdown selector and notifications when switched<br>
-* See above table for full keyboard shortcuts and prefixes<br>
-* Added persistence when frontend framework is chosen<br>
-* Added status bar message to remind you which frontend framework is active
+### 1.0.2
+* dropdown options menu when creating a new module
+  * you can choose 'no' (default) to create a class only
+  * or choose 'yes' to create a view, with linked CSS and JavaScript files
+* added new snippet > tge that will display a dropdown menu of common environment variables
+  * BASE_URL, WEBSITE_NAME, OUR_NAME, OUR_TELNUM, OUR_ADDRESS & OUR_EMAIL_ADDRESS
+
