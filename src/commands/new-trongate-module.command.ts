@@ -2,8 +2,16 @@
 import * as _ from "lodash";
 import * as mkdirp from "mkdirp";
 import { dropDownList } from "./switch-frontend-snippet.comand";
-import {itemOptions, quickPickOptions} from "./new-trongate-module-dropdown-options"
-import {getTrongateAssets, viewTemplate as tgViewTemplate, getTrongateModuleCss, getTongateControllerTemplate} from "./templates"
+import {
+  itemOptions,
+  quickPickOptions,
+} from "./new-trongate-module-dropdown-options";
+import {
+  getTrongateAssets,
+  viewTemplate as tgViewTemplate,
+  getTrongateModuleCss,
+  getTongateControllerTemplate,
+} from "./templates";
 
 import {
   InputBoxOptions,
@@ -163,14 +171,15 @@ async function createTrongateModuleTemplate(
         console.log(error);
       }
     ),
-    isViewTemplate === "yes" && writeFile(
-      targetJSPath,
-      "// Add your JavaScript here",
-      "utf8",
-      (error) => {
-        console.log(error);
-      }
-    ),
+    isViewTemplate === "yes" &&
+      writeFile(
+        targetJSPath,
+        "// Add your JavaScript here",
+        "utf8",
+        (error) => {
+          console.log(error);
+        }
+      ),
     isViewTemplate === "yes" &&
       writeFile(
         targetViewPath,
@@ -180,15 +189,16 @@ async function createTrongateModuleTemplate(
           console.log(error);
         }
       ),
-    isViewTemplate === "yes" && writeFile(
-      targetCSSPath,
-      getTrongateModuleCss(),
-      // getTrongateModuleTemplate(moduleName),
-      "utf8",
-      (error) => {
-        console.log(error);
-      }
-    ),
+    isViewTemplate === "yes" &&
+      writeFile(
+        targetCSSPath,
+        getTrongateModuleCss(),
+        // getTrongateModuleTemplate(moduleName),
+        "utf8",
+        (error) => {
+          console.log(error);
+        }
+      ),
 
     writeFile(targetApiPath, getTrongateAssets(moduleName), "utf8", (error) => {
       console.log(error);
@@ -203,12 +213,16 @@ function getTrongateModuleTemplate(
   viewTemplate: string = "no"
 ): string {
   const upperModuleName = makeFirstLetterGoUpper(moduleName);
-  return getTongateControllerTemplate(upperModuleName, moduleName, viewTemplate);
+  return getTongateControllerTemplate(
+    upperModuleName,
+    moduleName,
+    viewTemplate
+  );
 }
 
 function getTrongateViewTemplate(moduleName: string): string {
   const displayModuleName = validateModuleName(moduleName);
-  return tgViewTemplate(displayModuleName)
+  return tgViewTemplate(displayModuleName);
 }
 
 function makeFirstLetterGoUpper(name: string): string {
