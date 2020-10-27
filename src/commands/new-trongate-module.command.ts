@@ -1,10 +1,21 @@
 //@ts-nocheck
 import * as _ from "lodash";
 import * as mkdirp from "mkdirp";
+import { dropDownList } from "./switch-frontend-snippet.comand";
+import {itemOptions, quickPickOptions} from "./new-trongate-module-dropdown-options"
 
-import { InputBoxOptions, OpenDialogOptions, Uri, window } from "vscode";
+import {
+  InputBoxOptions,
+  OpenDialogOptions,
+  workspace,
+  Uri,
+  window,
+  Position,
+  Selection,
+} from "vscode";
 import { existsSync, lstatSync, writeFile } from "fs";
 
+// Entry point
 export const newModule = async (uri: Uri) => {
   const moduleName = await promptForModuleName();
   console.log(moduleName);
@@ -24,9 +35,21 @@ export const newModule = async (uri: Uri) => {
     targetDirectory = uri.fsPath;
   }
 
-  const pascalCaseBlocName = validateModuleName(moduleName); // implement this later - change all the space to underscore
+  const isViewTemplate = await dropDownList(itemOptions, quickPickOptions);
+
+  // There is a possibility that the user presses ESC then we cancel the process
+  // and return an error message to the user
+  if (isViewTemplate == undefined) {
+    window.showErrorMessage("Process cancelled, no new module created");
+    return;
+  }
+
   try {
-    await generateModuleCode(moduleName, targetDirectory);
+    await generateModuleCode(moduleName, targetDirectory, isViewTemplate);
+    // Open the controller file and put curosr at the correct position
+    openEditorAndPutCursorAtGoodPosition(targetDirectory, moduleName);
+
+    const pascalCaseBlocName = validateModuleName(moduleName); // implement this later - change all the space to underscore
     window.showInformationMessage(
       `Successfully Generated ${pascalCaseBlocName} Module`
     );
@@ -35,6 +58,7 @@ export const newModule = async (uri: Uri) => {
       `Error:
         ${error instanceof Error ? error.message : JSON.stringify(error)}`
     );
+    console.log(error);
   }
 };
 
@@ -61,7 +85,11 @@ async function promptForTargetDirectory(): Promise<string | undefined> {
   });
 }
 
-async function generateModuleCode(moduleName: string, targetDirectory: string) {
+async function generateModuleCode(
+  moduleName: string,
+  targetDirectory: string,
+  isViewTemplate: string
+) {
   const validatedName = validateModuleName(moduleName);
   console.log(validatedName);
   const moduleDirectoryPath = `${targetDirectory}/${validatedName}`;
@@ -70,7 +98,11 @@ async function generateModuleCode(moduleName: string, targetDirectory: string) {
   }
 
   await Promise.all([
-    createTrongateModuleTemplate(validatedName, moduleDirectoryPath),
+    createTrongateModuleTemplate(
+      validatedName,
+      moduleDirectoryPath,
+      isViewTemplate
+    ),
   ]);
 }
 
@@ -88,7 +120,8 @@ function createDirectory(targetDirectory: string): Promise<void> {
 
 async function createTrongateModuleTemplate(
   moduleName: string,
-  targetDirectory: string
+  targetDirectory: string,
+  isViewTemplate: string
 ) {
   // The moduleName has been validated - this means no space and all lowercases
 
@@ -100,7 +133,10 @@ async function createTrongateModuleTemplate(
   await createDirectory(`${targetDirectory}/assets`);
 
   const targetControllerPath = `${targetDirectory}/controllers/${upperModuleName}.php`;
-  const targetViewPath = `${targetDirectory}/views/${moduleName}.php`;
+  let targetViewPath;
+  if (isViewTemplate == "yes") {
+    targetViewPath = `${targetDirectory}/views/${moduleName}_view.php`;
+  }
   const targetApiPath = `${targetDirectory}/assets/api.json`;
   if (existsSync(targetControllerPath)) {
     throw Error(`Module ${moduleName} already exists`);
@@ -108,20 +144,21 @@ async function createTrongateModuleTemplate(
   await Promise.all([
     writeFile(
       targetControllerPath,
-      getTrongateModuleTemplate(moduleName),
+      getTrongateModuleTemplate(moduleName, isViewTemplate),
       "utf8",
       (error) => {
         console.log(error);
       }
     ),
-    writeFile(
-      targetViewPath,
-      getTrongateViewTemplate(moduleName),
-      "utf8",
-      (error) => {
-        console.log(error);
-      }
-    ),    
+    isViewTemplate === "yes" &&
+      writeFile(
+        targetViewPath,
+        getTrongateViewTemplate(moduleName),
+        "utf8",
+        (error) => {
+          console.log(error);
+        }
+      ),
     writeFile(targetApiPath, getTrongateAssets(moduleName), "utf8", (error) => {
       console.log(error);
     }),
@@ -130,20 +167,30 @@ async function createTrongateModuleTemplate(
   });
 }
 
-function getTrongateModuleTemplate(moduleName: string): string {
+function getTrongateModuleTemplate(
+  moduleName: string,
+  viewTemplate: string = "no"
+): string {
   const upperModuleName = makeFirstLetterGoUpper(moduleName);
   return `<?php
 class ${upperModuleName} extends Trongate {
-
-  function index () {
-    $data['module_name'] = '${moduleName}';
-    $this->view('${moduleName}', $data);
-  }
-
+  ${
+    viewTemplate === "yes"
+      ? `\n  function index () {
+    $data['view_module'] = '${moduleName}';
+    $this->view('${moduleName}_view', $data);
+    // Uncomment lines below change the method name, and remove lines above, if you want to load to the template
+    //$data['view_module'] = '${moduleName}';
+    //$ data['view_file] = '${moduleName}_view';
+    //$this->template('template method here', $data);
+  }`
+      : ""
+  }  
 } `;
 }
 
 function getTrongateViewTemplate(moduleName: string): string {
+  const displayModuleName = validateModuleName(moduleName);
   return `<!DOCTYPE html>
   <html lang="en">
   <head>
@@ -152,7 +199,7 @@ function getTrongateViewTemplate(moduleName: string): string {
       <title>My new Trongate module</title>
   </head>
   <body>
-      <h1>Hello from <?= $module_name ?></h1>
+      <h1>Hello from  ${displayModuleName} ?></h1>
       <p>This view was generated using Trongate Scaffold & Code Snippets!</p>
       <a href="https://github.com/jakecastelli/trongate-vscode">Keep updated here</a>
   </body>
@@ -175,6 +222,19 @@ function validateModuleName(name: string): string {
   validatedStr = validatedStr.toLowerCase();
 
   return validatedStr;
+}
+
+// Helper Function to open the controller file and place curosr at good position
+function openEditorAndPutCursorAtGoodPosition(targetDirectory, moduleName) {
+  const validatedModuleName = validateModuleName(moduleName);
+  const upperModuleName = makeFirstLetterGoUpper(validatedModuleName);
+  const controllerLocation = `${targetDirectory}/${validatedModuleName}/controllers/${upperModuleName}.php`;
+  var setting: vscode.Uri = Uri.file(encodeURI(controllerLocation));
+  workspace.openTextDocument(setting).then((document) =>
+    window.showTextDocument(document).then((e) => {
+      e.selections = [new Selection(new Position(2, 4), new Position(2, 4))];
+    })
+  );
 }
 
 function getTrongateAssets(moduleName: string): string {
