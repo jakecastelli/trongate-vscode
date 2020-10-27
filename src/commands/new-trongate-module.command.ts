@@ -1,10 +1,30 @@
 //@ts-nocheck
 import * as _ from "lodash";
 import * as mkdirp from "mkdirp";
+import { dropDownList } from "./switch-frontend-snippet.comand";
+import {
+  itemOptions,
+  quickPickOptions,
+} from "./new-trongate-module-dropdown-options";
+import {
+  getTrongateAssets,
+  viewTemplate as tgViewTemplate,
+  getTrongateModuleCss,
+  getTongateControllerTemplate,
+} from "./templates";
 
-import { InputBoxOptions, OpenDialogOptions, Uri, window } from "vscode";
+import {
+  InputBoxOptions,
+  OpenDialogOptions,
+  workspace,
+  Uri,
+  window,
+  Position,
+  Selection,
+} from "vscode";
 import { existsSync, lstatSync, writeFile } from "fs";
 
+// Entry point
 export const newModule = async (uri: Uri) => {
   const moduleName = await promptForModuleName();
   console.log(moduleName);
@@ -24,9 +44,21 @@ export const newModule = async (uri: Uri) => {
     targetDirectory = uri.fsPath;
   }
 
-  const pascalCaseBlocName = validateModuleName(moduleName); // implement this later - change all the space to underscore
+  const isViewTemplate = await dropDownList(itemOptions, quickPickOptions);
+
+  // There is a possibility that the user presses ESC then we cancel the process
+  // and return an error message to the user
+  if (isViewTemplate == undefined) {
+    window.showErrorMessage("Process cancelled, no new module created");
+    return;
+  }
+
   try {
-    await generateModuleCode(moduleName, targetDirectory);
+    await generateModuleCode(moduleName, targetDirectory, isViewTemplate);
+    // Open the controller file and put curosr at the correct position
+    openEditorAndPutCursorAtGoodPosition(targetDirectory, moduleName);
+
+    const pascalCaseBlocName = validateModuleName(moduleName); // implement this later - change all the space to underscore
     window.showInformationMessage(
       `Successfully Generated ${pascalCaseBlocName} Module`
     );
@@ -35,6 +67,7 @@ export const newModule = async (uri: Uri) => {
       `Error:
         ${error instanceof Error ? error.message : JSON.stringify(error)}`
     );
+    console.log(error);
   }
 };
 
@@ -61,7 +94,11 @@ async function promptForTargetDirectory(): Promise<string | undefined> {
   });
 }
 
-async function generateModuleCode(moduleName: string, targetDirectory: string) {
+async function generateModuleCode(
+  moduleName: string,
+  targetDirectory: string,
+  isViewTemplate: string
+) {
   const validatedName = validateModuleName(moduleName);
   console.log(validatedName);
   const moduleDirectoryPath = `${targetDirectory}/${validatedName}`;
@@ -70,7 +107,11 @@ async function generateModuleCode(moduleName: string, targetDirectory: string) {
   }
 
   await Promise.all([
-    createTrongateModuleTemplate(validatedName, moduleDirectoryPath),
+    createTrongateModuleTemplate(
+      validatedName,
+      moduleDirectoryPath,
+      isViewTemplate
+    ),
   ]);
 }
 
@@ -88,7 +129,8 @@ function createDirectory(targetDirectory: string): Promise<void> {
 
 async function createTrongateModuleTemplate(
   moduleName: string,
-  targetDirectory: string
+  targetDirectory: string,
+  isViewTemplate: string
 ) {
   // The moduleName has been validated - this means no space and all lowercases
 
@@ -98,8 +140,24 @@ async function createTrongateModuleTemplate(
   await createDirectory(`${targetDirectory}/controllers`);
   await createDirectory(`${targetDirectory}/views`);
   await createDirectory(`${targetDirectory}/assets`);
+  if (isViewTemplate == "yes") {
+    await createDirectory(`${targetDirectory}/assets/css`);
+    await createDirectory(`${targetDirectory}/assets/js`);
+  }
+
+  // 1. check workspace - engine/ config/ modules -> pass -> this is a trongate project
+  // 2. trigger language server
+  // 3. communicate
 
   const targetControllerPath = `${targetDirectory}/controllers/${upperModuleName}.php`;
+  let targetViewPath;
+  let targetCSSPath;
+  let targetJSPath;
+  if (isViewTemplate == "yes") {
+    targetViewPath = `${targetDirectory}/views/${moduleName}_view.php`;
+    targetCSSPath = `${targetDirectory}/assets/css/custom.css`;
+    targetJSPath = `${targetDirectory}/assets/js/custom.js`;
+  }
   const targetApiPath = `${targetDirectory}/assets/api.json`;
   if (existsSync(targetControllerPath)) {
     throw Error(`Module ${moduleName} already exists`);
@@ -107,12 +165,41 @@ async function createTrongateModuleTemplate(
   await Promise.all([
     writeFile(
       targetControllerPath,
-      getTrongateModuleTemplate(moduleName),
+      getTrongateModuleTemplate(moduleName, isViewTemplate),
       "utf8",
       (error) => {
         console.log(error);
       }
     ),
+    isViewTemplate === "yes" &&
+      writeFile(
+        targetJSPath,
+        "// Add your JavaScript here",
+        "utf8",
+        (error) => {
+          console.log(error);
+        }
+      ),
+    isViewTemplate === "yes" &&
+      writeFile(
+        targetViewPath,
+        getTrongateViewTemplate(moduleName),
+        "utf8",
+        (error) => {
+          console.log(error);
+        }
+      ),
+    isViewTemplate === "yes" &&
+      writeFile(
+        targetCSSPath,
+        getTrongateModuleCss(),
+        // getTrongateModuleTemplate(moduleName),
+        "utf8",
+        (error) => {
+          console.log(error);
+        }
+      ),
+
     writeFile(targetApiPath, getTrongateAssets(moduleName), "utf8", (error) => {
       console.log(error);
     }),
@@ -121,12 +208,21 @@ async function createTrongateModuleTemplate(
   });
 }
 
-function getTrongateModuleTemplate(moduleName: string): string {
+function getTrongateModuleTemplate(
+  moduleName: string,
+  viewTemplate: string = "no"
+): string {
   const upperModuleName = makeFirstLetterGoUpper(moduleName);
-  return `<?php
-class ${upperModuleName} extends Trongate {
+  return getTongateControllerTemplate(
+    upperModuleName,
+    moduleName,
+    viewTemplate
+  );
+}
 
-} `;
+function getTrongateViewTemplate(moduleName: string): string {
+  const displayModuleName = validateModuleName(moduleName);
+  return tgViewTemplate(displayModuleName);
 }
 
 function makeFirstLetterGoUpper(name: string): string {
@@ -147,139 +243,15 @@ function validateModuleName(name: string): string {
   return validatedStr;
 }
 
-function getTrongateAssets(moduleName: string): string {
-  return `{
-    "Remember Positions": {
-      "url_segments": "${moduleName}/remember_positions",
-      "request_type": "POST",
-      "description": "Remember positions of some child nodes",
-      "enableParams": true,
-      "authorization":{  
-          "roles": [
-              "admin"
-          ]
-      }
-    },
-    "Get": {
-      "url_segments": "api/get/${moduleName}",
-      "request_type": "GET",
-      "description": "Fetch rows from table",
-      "enableParams": true,
-      "authorization":{  
-          "roles": [
-              "admin"
-          ]
-      }
-    },
-    "Get By Post": {
-      "url_segments": "api/get/${moduleName}",
-      "request_type": "POST",
-      "description": "Fetch rows from table using POST request.",
-      "enableParams": true,
-      "authorization":{  
-          "roles": [
-              "admin"
-          ]
-      }
-    },
-    "Find One": {
-      "url_segments": "api/get/${moduleName}/{id}",
-      "request_type": "GET",
-      "description": "Fetch one row",
-      "required_fields": [
-        {
-          "name": "id",
-          "label": "ID"
-        }
-      ]
-    },
-    "Exists": {
-      "url_segments": "api/exists/${moduleName}/{id}",
-      "request_type": "GET",
-      "description": "Check if instance exists",
-      "required_fields": [
-        {
-          "name": "id",
-          "label": "ID"
-        }
-      ]
-    },
-    "Count": {
-      "url_segments": "api/count/${moduleName}",
-      "request_type": "GET",
-      "description": "Count number of records",
-      "enableParams": true
-    },
-    "Count By Post": {
-      "url_segments": "api/count/${moduleName}",
-      "request_type": "POST",
-      "description": "Count number of records using POST request",
-      "enableParams": true,
-      "authorization":{  
-          "roles": [
-              "admin"
-          ]
-      }
-    },
-    "Create": {
-      "url_segments": "api/create/${moduleName}",
-      "request_type": "POST",
-      "description": "Insert database record",
-      "enableParams": true,
-      "authorization":{  
-          "roles": [
-              "admin"
-          ]
-      },
-      "beforeHook": "_prep_input",
-      "afterHook": "_fetch_item_details"
-    },
-    "Insert Batch": {
-      "url_segments": "api/batch/${moduleName}",
-      "request_type": "POST",
-      "description": "Insert multiple records",
-      "enableParams": true
-    },
-    "Update": {
-      "url_segments": "api/update/${moduleName}/{id}",
-      "request_type": "PUT",
-      "description": "Update a database record",
-      "enableParams": true,
-      "required_fields": [
-        {
-          "name": "id",
-          "label": "ID"
-        }
-      ],
-      "authorization":{  
-          "roles": [
-              "admin"
-          ]
-      },
-      "beforeHook": "_prep_input",
-      "afterHook": "_fetch_item_details"
-    },
-    "Destroy": {
-      "url_segments": "api/destroy/${moduleName}",
-      "request_type": "DELETE",
-      "description": "Delete row or rows",
-      "enableParams": true
-    },
-    "Delete One": {
-      "url_segments": "api/delete/${moduleName}/{id}",
-      "request_type": "DELETE",
-      "description": "Delete one row",
-      "required_fields": [
-        {
-          "name": "id",
-          "label": "ID"
-        }
-      ],
-      "authorization":{  
-          "roles": [
-              "admin"
-          ]
-      }
-    }
-  }`;
+// Helper Function to open the controller file and place curosr at good position
+function openEditorAndPutCursorAtGoodPosition(targetDirectory, moduleName) {
+  const validatedModuleName = validateModuleName(moduleName);
+  const upperModuleName = makeFirstLetterGoUpper(validatedModuleName);
+  const controllerLocation = `${targetDirectory}/${validatedModuleName}/controllers/${upperModuleName}.php`;
+  var setting: vscode.Uri = Uri.file(encodeURI(controllerLocation));
+  workspace.openTextDocument(setting).then((document) =>
+    window.showTextDocument(document).then((e) => {
+      e.selections = [new Selection(new Position(2, 4), new Position(2, 4))];
+    })
+  );
 }

@@ -1,6 +1,5 @@
-import { QuickPickItem, window } from "vscode";
+import { QuickPickItem, QuickPickOptions, window } from "vscode";
 
-let items: QuickPickItem[] = [];
 export const cssFramework = {
   "Boostrap 4": "Boostrap 4 CSS Framework",
   Defiant: "Defiant Frontend Framework",
@@ -8,21 +7,32 @@ export const cssFramework = {
   Materialize: "Materialize Framework",
   Skeleton: "Skeleton Framework",
 };
-const keys = Object.keys(cssFramework);
-keys.forEach((key) => {
-  items.push({
-    label: key,
-    //@ts-ignore
-    description: cssFramework[key],
-  });
-});
 
-export const switchSnippet = async () => {
-  const userOption = await window.showQuickPick(items);
+export const cssFrameworkQuickPickOptions: QuickPickOptions = {
+    placeHolder: "Choose your CSS framework ",
+    canPickMany: false
+}
+
+//@ts-ignore
+export const dropDownList = async (itemOptions, quickPickOptions) => {
+  let items: QuickPickItem[] = [];
+  let msg: QuickPickOptions = {
+  };
+  const keys = Object.keys(itemOptions);
+  keys.forEach((key) => {
+    items.push({
+      label: key,
+      //@ts-ignore
+      description: itemOptions[key],
+    });
+  });
+
+  const userOption = await window.showQuickPick(items, quickPickOptions);
   if (!userOption) {
     return;
   }
   console.log(userOption);
-  // window.showInformationMessage("The function is still under development.");
+
+  //@ts-ignore
   return userOption.label;
 };
