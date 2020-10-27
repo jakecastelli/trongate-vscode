@@ -3,7 +3,7 @@ import * as _ from "lodash";
 import * as mkdirp from "mkdirp";
 import { dropDownList } from "./switch-frontend-snippet.comand";
 import {itemOptions, quickPickOptions} from "./new-trongate-module-dropdown-options"
-import {getTrongateAssets, viewTemplate as tgViewTemplate, getTrongateModuleCss} from "./templates"
+import {getTrongateAssets, viewTemplate as tgViewTemplate, getTrongateModuleCss, getTongateControllerTemplate} from "./templates"
 
 import {
   InputBoxOptions,
@@ -203,21 +203,7 @@ function getTrongateModuleTemplate(
   viewTemplate: string = "no"
 ): string {
   const upperModuleName = makeFirstLetterGoUpper(moduleName);
-  return `<?php
-class ${upperModuleName} extends Trongate {
-  ${
-    viewTemplate === "yes"
-      ? `\n  function index () {
-    $data['view_module'] = '${moduleName}';
-    $this->view('${moduleName}_view', $data);
-    // Uncomment lines below change the method name, and remove lines above, if you want to load to the template
-    //$data['view_module'] = '${moduleName}';
-    //$ data['view_file] = '${moduleName}_view';
-    //$this->template('template method here', $data);
-  }`
-      : ""
-  }  
-} `;
+  return getTongateControllerTemplate(upperModuleName, moduleName, viewTemplate);
 }
 
 function getTrongateViewTemplate(moduleName: string): string {
