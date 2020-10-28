@@ -9,7 +9,7 @@ This is a Visual Studio Code extension to compliment the Trongate ecosystem.   C
 * Imagine a framework that you could learn once and use for a lifetime.
 * Imagine a framework that was V1 forever!
 
-# You've just imagined Trongate.io
+# You've just imagined [Trongate](https://trongate.io)
 
 
 ![intro](https://user-images.githubusercontent.com/7813262/95190011-6749e500-081a-11eb-8317-5561a7241e6e.png)
