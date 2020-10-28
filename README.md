@@ -4,9 +4,9 @@ Would you like to code faster?  I know I certainly would! 👀️
 
 This is a Visual Studio Code extension to compliment the Trongate ecosystem.   Consisting of the Trongate framework, Desktop-app and Nitro.  All tirelessly written by David Connelly, who I'd like to make special mention here for his continued dedication and commitment in keeping the web development doors open to everyone.
 
-### TRONGATE is the One-V framework that will make PHP great again!
+### TRONGATE is the V1 framework that will make PHP great again!
 
-![Scaffold](https://user-images.githubusercontent.com/7813262/95190011-6749e500-081a-11eb-8317-5561a7241e6e.png)
+![intro](https://user-images.githubusercontent.com/7813262/95190011-6749e500-081a-11eb-8317-5561a7241e6e.png)
 
 ## Features
 
@@ -14,7 +14,8 @@ This extension will allow you to:
 
 * Create a blank module directory scaffold similar to the Desktop-app but with a starter class and asset.json ready for you to create whatever is on your mind - enjoy!
 
-![scaffold](https://user-images.githubusercontent.com/7813262/95719555-b92bb880-0cbb-11eb-9579-f8a85675226a.gif)
+![vsc-102-view](https://user-images.githubusercontent.com/7813262/97399997-6c461400-1942-11eb-91c0-41658b5664ec.gif)
+
 
 * Add PHP and custom Trongate code snippets to speed up your development.
 
@@ -34,6 +35,7 @@ This extension will allow you to:
 | Add [$data] = '' | `tgde` |
 | Add [$data] = $this-> | `tgdl` |
 | Quick php insert variable | `tgev` |
+| Quick php insert environment variable | `tge` |
 
 
 ![snippets2](https://user-images.githubusercontent.com/7813262/95720453-fd6b8880-0cbc-11eb-9eb7-bf7e170e0090.gif)
