@@ -102,9 +102,9 @@ Initial release
 * Added status bar message to remind you which frontend framework is active
 
 ### 1.0.2
-* dropdown option menu when creating new module
-  * can choose no (default) to cretae a class only
-  * or choose yes to create a view, with linked CSS and JavaScript files
-* added new snippet > tge that will display a dropdown menu of commone environment variables
-  * BASE_URL, WEBSITE_NAME, OUR_NAME, OUR_TELNUM, OUR_ADDRESS & OUR_EMAIL_ADDRESS
+* dropdown options menu when creating a new module
+  * can choose no (default) to create a class only
+  * or choose yes to create a view, with linked CSS and JavaScript files
+* added new snippet > tge that will display a dropdown menu of common environment variables
+  * BASE_URL, WEBSITE_NAME, OUR_NAME, OUR_TELNUM, OUR_ADDRESS & OUR_EMAIL_ADDRESS
 
