@@ -18,7 +18,9 @@ This is a Visual Studio Code extension to compliment the Trongate ecosystem.   C
 
 This extension will allow you to:
 
-* Create a blank module directory scaffold similar to the Desktop-app but with a starter class and asset.json ready for you to create whatever is on your mind - enjoy!
+* Create a module directory scaffold
+  * with a starter class, complete with asset.json ready for you to create whatever is on your mind - enjoy!
+  * now with v1.0.2+ you can create a view, complete with linked CSS and JavaScript files
 
 ![vsc-102-view](https://user-images.githubusercontent.com/7813262/97399997-6c461400-1942-11eb-91c0-41658b5664ec.gif)
 
@@ -98,3 +100,11 @@ Initial release
 * See above table for full keyboard shortcuts and prefixes<br>
 * Added persistence when frontend framework is chosen<br>
 * Added status bar message to remind you which frontend framework is active
+
+### 1.0.2
+* dropdown option menu when creating new module
+  * can choose no (default) to cretae a class only
+  * or choose yes to create a view, with linked CSS and JavaScript files
+* added new snippet > tge that will display a dropdown menu of commone environment variables
+  * BASE_URL, WEBSITE_NAME, OUR_NAME, OUR_TELNUM, OUR_ADDRESS & OUR_EMAIL_ADDRESS
+
