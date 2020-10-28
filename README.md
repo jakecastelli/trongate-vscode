@@ -89,22 +89,20 @@ No known issues to report 👍
 ## Release Notes
 
 ### .0.0.1
-
-Initial release
+* Initial release
 
 
 ### 1.0.0
-
-* Added full support akin to the Nitro desktop app<br>
-* Dropdown selector and notifications when switched<br>
-* See above table for full keyboard shortcuts and prefixes<br>
-* Added persistence when frontend framework is chosen<br>
-* Added status bar message to remind you which frontend framework is active
+* Added full support akin to the Nitro desktop app
+* Dropdown selector and notifications when switched
+* See above table for full keyboard shortcuts and prefixes
+* Added persistence when frontend framework is chosen
+* Added status bar message to remind you which frontend framework is active
 
 ### 1.0.2
-* dropdown options menu when creating a new module
-  * can choose no (default) to create a class only
-  * or choose yes to create a view, with linked CSS and JavaScript files
-* added new snippet > tge that will display a dropdown menu of common environment variables
-  * BASE_URL, WEBSITE_NAME, OUR_NAME, OUR_TELNUM, OUR_ADDRESS & OUR_EMAIL_ADDRESS
+* dropdown options menu when creating a new module
+  * you can choose 'no' (default) to create a class only
+  * or choose 'yes' to create a view, with linked CSS and JavaScript files
+* added new snippet > tge that will display a dropdown menu of common environment variables
+  * BASE_URL, WEBSITE_NAME, OUR_NAME, OUR_TELNUM, OUR_ADDRESS & OUR_EMAIL_ADDRESS
 
