@@ -5,6 +5,8 @@ import { dropDownList } from "./switch-frontend-snippet.comand";
 import {
   itemOptions,
   quickPickOptions,
+  inputPrompOptionForModuleName,
+  inputPrompOptionForViewName
 } from "./new-trongate-module-dropdown-options";
 import {
   getTrongateAssets,
@@ -14,7 +16,6 @@ import {
 } from "./templates";
 
 import {
-  InputBoxOptions,
   OpenDialogOptions,
   workspace,
   Uri,
@@ -26,7 +27,7 @@ import { existsSync, lstatSync, writeFile } from "fs";
 
 // Entry point
 export const newModule = async (uri: Uri) => {
-  const moduleName = await promptForModuleName();
+  const moduleName = await prompForInput(inputPrompOptionForModuleName);
   console.log(moduleName);
   if (_.isNil(moduleName) || moduleName.trim() === "") {
     window.showErrorMessage("The module name must not be empty");
@@ -48,9 +49,15 @@ export const newModule = async (uri: Uri) => {
 
   // There is a possibility that the user presses ESC then we cancel the process
   // and return an error message to the user
-  if (isViewTemplate == undefined) {
+  if (isViewTemplate === undefined) {
     window.showErrorMessage("Process cancelled, no new module created");
     return;
+  }
+
+  let viewFileName;
+  if (isViewTemplate === 'yes') {
+    // promp window for a view file name
+    viewFileName = await prompForInput(inputPrompOptionForViewName)
   }
 
   try {
@@ -71,13 +78,10 @@ export const newModule = async (uri: Uri) => {
   }
 };
 
-function promptForModuleName(): Thenable<string | undefined> {
-  const TrongateModuleNamePromptOptions: InputBoxOptions = {
-    prompt: "Trongate Module Name",
-    placeHolder: "counter",
-  };
-  return window.showInputBox(TrongateModuleNamePromptOptions);
+function prompForInput(promotOptions): Thenable<string | undefined> {
+  return window.showInputBox(promotOptions);
 }
+
 
 async function promptForTargetDirectory(): Promise<string | undefined> {
   const options: OpenDialogOptions = {
@@ -113,116 +117,121 @@ async function generateModuleCode(
       isViewTemplate
     ),
   ]);
-}
 
-function createDirectory(targetDirectory: string): Promise<void> {
-  return new Promise((resolve, reject) => {
-    // TODO: handle this error in a proper way
-    mkdirp(targetDirectory, (error) => {
-      if (error) {
-        return reject(error);
-      }
-      resolve();
-    });
-  });
-}
+  async function createTrongateModuleTemplate(
+    moduleName: string,
+    targetDirectory: string,
+    isViewTemplate: string
+  ) {
+    // The moduleName has been validated - this means no space and all lowercases
 
-async function createTrongateModuleTemplate(
-  moduleName: string,
-  targetDirectory: string,
-  isViewTemplate: string
-) {
-  // The moduleName has been validated - this means no space and all lowercases
-
-  /* upperModuleName is the name for controller php file,
+    /* upperModuleName is the name for controller php file,
    therefore the first letter needs to be uppercase */
-  const upperModuleName = makeFirstLetterGoUpper(moduleName);
-  await createDirectory(`${targetDirectory}/controllers`);
-  await createDirectory(`${targetDirectory}/views`);
-  await createDirectory(`${targetDirectory}/assets`);
-  if (isViewTemplate == "yes") {
-    await createDirectory(`${targetDirectory}/assets/css`);
-    await createDirectory(`${targetDirectory}/assets/js`);
-  }
+    const upperModuleName = makeFirstLetterGoUpper(moduleName);
+    await createDirectory(`${targetDirectory}/controllers`);
+    await createDirectory(`${targetDirectory}/views`);
+    await createDirectory(`${targetDirectory}/assets`);
+    if (isViewTemplate == "yes") {
+      await createDirectory(`${targetDirectory}/assets/css`);
+      await createDirectory(`${targetDirectory}/assets/js`);
+    }
 
-  // 1. check workspace - engine/ config/ modules -> pass -> this is a trongate project
-  // 2. trigger language server
-  // 3. communicate
+    // 1. check workspace - engine/ config/ modules -> pass -> this is a trongate project
+    // 2. trigger language server
+    // 3. communicate
 
-  const targetControllerPath = `${targetDirectory}/controllers/${upperModuleName}.php`;
-  let targetViewPath;
-  let targetCSSPath;
-  let targetJSPath;
-  if (isViewTemplate == "yes") {
-    targetViewPath = `${targetDirectory}/views/${moduleName}_view.php`;
-    targetCSSPath = `${targetDirectory}/assets/css/custom.css`;
-    targetJSPath = `${targetDirectory}/assets/js/custom.js`;
-  }
-  const targetApiPath = `${targetDirectory}/assets/api.json`;
-  if (existsSync(targetControllerPath)) {
-    throw Error(`Module ${moduleName} already exists`);
-  }
-  await Promise.all([
-    writeFile(
-      targetControllerPath,
-      getTrongateModuleTemplate(moduleName, isViewTemplate),
-      "utf8",
-      (error) => {
-        console.log(error);
-      }
-    ),
-    isViewTemplate === "yes" &&
+    const targetControllerPath = `${targetDirectory}/controllers/${upperModuleName}.php`;
+    let targetViewPath;
+    let targetCSSPath;
+    let targetJSPath;
+    if (isViewTemplate == "yes") {
+      targetViewPath = `${targetDirectory}/views/${moduleName}_view.php`;
+      targetCSSPath = `${targetDirectory}/assets/css/custom.css`;
+      targetJSPath = `${targetDirectory}/assets/js/custom.js`;
+    }
+    const targetApiPath = `${targetDirectory}/assets/api.json`;
+    if (existsSync(targetControllerPath)) {
+      throw Error(`Module ${moduleName} already exists`);
+    }
+    await Promise.all([
       writeFile(
-        targetJSPath,
-        "// Add your JavaScript here",
+        targetControllerPath,
+        getTrongateModuleTemplate(moduleName, isViewTemplate),
         "utf8",
         (error) => {
           console.log(error);
         }
       ),
-    isViewTemplate === "yes" &&
+      isViewTemplate === "yes" &&
+        writeFile(
+          targetJSPath,
+          "// Add your JavaScript here",
+          "utf8",
+          (error) => {
+            console.log(error);
+          }
+        ),
+      isViewTemplate === "yes" &&
+        writeFile(
+          targetViewPath,
+          getTrongateViewTemplate(moduleName),
+          "utf8",
+          (error) => {
+            console.log(error);
+          }
+        ),
+      isViewTemplate === "yes" &&
+        writeFile(
+          targetCSSPath,
+          getTrongateModuleCss(),
+          // getTrongateModuleTemplate(moduleName),
+          "utf8",
+          (error) => {
+            console.log(error);
+          }
+        ),
+
       writeFile(
-        targetViewPath,
-        getTrongateViewTemplate(moduleName),
+        targetApiPath,
+        getTrongateAssets(moduleName),
         "utf8",
         (error) => {
           console.log(error);
         }
       ),
-    isViewTemplate === "yes" &&
-      writeFile(
-        targetCSSPath,
-        getTrongateModuleCss(),
-        // getTrongateModuleTemplate(moduleName),
-        "utf8",
-        (error) => {
-          console.log(error);
+    ]).catch((err) => {
+      console.log(err);
+    });
+  }
+
+  function createDirectory(targetDirectory: string): Promise<void> {
+    return new Promise((resolve, reject) => {
+      // TODO: handle this error in a proper way
+      mkdirp(targetDirectory, (error) => {
+        if (error) {
+          return reject(error);
         }
-      ),
+        resolve();
+      });
+    });
+  }
 
-    writeFile(targetApiPath, getTrongateAssets(moduleName), "utf8", (error) => {
-      console.log(error);
-    }),
-  ]).catch((err) => {
-    console.log(err);
-  });
-}
+  function getTrongateModuleTemplate(
+    moduleName: string,
+    viewTemplate: string = "no"
+  ): string {
+    const upperModuleName = makeFirstLetterGoUpper(moduleName);
+    return getTongateControllerTemplate(
+      upperModuleName,
+      moduleName,
+      viewTemplate
+    );
+  }
 
-function getTrongateModuleTemplate(
-  moduleName: string,
-  viewTemplate: string = "no"
-): string {
-  const upperModuleName = makeFirstLetterGoUpper(moduleName);
-  return getTongateControllerTemplate(
-    upperModuleName,
-    moduleName,
-    viewTemplate
-  );
-}
-
-function getTrongateViewTemplate(moduleName: string): string {
-  const displayModuleName = validateModuleName(moduleName);
-  return tgViewTemplate(displayModuleName);
+  function getTrongateViewTemplate(moduleName: string): string {
+    const displayModuleName = validateModuleName(moduleName);
+    return tgViewTemplate(displayModuleName);
+  }
 }
 
 function makeFirstLetterGoUpper(name: string): string {
