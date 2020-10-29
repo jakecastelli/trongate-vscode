@@ -1,8 +1,9 @@
+import {makeFirstLetterGoUpper} from '../utils/helper'
 export function getTongateControllerTemplate(
-  upperModuleName: string,
   moduleName: string,
   viewFileName: string
 ) {
+  const upperModuleName = makeFirstLetterGoUpper(moduleName)
   return `<?php
 class ${upperModuleName} extends Trongate {
       ${ viewFileName !== undefined

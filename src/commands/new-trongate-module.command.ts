@@ -15,6 +15,8 @@ import {
   getTongateControllerTemplate,
 } from "./templates";
 
+import { makeFirstLetterGoUpper, validateModuleName } from "./utils/helper";
+
 import {
   OpenDialogOptions,
   workspace,
@@ -65,13 +67,14 @@ export const newModule = async (uri: Uri) => {
     viewFileName = viewFileName.split(" ").join("_");
   }
 
+  const genObj = {
+    moduleName,
+    targetDirectory,
+    isViewTemplate,
+    viewFileName,
+  };
   try {
-    await generateModuleCode(
-      moduleName,
-      targetDirectory,
-      isViewTemplate,
-      viewFileName
-    );
+    await generateModuleCode(genObj);
     // Open the controller file and put curosr at the correct position
     openEditorAndPutCursorAtGoodPosition(targetDirectory, moduleName);
 
@@ -107,12 +110,12 @@ async function promptForTargetDirectory(): Promise<string | undefined> {
   });
 }
 
-async function generateModuleCode(
-  moduleName: string,
-  targetDirectory: string,
-  isViewTemplate: string,
-  viewFileName: string
-) {
+async function generateModuleCode({
+  moduleName,
+  targetDirectory,
+  isViewTemplate,
+  viewFileName,
+}) {
   const validatedName = validateModuleName(moduleName);
   console.log(validatedName);
   const moduleDirectoryPath = `${targetDirectory}/${validatedName}`;
@@ -167,6 +170,7 @@ async function generateModuleCode(
           console.log(error);
         }
       ),
+      // Write JS File
       isViewTemplate === "yes" &&
         writeFile(
           targetJSPath,
@@ -176,6 +180,7 @@ async function generateModuleCode(
             console.log(error);
           }
         ),
+      // Write View File
       isViewTemplate === "yes" &&
         writeFile(
           targetViewPath,
@@ -185,11 +190,13 @@ async function generateModuleCode(
             console.log(error);
           }
         ),
+      // Write CSS File
       isViewTemplate === "yes" &&
         writeFile(targetCSSPath, getTrongateModuleCss(), "utf8", (error) => {
           console.log(error);
         }),
 
+      // Write Assets file
       writeFile(
         targetApiPath,
         getTrongateAssets(moduleName),
@@ -219,36 +226,13 @@ async function generateModuleCode(
     moduleName: string,
     viewFileName: string
   ): string {
-    const upperModuleName = makeFirstLetterGoUpper(moduleName);
-    return getTongateControllerTemplate(
-      upperModuleName,
-      moduleName,
-      viewFileName
-    );
+    return getTongateControllerTemplate(moduleName, viewFileName);
   }
 
   function getTrongateViewTemplate(moduleName: string): string {
     const displayModuleName = validateModuleName(moduleName);
     return tgViewTemplate(displayModuleName);
   }
-}
-
-function makeFirstLetterGoUpper(name: string): string {
-  const upperName = name.charAt(0).toUpperCase() + name.slice(1);
-  return upperName;
-}
-
-function validateModuleName(name: string): string {
-  /*** 
-  1. module name should not have space - all spaces should be replaced with underscore
-  
-  2. module name should be all lower case - for the folder
-  ***/
-
-  let validatedStr = name.split(" ").join("_");
-  validatedStr = validatedStr.toLowerCase();
-
-  return validatedStr;
 }
 
 // Helper Function to open the controller file and place curosr at good position
