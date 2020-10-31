@@ -1,3 +1,8 @@
+![](https://img.shields.io/github/workflow/status/jakecastelli/trongate-vscode/Node.js%20CI/master?style=flat)
+![](https://img.shields.io/visual-studio-marketplace/i/jc-sf.Trongate)
+![](https://img.shields.io/visual-studio-marketplace/v/jc-sf.Trongate)
+![](https://img.shields.io/visual-studio-marketplace/stars/jc-sf.Trongate)
+![](https://img.shields.io/badge/Trongate%20Framework-eco--system-blue)
 # Trongate Scaffold & Code Snippets
 
 Would you like to code faster?  I know I certainly would! 👀️
