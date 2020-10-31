@@ -124,115 +124,117 @@ async function generateModuleCode({
   }
 
   await Promise.all([
-    createTrongateModuleTemplate(validatedName, moduleDirectoryPath),
+    createTrongateModuleTemplate(
+      validatedName,
+      moduleDirectoryPath,
+      isViewTemplate,
+      viewFileName
+    ),
   ]);
+}
 
-  async function createTrongateModuleTemplate(
-    moduleName: string,
-    targetDirectory: string
-  ) {
-    // The moduleName has been validated - this means no space and all lowercases
+function createDirectory(targetDirectory: string): Promise<void> {
+  return new Promise((resolve, reject) => {
+    // TODO: handle this error in a proper way
+    mkdirp(targetDirectory, (error) => {
+      if (error) {
+        return reject(error);
+      }
+      resolve();
+    });
+  });
+}
 
-    /* upperModuleName is the name for controller php file,
+async function createTrongateModuleTemplate(
+  moduleName: string,
+  targetDirectory: string,
+  isViewTemplate: string,
+  viewFileName: string
+) {
+  // The moduleName has been validated - this means no space and all lowercases
+
+  /* upperModuleName is the name for controller php file,
     therefore the first letter needs to be uppercase */
-    const upperModuleName = makeFirstLetterGoUpper(moduleName);
-    await createDirectory(`${targetDirectory}/controllers`);
-    await createDirectory(`${targetDirectory}/views`);
-    await createDirectory(`${targetDirectory}/assets`);
-    if (isViewTemplate == "yes") {
-      await createDirectory(`${targetDirectory}/assets/css`);
-      await createDirectory(`${targetDirectory}/assets/js`);
-    }
+  const upperModuleName = makeFirstLetterGoUpper(moduleName);
+  await createDirectory(`${targetDirectory}/controllers`);
+  await createDirectory(`${targetDirectory}/views`);
+  await createDirectory(`${targetDirectory}/assets`);
+  if (isViewTemplate == "yes") {
+    await createDirectory(`${targetDirectory}/assets/css`);
+    await createDirectory(`${targetDirectory}/assets/js`);
+  }
 
-    // 1. check workspace - engine/ config/ modules -> pass -> this is a trongate project
-    // 2. trigger language server
-    // 3. communicate
+  // 1. check workspace - engine/ config/ modules -> pass -> this is a trongate project
+  // 2. trigger language server
+  // 3. communicate
 
-    const targetControllerPath = `${targetDirectory}/controllers/${upperModuleName}.php`;
-    let targetViewPath;
-    let targetCSSPath;
-    let targetJSPath;
-    if (isViewTemplate == "yes") {
-      targetViewPath = `${targetDirectory}/views/${viewFileName}.php`;
-      targetCSSPath = `${targetDirectory}/assets/css/custom.css`;
-      targetJSPath = `${targetDirectory}/assets/js/custom.js`;
-    }
-    const targetApiPath = `${targetDirectory}/assets/api.json`;
-    if (existsSync(targetControllerPath)) {
-      throw Error(`Module ${moduleName} already exists`);
-    }
-    await Promise.all([
+  const targetControllerPath = `${targetDirectory}/controllers/${upperModuleName}.php`;
+  let targetViewPath;
+  let targetCSSPath;
+  let targetJSPath;
+  if (isViewTemplate == "yes") {
+    targetViewPath = `${targetDirectory}/views/${viewFileName}.php`;
+    targetCSSPath = `${targetDirectory}/assets/css/custom.css`;
+    targetJSPath = `${targetDirectory}/assets/js/custom.js`;
+  }
+  const targetApiPath = `${targetDirectory}/assets/api.json`;
+  if (existsSync(targetControllerPath)) {
+    throw Error(`Module ${moduleName} already exists`);
+  }
+  await Promise.all([
+    writeFile(
+      targetControllerPath,
+      getTrongateModuleTemplate(moduleName, viewFileName),
+      "utf8",
+      (error) => {
+        console.log(error);
+      }
+    ),
+    // Write JS File
+    isViewTemplate === "yes" &&
       writeFile(
-        targetControllerPath,
-        getTrongateModuleTemplate(moduleName, viewFileName),
+        targetJSPath,
+        "// Add your JavaScript here",
         "utf8",
         (error) => {
           console.log(error);
         }
       ),
-      // Write JS File
-      isViewTemplate === "yes" &&
-        writeFile(
-          targetJSPath,
-          "// Add your JavaScript here",
-          "utf8",
-          (error) => {
-            console.log(error);
-          }
-        ),
-      // Write View File
-      isViewTemplate === "yes" &&
-        writeFile(
-          targetViewPath,
-          getTrongateViewTemplate(moduleName),
-          "utf8",
-          (error) => {
-            console.log(error);
-          }
-        ),
-      // Write CSS File
-      isViewTemplate === "yes" &&
-        writeFile(targetCSSPath, getTrongateModuleCss(), "utf8", (error) => {
-          console.log(error);
-        }),
-
-      // Write Assets file
+    // Write View File
+    isViewTemplate === "yes" &&
       writeFile(
-        targetApiPath,
-        getTrongateAssets(moduleName),
+        targetViewPath,
+        getTrongateViewTemplate(moduleName),
         "utf8",
         (error) => {
           console.log(error);
         }
       ),
-    ]).catch((err) => {
-      console.log(err);
-    });
-  }
+    // Write CSS File
+    isViewTemplate === "yes" &&
+      writeFile(targetCSSPath, getTrongateModuleCss(), "utf8", (error) => {
+        console.log(error);
+      }),
 
-  function createDirectory(targetDirectory: string): Promise<void> {
-    return new Promise((resolve, reject) => {
-      // TODO: handle this error in a proper way
-      mkdirp(targetDirectory, (error) => {
-        if (error) {
-          return reject(error);
-        }
-        resolve();
-      });
-    });
-  }
+    // Write Assets file
+    writeFile(targetApiPath, getTrongateAssets(moduleName), "utf8", (error) => {
+      console.log(error);
+    }),
+  ]).catch((err) => {
+    console.log(err);
+  });
+}
 
-  function getTrongateModuleTemplate(
-    moduleName: string,
-    viewFileName: string
-  ): string {
-    return getTongateControllerTemplate(moduleName, viewFileName);
-  }
+function getTrongateModuleTemplate(
+  moduleName: string,
+  viewFileName: string
+): string {
+  return getTongateControllerTemplate(moduleName, viewFileName);
+}
 
-  function getTrongateViewTemplate(moduleName: string): string {
-    const displayModuleName = validateModuleName(moduleName);
-    return tgViewTemplate(displayModuleName);
-  }
+function getTrongateViewTemplate(moduleName: string): string {
+  const displayModuleName = validateModuleName(moduleName);
+  return tgViewTemplate(displayModuleName);
 }
 
 // Helper Function to open the controller file and place curosr at good position
