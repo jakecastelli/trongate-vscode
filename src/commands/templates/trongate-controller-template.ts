@@ -15,7 +15,7 @@ class ${upperModuleName} extends Trongate {
          * Remove lines above, if you want to load to the template
          */
         //$data['view_module'] = '${moduleName}';
-        //$ data['view_file] = '${viewFileName}';
+        //$data['view_file'] = '${viewFileName}';
         //$this->template('template method here', $data);
     }`
           : ""
