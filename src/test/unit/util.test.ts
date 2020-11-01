@@ -1,4 +1,4 @@
-import {makeFirstLetterGoUpper, validateModuleName } from '../../src/commands/utils/helper'
+import {makeFirstLetterGoUpper, validateModuleName } from '../../commands/utils/helper'
 
 describe('The controller file needs to have first letter go upper', () => {
     test('test should be Test', () => {
