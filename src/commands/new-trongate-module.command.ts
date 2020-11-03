@@ -5,6 +5,8 @@ import { dropDownList } from "./switch-frontend-snippet.comand";
 import {
   itemOptions,
   quickPickOptions,
+  inputPrompOptionForModuleName,
+  inputPrompOptionForViewName,
 } from "./new-trongate-module-dropdown-options";
 import {
   getTrongateAssets,
@@ -13,8 +15,9 @@ import {
   getTongateControllerTemplate,
 } from "./templates";
 
+import { makeFirstLetterGoUpper, validateModuleName } from "./utils/helper";
+
 import {
-  InputBoxOptions,
   OpenDialogOptions,
   workspace,
   Uri,
@@ -26,7 +29,7 @@ import { existsSync, lstatSync, writeFile } from "fs";
 
 // Entry point
 export const newModule = async (uri: Uri) => {
-  const moduleName = await promptForModuleName();
+  const moduleName = await prompForInput(inputPrompOptionForModuleName);
   console.log(moduleName);
   if (_.isNil(moduleName) || moduleName.trim() === "") {
     window.showErrorMessage("The module name must not be empty");
@@ -48,13 +51,30 @@ export const newModule = async (uri: Uri) => {
 
   // There is a possibility that the user presses ESC then we cancel the process
   // and return an error message to the user
-  if (isViewTemplate == undefined) {
+  if (isViewTemplate === undefined) {
     window.showErrorMessage("Process cancelled, no new module created");
     return;
   }
 
+  let viewFileName;
+  if (isViewTemplate === "yes") {
+    // promp window for a view file name
+    viewFileName = await prompForInput(inputPrompOptionForViewName);
+    if (_.isNil(viewFileName) || viewFileName.trim() === "") {
+      window.showErrorMessage("The view file name must not be empty");
+      return;
+    }
+    viewFileName = viewFileName.split(" ").join("_");
+  }
+
+  const genObj = {
+    moduleName,
+    targetDirectory,
+    isViewTemplate,
+    viewFileName,
+  };
   try {
-    await generateModuleCode(moduleName, targetDirectory, isViewTemplate);
+    await generateModuleCode(genObj);
     // Open the controller file and put curosr at the correct position
     openEditorAndPutCursorAtGoodPosition(targetDirectory, moduleName);
 
@@ -71,12 +91,8 @@ export const newModule = async (uri: Uri) => {
   }
 };
 
-function promptForModuleName(): Thenable<string | undefined> {
-  const TrongateModuleNamePromptOptions: InputBoxOptions = {
-    prompt: "Trongate Module Name",
-    placeHolder: "counter",
-  };
-  return window.showInputBox(TrongateModuleNamePromptOptions);
+function prompForInput(promotOptions): Thenable<string | undefined> {
+  return window.showInputBox(promotOptions);
 }
 
 async function promptForTargetDirectory(): Promise<string | undefined> {
@@ -94,11 +110,12 @@ async function promptForTargetDirectory(): Promise<string | undefined> {
   });
 }
 
-async function generateModuleCode(
-  moduleName: string,
-  targetDirectory: string,
-  isViewTemplate: string
-) {
+async function generateModuleCode({
+  moduleName,
+  targetDirectory,
+  isViewTemplate,
+  viewFileName,
+}) {
   const validatedName = validateModuleName(moduleName);
   console.log(validatedName);
   const moduleDirectoryPath = `${targetDirectory}/${validatedName}`;
@@ -110,7 +127,8 @@ async function generateModuleCode(
     createTrongateModuleTemplate(
       validatedName,
       moduleDirectoryPath,
-      isViewTemplate
+      isViewTemplate,
+      viewFileName
     ),
   ]);
 }
@@ -130,12 +148,13 @@ function createDirectory(targetDirectory: string): Promise<void> {
 async function createTrongateModuleTemplate(
   moduleName: string,
   targetDirectory: string,
-  isViewTemplate: string
+  isViewTemplate: string,
+  viewFileName: string
 ) {
   // The moduleName has been validated - this means no space and all lowercases
 
   /* upperModuleName is the name for controller php file,
-   therefore the first letter needs to be uppercase */
+    therefore the first letter needs to be uppercase */
   const upperModuleName = makeFirstLetterGoUpper(moduleName);
   await createDirectory(`${targetDirectory}/controllers`);
   await createDirectory(`${targetDirectory}/views`);
@@ -154,7 +173,7 @@ async function createTrongateModuleTemplate(
   let targetCSSPath;
   let targetJSPath;
   if (isViewTemplate == "yes") {
-    targetViewPath = `${targetDirectory}/views/${moduleName}_view.php`;
+    targetViewPath = `${targetDirectory}/views/${viewFileName}.php`;
     targetCSSPath = `${targetDirectory}/assets/css/custom.css`;
     targetJSPath = `${targetDirectory}/assets/js/custom.js`;
   }
@@ -165,12 +184,13 @@ async function createTrongateModuleTemplate(
   await Promise.all([
     writeFile(
       targetControllerPath,
-      getTrongateModuleTemplate(moduleName, isViewTemplate),
+      getTrongateModuleTemplate(moduleName, viewFileName),
       "utf8",
       (error) => {
         console.log(error);
       }
     ),
+    // Write JS File
     isViewTemplate === "yes" &&
       writeFile(
         targetJSPath,
@@ -180,6 +200,7 @@ async function createTrongateModuleTemplate(
           console.log(error);
         }
       ),
+    // Write View File
     isViewTemplate === "yes" &&
       writeFile(
         targetViewPath,
@@ -189,17 +210,13 @@ async function createTrongateModuleTemplate(
           console.log(error);
         }
       ),
+    // Write CSS File
     isViewTemplate === "yes" &&
-      writeFile(
-        targetCSSPath,
-        getTrongateModuleCss(),
-        // getTrongateModuleTemplate(moduleName),
-        "utf8",
-        (error) => {
-          console.log(error);
-        }
-      ),
+      writeFile(targetCSSPath, getTrongateModuleCss(), "utf8", (error) => {
+        console.log(error);
+      }),
 
+    // Write Assets file
     writeFile(targetApiPath, getTrongateAssets(moduleName), "utf8", (error) => {
       console.log(error);
     }),
@@ -210,37 +227,14 @@ async function createTrongateModuleTemplate(
 
 function getTrongateModuleTemplate(
   moduleName: string,
-  viewTemplate: string = "no"
+  viewFileName: string
 ): string {
-  const upperModuleName = makeFirstLetterGoUpper(moduleName);
-  return getTongateControllerTemplate(
-    upperModuleName,
-    moduleName,
-    viewTemplate
-  );
+  return getTongateControllerTemplate(moduleName, viewFileName);
 }
 
 function getTrongateViewTemplate(moduleName: string): string {
   const displayModuleName = validateModuleName(moduleName);
   return tgViewTemplate(displayModuleName);
-}
-
-function makeFirstLetterGoUpper(name: string): string {
-  const upperName = name.charAt(0).toUpperCase() + name.slice(1);
-  return upperName;
-}
-
-function validateModuleName(name: string): string {
-  /*** 
-  1. module name should not have space - all spaces should be replaced with underscore
-  
-  2. module name should be all lower case - for the folder
-  ***/
-
-  let validatedStr = name.split(" ").join("_");
-  validatedStr = validatedStr.toLowerCase();
-
-  return validatedStr;
 }
 
 // Helper Function to open the controller file and place curosr at good position
