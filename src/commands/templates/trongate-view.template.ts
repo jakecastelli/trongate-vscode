@@ -4,7 +4,7 @@ export function viewTemplate(moduleName: string) {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="<?= BASE_URL ?>test_module/css/custom.css">
+        <link rel="stylesheet" href="<?= BASE_URL ?>${moduleName}_module/css/custom.css">
             <title>My new Trongate module</title>
     </head>
     <body>
@@ -30,7 +30,7 @@ export function viewTemplate(moduleName: string) {
             </div>
         </div>
     
-        <script src="<?= BASE_URL ?>test2_module/js/custom.js"></script>    
+        <script src="<?= BASE_URL ?>${moduleName}_module/js/custom.js"></script>    
     </body>
     </html>`;
 }
