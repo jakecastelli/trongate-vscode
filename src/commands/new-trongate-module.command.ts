@@ -76,7 +76,11 @@ export const newModule = async (uri: Uri) => {
   try {
     await generateModuleCode(genObj);
     // Open the controller file and put curosr at the correct position
-    openEditorAndPutCursorAtGoodPosition(targetDirectory, moduleName);
+    openEditorAndPutCursorAtGoodPosition(
+      targetDirectory,
+      moduleName,
+      isViewTemplate
+    );
 
     const pascalCaseBlocName = validateModuleName(moduleName); // implement this later - change all the space to underscore
     window.showInformationMessage(
@@ -184,7 +188,7 @@ async function createTrongateModuleTemplate(
   await Promise.all([
     writeFile(
       targetControllerPath,
-      getTrongateModuleTemplate(moduleName, viewFileName),
+      getTongateControllerTemplate(moduleName, viewFileName),
       "utf8",
       (error) => {
         console.log(error);
@@ -225,20 +229,17 @@ async function createTrongateModuleTemplate(
   });
 }
 
-function getTrongateModuleTemplate(
-  moduleName: string,
-  viewFileName: string
-): string {
-  return getTongateControllerTemplate(moduleName, viewFileName);
-}
-
 function getTrongateViewTemplate(moduleName: string): string {
   const displayModuleName = validateModuleName(moduleName);
   return tgViewTemplate(displayModuleName);
 }
 
 // Helper Function to open the controller file and place curosr at good position
-function openEditorAndPutCursorAtGoodPosition(targetDirectory, moduleName) {
+function openEditorAndPutCursorAtGoodPosition(
+  targetDirectory,
+  moduleName,
+  isViewTemplate
+) {
   const validatedModuleName = validateModuleName(moduleName);
   const upperModuleName = makeFirstLetterGoUpper(validatedModuleName);
   const controllerLocation = `${targetDirectory}/${validatedModuleName}/controllers/${upperModuleName}.php`;
@@ -246,7 +247,10 @@ function openEditorAndPutCursorAtGoodPosition(targetDirectory, moduleName) {
   setting = setting.fsPath;
   workspace.openTextDocument(setting).then((document) =>
     window.showTextDocument(document).then((e) => {
-      e.selections = [new Selection(new Position(2, 4), new Position(2, 4))];
+      e.selections =
+        isViewTemplate === "no"
+          ? [new Selection(new Position(2, 4), new Position(2, 4))]
+          : [new Selection(new Position(3, 23), new Position(3, 23))];
     })
   );
 }

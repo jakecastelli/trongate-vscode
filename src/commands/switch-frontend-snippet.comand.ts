@@ -16,8 +16,6 @@ export const cssFrameworkQuickPickOptions: QuickPickOptions = {
 //@ts-ignore
 export const dropDownList = async (itemOptions, quickPickOptions) => {
   let items: QuickPickItem[] = [];
-  let msg: QuickPickOptions = {
-  };
   const keys = Object.keys(itemOptions);
   keys.forEach((key) => {
     items.push({
