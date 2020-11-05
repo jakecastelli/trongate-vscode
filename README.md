@@ -28,7 +28,7 @@ This extension will allow you to:
   * with a starter class, complete with asset.json ready for you to create whatever is on your mind - enjoy!
   * now with v1.0.1+ you can create a view, complete with linked CSS and JavaScript files
 
-![vsc-102-view](https://user-images.githubusercontent.com/7813262/97399997-6c461400-1942-11eb-91c0-41658b5664ec.gif)
+![vsc-101-view](https://user-images.githubusercontent.com/7813262/97399997-6c461400-1942-11eb-91c0-41658b5664ec.gif)
 
 
 * Add PHP and custom Trongate code snippets to speed up your development.
@@ -57,13 +57,13 @@ This extension will allow you to:
 * Insert popular frontend frameworks and their elements into your view and template files - akin to the Nitro desktop app developed by David Connelly and can be downloaded at https://www.speedcodingacademy.com/ if you are a member of course.
 
 Use `ctrl+win+alt+/` to bring up the dropdown selector to select your frontend framework
-* Bootstrap 4 > tg:b
-* Defiant > tg:d
-* Materialize > tg:ma
-* Milligram > tg:mi
-* Skeleton > tg:s
+* [Bootstrap 4](https://getbootstrap.com/) > tg:b
+* [Defiant](https://defiantcss.com/) > tg:d
+* [Materialize](https://materializecss.com/) > tg:ma
+* [Milligram](https://milligram.com/) > tg:mi
+* [Skeleton](http://getskeleton.com/) > tg:s
 
-#### Table of Nitro Frameworks Inserts > Showing Bootstrap 4:
+#### Table of Nitro Frameworks Inserts > Showing Bootstrap 4 prefixes below:
 | Command | Shortcut | Prefix
 | ------------- | ------------- | -------------
 | Buttons | `ctrl+win+alt+b` | `tg:b:button`
