@@ -12,7 +12,7 @@ describe("make sure the controller template is generated correctly", () => {
     test("module name: store_items, view file: null", () => {
         const test_moduleName = "store_items";
         expect(getTongateControllerTemplate(test_moduleName, undefined)).toEqual(
-`<?php
+            `<?php
 class Store_items extends Trongate {
     
 }`);
