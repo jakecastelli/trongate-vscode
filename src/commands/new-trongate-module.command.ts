@@ -31,6 +31,11 @@ import { config } from "process";
 // Entry point
 export const newModule = async (uri: Uri, GLOBAL_SETTINGS) => {
 
+  if (!GLOBAL_SETTINGS['isTrongateProject']) {
+    window.showErrorMessage("The current workspace does not contain a valid Trongate Project");
+    return
+  }
+
   console.log('===================')
   console.log(uri) 
   console.log(GLOBAL_SETTINGS) 
@@ -43,8 +48,8 @@ export const newModule = async (uri: Uri, GLOBAL_SETTINGS) => {
     return;
   }
 
-  const validName = validateModuleName(moduleName)
   // check if the module name contains the assets trigger phase
+  const validName = validateModuleName(moduleName)
   if (validName.includes(GLOBAL_SETTINGS['config']['MODULE_ASSETS_TRIGGER'])) {
     window.showErrorMessage(`Your module name contained the MODULE_ASSETS_TRIGGER: ${GLOBAL_SETTINGS['config']['MODULE_ASSETS_TRIGGER']}, please rename your module`);
     return
