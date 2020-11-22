@@ -28,7 +28,13 @@ import {
 import { existsSync, lstatSync, writeFile } from "fs";
 
 // Entry point
-export const newModule = async (uri: Uri) => {
+export const newModule = async (uri: Uri, GLOBAL_SETTINGS) => {
+
+  console.log('===================')
+  console.log(uri) 
+  console.log(GLOBAL_SETTINGS) 
+  console.log('===================')
+
   const moduleName = await prompForInput(inputPrompOptionForModuleName);
   console.log(moduleName);
   if (_.isNil(moduleName) || moduleName.trim() === "") {

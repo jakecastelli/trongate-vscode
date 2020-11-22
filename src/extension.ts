@@ -1,11 +1,42 @@
+//@ts-nocheck
 import * as vscode from "vscode";
 import { newModule } from "./commands";
 import { dropDownList } from "./commands";
 import {cssFramework, cssFrameworkQuickPickOptions} from './commands/switch-frontend-snippet.comand';
+import {checkIsTrongateProject} from './commands/utils/helper'
+import * as path from 'path'
+import {readFileSync} from 'fs'
 
 export function activate(context: vscode.ExtensionContext) {
   // This line of code will only be executed once when your extension is activated
   console.log('Congratulations, your extension "trongate" is now active!');
+
+  // check if it is a trongate project
+  const GLBOAL_SETTINGS = {
+    projectPath: '',
+    isTrongateProject: null,
+    config: {},
+  }
+  GLBOAL_SETTINGS['projectPath'] = vscode.workspace.workspaceFolders[0].uri.fsPath
+  GLBOAL_SETTINGS['isTrongateProject'] = checkIsTrongateProject(GLBOAL_SETTINGS.projectPath)
+  if (GLBOAL_SETTINGS['isTrongateProject']) {
+    //read all the configs from config file
+    const configFilePath = path.join(GLBOAL_SETTINGS['projectPath'], 'config', 'config.php')
+    const configFileContent = readFileSync(configFilePath, { encoding: 'utf8' });
+    const regexMatch = /define\(\s*('\w+'|"\w+"\1)\s*,\s*('\w+'|"\w+"\2)\s*\)/
+    configFileContent.split('\n').map(item => {
+      const match = item.match(regexMatch)
+      if (match) {
+        const configKey = match[1].split('').filter(item => item !== '\'' && item !== '"').join('')
+        const configValue = match[2].split('').filter(item => item !== '\'' && item !== '"').join('')
+        GLBOAL_SETTINGS['config'][configKey] = configValue
+      }
+    })
+  }
+  console.log(GLBOAL_SETTINGS)
+
+
+
   // Get the user's nitro framework option
   let userFrameworkOption = vscode.workspace.getConfiguration().get('trongate.userFrameworkOption');
   //@ts-ignore
@@ -26,7 +57,7 @@ export function activate(context: vscode.ExtensionContext) {
 
   let newTrongate = vscode.commands.registerCommand(
     "trongate.newTrongate",
-    newModule
+    (uri) => newModule(uri, GLBOAL_SETTINGS)
   );
 
   let selectSnippet = vscode.commands.registerCommand(
