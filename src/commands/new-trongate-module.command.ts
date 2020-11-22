@@ -26,6 +26,7 @@ import {
   Selection,
 } from "vscode";
 import { existsSync, lstatSync, writeFile } from "fs";
+import { config } from "process";
 
 // Entry point
 export const newModule = async (uri: Uri, GLOBAL_SETTINGS) => {
@@ -40,6 +41,13 @@ export const newModule = async (uri: Uri, GLOBAL_SETTINGS) => {
   if (_.isNil(moduleName) || moduleName.trim() === "") {
     window.showErrorMessage("The module name must not be empty");
     return;
+  }
+
+  const validName = validateModuleName(moduleName)
+  // check if the module name contains the assets trigger phase
+  if (validName.includes(GLOBAL_SETTINGS['config']['MODULE_ASSETS_TRIGGER'])) {
+    window.showErrorMessage(`Your module name contained the MODULE_ASSETS_TRIGGER: ${GLOBAL_SETTINGS['config']['MODULE_ASSETS_TRIGGER']}, please rename your module`);
+    return
   }
 
   let targetDirectory;
@@ -78,6 +86,7 @@ export const newModule = async (uri: Uri, GLOBAL_SETTINGS) => {
     targetDirectory,
     isViewTemplate,
     viewFileName,
+    GLOBAL_SETTINGS
   };
   try {
     await generateModuleCode(genObj);
@@ -125,9 +134,11 @@ async function generateModuleCode({
   targetDirectory,
   isViewTemplate,
   viewFileName,
+  GLOBAL_SETTINGS
 }) {
   const validatedName = validateModuleName(moduleName);
-  console.log(validatedName);
+
+  console.log('============================>')
   const moduleDirectoryPath = `${targetDirectory}/${validatedName}`;
   if (!existsSync(moduleDirectoryPath)) {
     await createDirectory(moduleDirectoryPath);
