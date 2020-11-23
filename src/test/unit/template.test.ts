@@ -1,3 +1,16 @@
+import { getTongateControllerTemplate } from "../../commands/templates/index";
+
+describe('getTongateControllerTemplate method exists', () => {
+})
+
+describe("make sure the controller template is generated correctly", () => {
+
+    test('getTongateControllerTemplate method exists', () => {
+        expect(typeof getTongateControllerTemplate).toEqual('function')
+    })
+});
+
+
 let result = `<?php
 class Store_items extends Trongate {
   
