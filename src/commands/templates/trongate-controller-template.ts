@@ -12,6 +12,7 @@ export function getTongateControllerTemplate(
 class ${upperModuleName} extends Trongate {
   ${isSuperModule ?
 `\n    function __construct() {
+        parent::__construct();
         $this->parent_module = '${GLOBAL_SETTINGS['parentModuleName']}';
         $this->child_module = '${moduleName}';
     }\n`: '' }

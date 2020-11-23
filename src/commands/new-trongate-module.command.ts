@@ -13,10 +13,9 @@ import {
   viewTemplate as tgViewTemplate,
   getTrongateModuleCss,
   getTongateControllerTemplate,
-  getTrongateSuperModuleControllerTemplate
 } from "./templates";
 
-import { makeFirstLetterGoUpper, validateModuleName } from "./utils/helper";
+import { makeFirstLetterGoUpper, validateModuleName, checkIsTrongateProject } from "./utils/helper";
 
 import {
   OpenDialogOptions,
@@ -26,22 +25,53 @@ import {
   Position,
   Selection,
 } from "vscode";
-import { existsSync, lstatSync, writeFile } from "fs";
-import { config } from "process";
+import { existsSync, lstatSync, writeFile, readFileSync} from "fs";
+import * as path from 'path'
+
 
 // Entry point
-export const newModule = async (uri: Uri, GLOBAL_SETTINGS) => {
+export const newModule = async (uri: Uri) => {
 
-  if (!GLOBAL_SETTINGS['isTrongateProject']) {
-    window.showErrorMessage("The current workspace does not contain a valid Trongate Project");
-    return
-  }
+    // check if it is a trongate project
+    const GLOBAL_SETTINGS = {
+      projectPath: '',
+      isTrongateProject: false,
+      config: {},
+    }
+    try {
+      GLOBAL_SETTINGS['projectPath'] = workspace.workspaceFolders[0].uri.fsPath
+      GLOBAL_SETTINGS['isTrongateProject'] = checkIsTrongateProject(GLOBAL_SETTINGS.projectPath)
+      if (GLOBAL_SETTINGS['isTrongateProject']) {
+        //read all the configs from config file
+        const configFilePath = path.join(GLOBAL_SETTINGS['projectPath'], 'config', 'config.php')
+        const configFileContent = readFileSync(configFilePath, { encoding: 'utf8' });
+        const regexMatch = /define\(\s*('\w+'|"\w+"\1)\s*,\s*('\w+'|"\w+"\2)\s*\)/
+        configFileContent.split('\n').map(item => {
+          const match = item.match(regexMatch)
+          if (match) {
+            const configKey = match[1].split('').filter(item => item !== '\'' && item !== '"').join('')
+            const configValue = match[2].split('').filter(item => item !== '\'' && item !== '"').join('')
+            GLOBAL_SETTINGS['config'][configKey] = configValue
+          }
+        })
+      }
+    } catch (error) {
+      console.log(error)
+    }
 
-  console.log('===================')
-  console.log(uri) 
-  console.log(GLOBAL_SETTINGS) 
-  console.log('===================')
+    if (!GLOBAL_SETTINGS['isTrongateProject']) {
+      window.showErrorMessage("The current workspace does not contain a valid Trongate Project");
+      return
+    }
 
+  // console.log('===================')
+  // console.log(uri) 
+  // console.log(GLOBAL_SETTINGS) 
+  // console.log('===================')
+
+  /**
+   * The function starts from here
+   */
   const moduleName = await prompForInput(inputPrompOptionForModuleName);
   console.log(moduleName);
   if (_.isNil(moduleName) || moduleName.trim() === "") {
@@ -151,10 +181,10 @@ async function generateModuleCode({
     GLOBAL_SETTINGS['superModule'] = true
     GLOBAL_SETTINGS['parentModuleName'] = targetDirectory.split('/').slice(-1)[0]
   }
-  console.log('============================>')
-  console.log(targetDirectory.split('/').slice(-1)[0])
-  console.log(GLOBAL_SETTINGS)
-  console.log('============================>')
+  // console.log('============================>')
+  // console.log(targetDirectory.split('/').slice(-1)[0])
+  // console.log(GLOBAL_SETTINGS)
+  // console.log('============================>')
   const moduleDirectoryPath = `${targetDirectory}/${validatedName}`;
   if (!existsSync(moduleDirectoryPath)) {
     await createDirectory(moduleDirectoryPath);
@@ -245,7 +275,7 @@ async function createTrongateModuleTemplate(
     isViewTemplate === "yes" &&
       writeFile(
         targetViewPath,
-        getTrongateViewTemplate(moduleName),
+        getTrongateViewTemplate(moduleName, GLOBAL_SETTINGS),
         "utf8",
         (error) => {
           console.log(error);
@@ -266,9 +296,9 @@ async function createTrongateModuleTemplate(
   });
 }
 
-function getTrongateViewTemplate(moduleName: string): string {
+function getTrongateViewTemplate(moduleName: string, GLOBAL_SETTINGS): string {
   const displayModuleName = validateModuleName(moduleName);
-  return tgViewTemplate(displayModuleName);
+  return tgViewTemplate(displayModuleName, GLOBAL_SETTINGS);
 }
 
 // Helper Function to open the controller file and place curosr at good position

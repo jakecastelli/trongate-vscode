@@ -25,6 +25,7 @@ const getDirectories = source =>
 		.filter(dirent => dirent.isDirectory())
     .map(dirent => dirent.name)
 
+
 export function checkIsTrongateProject(filePath) {
 	const allModules = getDirectories(filePath)
 	const TRONGATE_FILE_REQUIREMENT = ['config', 'engine', 'modules', 'public', 'templates']
