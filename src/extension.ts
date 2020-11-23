@@ -17,22 +17,27 @@ export function activate(context: vscode.ExtensionContext) {
     isTrongateProject: null,
     config: {},
   }
-  GLBOAL_SETTINGS['projectPath'] = vscode.workspace.workspaceFolders[0].uri.fsPath
-  GLBOAL_SETTINGS['isTrongateProject'] = checkIsTrongateProject(GLBOAL_SETTINGS.projectPath)
-  if (GLBOAL_SETTINGS['isTrongateProject']) {
-    //read all the configs from config file
-    const configFilePath = path.join(GLBOAL_SETTINGS['projectPath'], 'config', 'config.php')
-    const configFileContent = readFileSync(configFilePath, { encoding: 'utf8' });
-    const regexMatch = /define\(\s*('\w+'|"\w+"\1)\s*,\s*('\w+'|"\w+"\2)\s*\)/
-    configFileContent.split('\n').map(item => {
-      const match = item.match(regexMatch)
-      if (match) {
-        const configKey = match[1].split('').filter(item => item !== '\'' && item !== '"').join('')
-        const configValue = match[2].split('').filter(item => item !== '\'' && item !== '"').join('')
-        GLBOAL_SETTINGS['config'][configKey] = configValue
-      }
-    })
+  try {
+    GLBOAL_SETTINGS['projectPath'] = vscode.workspace.workspaceFolders[0].uri.fsPath
+    GLBOAL_SETTINGS['isTrongateProject'] = checkIsTrongateProject(GLBOAL_SETTINGS.projectPath)
+    if (GLBOAL_SETTINGS['isTrongateProject']) {
+      //read all the configs from config file
+      const configFilePath = path.join(GLBOAL_SETTINGS['projectPath'], 'config', 'config.php')
+      const configFileContent = readFileSync(configFilePath, { encoding: 'utf8' });
+      const regexMatch = /define\(\s*('\w+'|"\w+"\1)\s*,\s*('\w+'|"\w+"\2)\s*\)/
+      configFileContent.split('\n').map(item => {
+        const match = item.match(regexMatch)
+        if (match) {
+          const configKey = match[1].split('').filter(item => item !== '\'' && item !== '"').join('')
+          const configValue = match[2].split('').filter(item => item !== '\'' && item !== '"').join('')
+          GLBOAL_SETTINGS['config'][configKey] = configValue
+        }
+      })
+    }
+  } catch (error) {
+    console.log(error)
   }
+  
   console.log(GLBOAL_SETTINGS)
 
 

@@ -13,6 +13,7 @@ import {
   viewTemplate as tgViewTemplate,
   getTrongateModuleCss,
   getTongateControllerTemplate,
+  getTrongateSuperModuleControllerTemplate
 } from "./templates";
 
 import { makeFirstLetterGoUpper, validateModuleName } from "./utils/helper";
@@ -143,6 +144,16 @@ async function generateModuleCode({
 }) {
   const validatedName = validateModuleName(moduleName);
 
+  if(targetDirectory.split('/').slice(-1)[0] === 'modules') {
+    GLOBAL_SETTINGS['superModule'] = false;
+    GLOBAL_SETTINGS['parentModuleName'] = 'modules'
+  } else {
+    GLOBAL_SETTINGS['superModule'] = true
+    GLOBAL_SETTINGS['parentModuleName'] = targetDirectory.split('/').slice(-1)[0]
+  }
+  console.log('============================>')
+  console.log(targetDirectory.split('/').slice(-1)[0])
+  console.log(GLOBAL_SETTINGS)
   console.log('============================>')
   const moduleDirectoryPath = `${targetDirectory}/${validatedName}`;
   if (!existsSync(moduleDirectoryPath)) {
@@ -154,7 +165,8 @@ async function generateModuleCode({
       validatedName,
       moduleDirectoryPath,
       isViewTemplate,
-      viewFileName
+      viewFileName,
+      GLOBAL_SETTINGS
     ),
   ]);
 }
@@ -175,7 +187,8 @@ async function createTrongateModuleTemplate(
   moduleName: string,
   targetDirectory: string,
   isViewTemplate: string,
-  viewFileName: string
+  viewFileName: string,
+  GLOBAL_SETTINGS: any
 ) {
   // The moduleName has been validated - this means no space and all lowercases
 
@@ -189,6 +202,8 @@ async function createTrongateModuleTemplate(
     await createDirectory(`${targetDirectory}/assets/css`);
     await createDirectory(`${targetDirectory}/assets/js`);
   }
+
+  // const isSuperModule = GLOBAL_SETTINGS['superModule']
 
   // 1. check workspace - engine/ config/ modules -> pass -> this is a trongate project
   // 2. trigger language server
@@ -210,7 +225,7 @@ async function createTrongateModuleTemplate(
   await Promise.all([
     writeFile(
       targetControllerPath,
-      getTongateControllerTemplate(moduleName, viewFileName),
+      getTongateControllerTemplate(GLOBAL_SETTINGS, moduleName, viewFileName),
       "utf8",
       (error) => {
         console.log(error);
