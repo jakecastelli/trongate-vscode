@@ -27,7 +27,7 @@ import {
 } from "vscode";
 import { existsSync, lstatSync, writeFile, readFileSync} from "fs";
 import * as path from 'path'
-
+import * as slash from 'slash'
 
 // Entry point
 export const newModule = async (uri: Uri) => {
@@ -174,6 +174,8 @@ async function generateModuleCode({
 }) {
   const validatedName = validateModuleName(moduleName);
 
+  targetDirectory = slash(targetDirectory)
+  console.log(targetDirectory)
   if(targetDirectory.split('/').slice(-1)[0] === 'modules') {
     GLOBAL_SETTINGS['superModule'] = false;
     GLOBAL_SETTINGS['parentModuleName'] = 'modules'
