@@ -14,9 +14,9 @@ class ${upperModuleName} extends Trongate {
 `\n    function __construct() {
         $this->parent_module = '${GLOBAL_SETTINGS['parentModuleName']}';
         $this->child_module = '${moduleName}';
-    }`: '' }
+    }\n`: '' }
 ${ viewFileName !== undefined
-? `\n    function index () {
+? `    function index () {
         $data['view_module'] = '${isSuperModule?`${GLOBAL_SETTINGS['parentModuleName']}/${moduleName}`:moduleName}';
         $this->view('${viewFileName}', $data);
         /* Uncomment the lines below, 
@@ -30,7 +30,7 @@ ${ viewFileName !== undefined
           : ""
       }
   ${isSuperModule ?
-`    function __destruct() {
+`\n    function __destruct() {
         $this->parent_module = '';
         $this->child_module = '';
     }`: ''  

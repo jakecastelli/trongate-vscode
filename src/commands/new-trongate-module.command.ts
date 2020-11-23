@@ -286,8 +286,8 @@ function openEditorAndPutCursorAtGoodPosition(
     window.showTextDocument(document).then((e) => {
       e.selections =
         isViewTemplate === "no"
-          ? [new Selection(new Position(2, 4), new Position(2, 4))]
-          : [new Selection(new Position(3, 23), new Position(3, 23))];
+          ? [new Selection(new Position(0, 5), new Position(0, 5))]
+          : [new Selection(new Position(0, 5), new Position(0, 5))];
     })
   );
 }
