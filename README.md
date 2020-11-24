@@ -91,7 +91,7 @@ Use `ctrl+win+alt+/` to bring up the dropdown selector to select your frontend f
 
 You will need the Trongate Framework of course! ❤️
 
-# Why you should use Trongate Framework?
+## Why you should use Trongate Framework?
 * Imagine a PHP framework that allowed you to build large scale enterprise applications in minutes instead of months.
 * Imagine a framework that did NOT get rewritten constantly.
 * Imagine a framework that you could learn once and use for a lifetime.
