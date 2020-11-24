@@ -2,7 +2,7 @@
   "name": "trongate",
   "displayName": "Trongate",
   "description": "VS Code extension to compliment the Trongate ecosystem",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "engines": {
     "vscode": "^1.31.0"
   },
@@ -191,7 +191,6 @@
         }
       },
       {
-        "mac": "ctrl+win+alt+o",
         "key": "ctrl+win+alt+p",
         "command": "trongate.insertSnippet",
         "when": "editorTextFocus",
