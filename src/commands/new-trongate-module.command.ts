@@ -15,7 +15,7 @@ import {
   getTongateControllerTemplate,
 } from "./templates";
 
-import { makeFirstLetterGoUpper, validateModuleName } from "./utils/helper";
+import { makeFirstLetterGoUpper, validateModuleName, checkIsTrongateProject } from "./utils/helper";
 
 import {
   OpenDialogOptions,
@@ -25,15 +25,65 @@ import {
   Position,
   Selection,
 } from "vscode";
-import { existsSync, lstatSync, writeFile } from "fs";
+import { existsSync, lstatSync, writeFile, readFileSync} from "fs";
+import * as path from 'path'
+import * as slash from 'slash'
 
 // Entry point
 export const newModule = async (uri: Uri) => {
+
+    // check if it is a trongate project
+    const GLOBAL_SETTINGS = {
+      projectPath: '',
+      isTrongateProject: false,
+      config: {},
+    }
+    try {
+      GLOBAL_SETTINGS['projectPath'] = workspace.workspaceFolders[0].uri.fsPath
+      GLOBAL_SETTINGS['isTrongateProject'] = checkIsTrongateProject(GLOBAL_SETTINGS.projectPath)
+      if (GLOBAL_SETTINGS['isTrongateProject']) {
+        //read all the configs from config file
+        const configFilePath = path.join(GLOBAL_SETTINGS['projectPath'], 'config', 'config.php')
+        const configFileContent = readFileSync(configFilePath, { encoding: 'utf8' });
+        const regexMatch = /define\(\s*('\w+'|"\w+"\1)\s*,\s*('\w+'|"\w+"\2)\s*\)/
+        configFileContent.split('\n').map(item => {
+          const match = item.match(regexMatch)
+          if (match) {
+            const configKey = match[1].split('').filter(item => item !== '\'' && item !== '"').join('')
+            const configValue = match[2].split('').filter(item => item !== '\'' && item !== '"').join('')
+            GLOBAL_SETTINGS['config'][configKey] = configValue
+          }
+        })
+      }
+    } catch (error) {
+      console.log(error)
+    }
+
+    if (!GLOBAL_SETTINGS['isTrongateProject']) {
+      window.showErrorMessage("The current workspace does not contain a valid Trongate Project");
+      return
+    }
+
+  // console.log('===================')
+  // console.log(uri) 
+  // console.log(GLOBAL_SETTINGS) 
+  // console.log('===================')
+
+  /**
+   * The function starts from here
+   */
   const moduleName = await prompForInput(inputPrompOptionForModuleName);
   console.log(moduleName);
   if (_.isNil(moduleName) || moduleName.trim() === "") {
     window.showErrorMessage("The module name must not be empty");
     return;
+  }
+
+  // check if the module name contains the assets trigger phase
+  const validName = validateModuleName(moduleName)
+  if (validName.includes(GLOBAL_SETTINGS['config']['MODULE_ASSETS_TRIGGER'])) {
+    window.showErrorMessage(`Your module name contained the MODULE_ASSETS_TRIGGER: ${GLOBAL_SETTINGS['config']['MODULE_ASSETS_TRIGGER']}, please rename your module`);
+    return
   }
 
   let targetDirectory;
@@ -72,6 +122,7 @@ export const newModule = async (uri: Uri) => {
     targetDirectory,
     isViewTemplate,
     viewFileName,
+    GLOBAL_SETTINGS
   };
   try {
     await generateModuleCode(genObj);
@@ -119,9 +170,23 @@ async function generateModuleCode({
   targetDirectory,
   isViewTemplate,
   viewFileName,
+  GLOBAL_SETTINGS
 }) {
   const validatedName = validateModuleName(moduleName);
-  console.log(validatedName);
+
+  targetDirectory = slash(targetDirectory)
+  console.log(targetDirectory)
+  if(targetDirectory.split('/').slice(-1)[0] === 'modules') {
+    GLOBAL_SETTINGS['superModule'] = false;
+    GLOBAL_SETTINGS['parentModuleName'] = 'modules'
+  } else {
+    GLOBAL_SETTINGS['superModule'] = true
+    GLOBAL_SETTINGS['parentModuleName'] = targetDirectory.split('/').slice(-1)[0]
+  }
+  // console.log('============================>')
+  // console.log(targetDirectory.split('/').slice(-1)[0])
+  // console.log(GLOBAL_SETTINGS)
+  // console.log('============================>')
   const moduleDirectoryPath = `${targetDirectory}/${validatedName}`;
   if (!existsSync(moduleDirectoryPath)) {
     await createDirectory(moduleDirectoryPath);
@@ -132,7 +197,8 @@ async function generateModuleCode({
       validatedName,
       moduleDirectoryPath,
       isViewTemplate,
-      viewFileName
+      viewFileName,
+      GLOBAL_SETTINGS
     ),
   ]);
 }
@@ -153,7 +219,8 @@ async function createTrongateModuleTemplate(
   moduleName: string,
   targetDirectory: string,
   isViewTemplate: string,
-  viewFileName: string
+  viewFileName: string,
+  GLOBAL_SETTINGS: any
 ) {
   // The moduleName has been validated - this means no space and all lowercases
 
@@ -167,6 +234,8 @@ async function createTrongateModuleTemplate(
     await createDirectory(`${targetDirectory}/assets/css`);
     await createDirectory(`${targetDirectory}/assets/js`);
   }
+
+  // const isSuperModule = GLOBAL_SETTINGS['superModule']
 
   // 1. check workspace - engine/ config/ modules -> pass -> this is a trongate project
   // 2. trigger language server
@@ -188,7 +257,7 @@ async function createTrongateModuleTemplate(
   await Promise.all([
     writeFile(
       targetControllerPath,
-      getTongateControllerTemplate(moduleName, viewFileName),
+      getTongateControllerTemplate(GLOBAL_SETTINGS, moduleName, viewFileName),
       "utf8",
       (error) => {
         console.log(error);
@@ -208,7 +277,7 @@ async function createTrongateModuleTemplate(
     isViewTemplate === "yes" &&
       writeFile(
         targetViewPath,
-        getTrongateViewTemplate(moduleName),
+        getTrongateViewTemplate(moduleName, GLOBAL_SETTINGS),
         "utf8",
         (error) => {
           console.log(error);
@@ -229,9 +298,9 @@ async function createTrongateModuleTemplate(
   });
 }
 
-function getTrongateViewTemplate(moduleName: string): string {
+function getTrongateViewTemplate(moduleName: string, GLOBAL_SETTINGS): string {
   const displayModuleName = validateModuleName(moduleName);
-  return tgViewTemplate(displayModuleName);
+  return tgViewTemplate(displayModuleName, GLOBAL_SETTINGS);
 }
 
 // Helper Function to open the controller file and place curosr at good position
@@ -249,8 +318,8 @@ function openEditorAndPutCursorAtGoodPosition(
     window.showTextDocument(document).then((e) => {
       e.selections =
         isViewTemplate === "no"
-          ? [new Selection(new Position(2, 4), new Position(2, 4))]
-          : [new Selection(new Position(3, 23), new Position(3, 23))];
+          ? [new Selection(new Position(0, 5), new Position(0, 5))]
+          : [new Selection(new Position(0, 5), new Position(0, 5))];
     })
   );
 }

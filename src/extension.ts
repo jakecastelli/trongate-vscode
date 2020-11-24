@@ -1,11 +1,14 @@
+//@ts-nocheck
 import * as vscode from "vscode";
 import { newModule } from "./commands";
 import { dropDownList } from "./commands";
 import {cssFramework, cssFrameworkQuickPickOptions} from './commands/switch-frontend-snippet.comand';
 
+
 export function activate(context: vscode.ExtensionContext) {
   // This line of code will only be executed once when your extension is activated
   console.log('Congratulations, your extension "trongate" is now active!');
+
   // Get the user's nitro framework option
   let userFrameworkOption = vscode.workspace.getConfiguration().get('trongate.userFrameworkOption');
   //@ts-ignore

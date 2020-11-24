@@ -8,21 +8,6 @@ describe("make sure the controller template is generated correctly", () => {
     test('getTongateControllerTemplate method exists', () => {
         expect(typeof getTongateControllerTemplate).toEqual('function')
     })
-
-    test("module name: store_items, view file: null", () => {
-        const test_moduleName = "store_items";
-        expect(getTongateControllerTemplate(test_moduleName, undefined)).toEqual(
-            `<?php
-class Store_items extends Trongate {
-    
-}`);
-    });
-
-    test("module name: store_items, view file: display", () => {
-        const test_moduleName = "store_items";
-        const test_viewFileName = "display";
-        expect(getTongateControllerTemplate(test_moduleName, test_viewFileName)).toEqual(result);
-    });
 });
 
 
