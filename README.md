@@ -10,15 +10,6 @@ Would you like to code faster?  I know I certainly would! 👀️
 
 This is a Visual Studio Code extension to compliment the Trongate ecosystem.   Consisting of the Trongate framework, Desktop-app and Nitro.  All tirelessly written by David Connelly, who I'd like to make special mention here for his continued dedication and commitment in keeping the web development doors open to everyone.
 
-* Imagine a PHP framework that allowed you to build large scale enterprise applications in minutes instead of months.
-* Imagine a framework that did NOT get rewritten constantly.
-* Imagine a framework that you could learn once and use for a lifetime.
-* Imagine a framework that was V1 forever!
-
-# You've just imagined [Trongate](https://trongate.io)
-
-
-![intro](https://user-images.githubusercontent.com/7813262/95190011-6749e500-081a-11eb-8317-5561a7241e6e.png)
 
 ## Features
 
@@ -87,6 +78,17 @@ Use `ctrl+win+alt+/` to bring up the dropdown selector to select your frontend f
 ## Requirements
 
 You will need the Trongate Framework of course! ❤️
+
+## Why you should use Trongate Framework?
+* Imagine a PHP framework that allowed you to build large scale enterprise applications in minutes instead of months.
+* Imagine a framework that did NOT get rewritten constantly.
+* Imagine a framework that you could learn once and use for a lifetime.
+* Imagine a framework that was V1 forever!
+
+# You've just imagined [Trongate](https://trongate.io)
+
+
+![intro](https://user-images.githubusercontent.com/7813262/95190011-6749e500-081a-11eb-8317-5561a7241e6e.png)
 
 ## Known Issues
 
