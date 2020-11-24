@@ -10,7 +10,7 @@ export function getTongateControllerTemplate(
   const controllerTemplate = 
 `<?php
 class ${upperModuleName} extends Trongate {
-  ${isSuperModule ?
+${isSuperModule ?
 `\n    function __construct() {
         parent::__construct();
         $this->parent_module = '${GLOBAL_SETTINGS['parentModuleName']}';
@@ -30,7 +30,7 @@ ${ viewFileName !== undefined
     }`
           : ""
       }
-  ${isSuperModule ?
+${isSuperModule ?
 `\n    function __destruct() {
         $this->parent_module = '';
         $this->child_module = '';
