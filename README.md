@@ -9,15 +9,19 @@
 <!-- > Would you like to code faster?  I know I certainly would! 👀️ -->
 >This is a Visual Studio Code extension to compliment the Trongate ecosystem.   Consisting of the Trongate framework, Desktop-app and Nitro.  All tirelessly written by David Connelly, who I'd like to make special mention here for his continued dedication and commitment in keeping the web development doors open to everyone.
 
-Module is the essiential building block in Trongate Framework.
+Module is the essiential building block in Trongate Framework. However, creating a module from scratch needs you constantly concentrate on creating and naming your folders and files and typing some boilerplate code.
 
 ## Features
 
 This extension will allow you to:
 
-* Create a module directory scaffold
-  * with a starter class, complete with asset.json ready for you to create whatever is on your mind - enjoy!
+* Create a scaffold module on the fly
+  * The extension can figure out what you are creating is a general module or a sub module, and give you the corresponding code. 
+  * With a starter class (default option), complete with api.json in the assets folder ready for you to create whatever is on your mind - enjoy!
+  * With a view template, it allows you to name your view file and gives you a starter function `index` to guide you on the road. 
   * now with v1.0.1+ you can create a view, complete with linked CSS and JavaScript files
+* Prevent you fail
+  * The extension will dynamically read your `config.php` and extract `MODULE_ASSETS_TRIGGER`, if you accidentally named your module which contains the `MODULE_ASSETS_TRIGGER`, the process would be terminated and you would be notified. 
 
 ![vsc-101-view](https://user-images.githubusercontent.com/7813262/97399997-6c461400-1942-11eb-91c0-41658b5664ec.gif)
 
