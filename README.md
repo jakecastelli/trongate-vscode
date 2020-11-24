@@ -6,8 +6,7 @@
 
 # Trongate Scaffold & Code Snippets
 
-> Would you like to code faster?  I know I certainly would! 👀️
-
+<!-- > Would you like to code faster?  I know I certainly would! 👀️ -->
 >This is a Visual Studio Code extension to compliment the Trongate ecosystem.   Consisting of the Trongate framework, Desktop-app and Nitro.  All tirelessly written by David Connelly, who I'd like to make special mention here for his continued dedication and commitment in keeping the web development doors open to everyone.
 
 Module is the essiential building block in Trongate Framework.
