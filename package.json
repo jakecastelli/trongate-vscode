@@ -191,7 +191,6 @@
         }
       },
       {
-        "mac": "ctrl+win+alt+o",
         "key": "ctrl+win+alt+p",
         "command": "trongate.insertSnippet",
         "when": "editorTextFocus",

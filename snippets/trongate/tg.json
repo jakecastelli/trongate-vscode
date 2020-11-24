@@ -65,7 +65,7 @@
 		"scope": "php",
 		"prefix": "tgc",
 		"body": [
-			"class ${1:Name} extends Trongate {",
+			"<?php\nclass ${1:Name} extends Trongate {",
 			"\t${2:Your code goes here}",
 			"}"
 		],
