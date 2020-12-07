@@ -45,14 +45,14 @@
       "\t",
       "\tif (\\$submit == 'Submit') {",
       "\t",
-      "\t\t\\$this->validation_helper->set_rules('', '', '');",
+      "\t\t\\$this->validation_helper->set_rules('${1}', '${2}', '${3}');",
       "\t",
       "\t\t\\$result = \\$this->validation_helper->run();",
       "\t",
       "\t\tif (\\$result == true) {",
-      "\t\t\t",
+      "\t\t\t${4}",
       "\t\t} else {",
-      "\t\t\t",
+      "\t\t\t${5}",
       "\t\t}",
       "\t//set_flashdata(\\$flash_msg);\n \t//redirect('store_accounts/show/'.\\$update_id);",
       "\t} else {",
@@ -75,7 +75,7 @@
 		"scope": "php",
 		"prefix": "tgm",
 		"body": [
-			"function ${1:name} () {",
+			"function ${1:name}() {",
 			"\t${2:Your method goes here}",
 			"}"
 		],
@@ -85,7 +85,7 @@
 		"scope": "php",
 		"prefix": "tgm1",
 		"body": [
-			"function ${1:name} ($${2:arg}) {",
+			"function ${1:name}($${2:arg}) {",
 			"\t${3:Your method goes here}",
 			"}"
 		],
@@ -95,7 +95,7 @@
 		"scope": "php",
 		"prefix": "tgm2",
 		"body": [
-			"function ${1:name} ($${2:arg_1}, $${3:arg_2}) {",
+			"function ${1:name}($${2:arg_1}, $${3:arg_2}) {",
 			"\t${4:Your method goes here}",
 			"}"
 		],
@@ -105,7 +105,7 @@
 		"scope": "php",
 		"prefix": "tgm3",
 		"body": [
-			"function ${1:name} ($${2:arg_1}, $${3:arg_2}, $${4:arg_3}) {",
+			"function ${1:name}($${2:arg_1}, $${3:arg_2}, $${4:arg_3}) {",
 			"\t${5:Your method goes here}",
 			"}"
 		],
