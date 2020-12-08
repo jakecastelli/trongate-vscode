@@ -6,6 +6,7 @@ export const cssFramework = {
   Milligram: "Milligram Framework",
   Materialize: "Materialize Framework",
   Skeleton: "Skeleton Framework",
+  Axentix: "Axentix Framework"
 };
 
 export const cssFrameworkQuickPickOptions: QuickPickOptions = {
