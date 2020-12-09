@@ -1,0 +1,92 @@
+{
+    "Axentix Button": {
+      "scope": "window",
+      "prefix": "tg:ax:button",
+      "body": [
+        "<!-- Axentix Buttons: https:\/\/useaxentix.com\/docs\/components\/buttons -->\r\n<h5>Normal buttons<\/h2>\r\n<button class=\"btn shadow-1 rounded-1 blue\">Normal button<\/button>\r\n<div class=\"btn shadow-1 rounded-1 blue\">Normal button<\/div>\r\n<a href=\"#\" class=\"btn shadow-1 rounded-1 blue\">Normal button<\/a>\r\n<h5>Circle buttons<\/h5>\r\n<button class=\"btn shadow-1 circle blue\"><i class=\"fas fa-thumbs-up\"><\/i><\/button>\r\n<h5>Press buttons<\/h5>\r\n<div class=\"btn rounded-1 blue press\">Normal button<\/div>\r\n<button class=\"btn circle blue press\"><i class=\"fas fa-thumbs-up\"><\/i><\/button>\r\n<h5>Outline buttons<\/h5>\r\n<button class=\"btn shadow-1 rounded-1 outline txt-blue\"><span class=\"outline-text\">Outline<\/span><\/button>\r\n<button class=\"btn shadow-1 rounded-1 outline opening txt-blue\"><span class=\"outline-text\">Opening<\/span><\/button>\r\n<button class=\"btn shadow-1 rounded-1 outline txt-blue txt-light-3\"><span class=\"outline-text outline-invert\">Outline<\/span><\/button>\r\n<button class=\"btn shadow-1 rounded-1 outline opening txt-airforce txt-light-2\"><span class=\"outline-text outline-invert\">Opening<\/span><\/button>\r\n<h5>Rounded buttons<\/h5>\r\n<button class=\"btn shadow-1 primary rounded-4\">Rounded 4<\/button>\r\n<button class=\"btn shadow-1 rounded-1 small primary uppercase\">button<\/button>\r\n<button class=\"btn shadow-1 rounded-1 primary uppercase\">button<\/button>\r\n<button class=\"btn shadow-1 rounded-1 large primary uppercase\">button<\/button>\r\n<button class=\"btn shadow-1 small circle primary\"><i class=\"fas fa-thumbs-up\"><\/i><\/button>\r\n<button class=\"btn shadow-1 circle primary\"><i class=\"fas fa-thumbs-up\"><\/i><\/button>\r\n<button class=\"btn shadow-1 large circle primary\"><i class=\"fas fa-thumbs-up\"><\/i><\/button>\r\n<h5>Disabled buttons<\/h5>\r\n<button class=\"btn rounded-1 red small disabled\">Disabled button<\/button>\r\n<button class=\"btn shadow-1 circle blue press\" disabled><i class=\"fas fa-thumbs-down\"><\/i><\/i><\/button>"
+      ]
+    },
+    "Axentix Button Alt": {
+      "scope": "window",
+      "prefix": "tg:b:button-alt",
+      "body": [
+        "Not available, please use Button"
+      ]
+    },
+    "Axentix Contact Form": {
+      "scope": "window",
+      "prefix": "tg:ax:contact",
+      "body": [
+        "Not available yet"
+      ]
+    },
+    "Axentix Download URL": {
+      "scope": "window",
+      "prefix": "tg:b:url",
+      "body": ["<!-- Links: https:\/\/useaxentix.com\/docs\/getting-started -->\r\n<!-- Axentix CSS minified version -->\r\n<link rel=\"stylesheet\" href=\"https:\/\/cdn.jsdelivr.net\/npm\/axentix@1.0.0\/dist\/css\/axentix.min.css\">\r\n<!-- Axentix JS minified version -->\r\n<script src=\"https:\/\/cdn.jsdelivr.net\/npm\/axentix@1.0.0\/dist\/js\/axentix.min.js\"><\/script>\r\n<!-- Grix system -->\r\n<link rel=\"stylesheet\" href=\"https:\/\/cdn.jsdelivr.net\/npm\/axentix@1.0.0\/dist\/css\/grix.min.css\">"]
+    },
+    "Axentix Form": {
+      "scope": "window",
+      "prefix": "tg:ax:form",
+      "body": [
+        "Not available yet"
+      ]
+    },
+    "Axentix Grid": {
+      "scope": "window",
+      "prefix": "tg:ax:grid",
+      "body": [
+        "Not available yet"
+      ]
+    },
+    "Axentix Info Page": {
+      "scope": "window",
+      "prefix": "tg:ax:info",
+      "body": [
+        "Not available yet"
+      ]
+    },
+    "Axentix Login Form": {
+      "scope": "window",
+      "prefix": "tg:ax:login",
+      "body": [
+        "Not available yet"
+      ]
+    },
+    "Axentix Modal": {
+      "scope": "window",
+      "prefix": "tg:ax:modal",
+      "body": [
+        "<p>If you want to test second modal, remove the basic modal, otherwise it will have a clash<\/p>\r\n<!-- Basic modal -->\r\n<div class=\"modal shadow-1 white rounded-3\" id=\"modal-example\" data-ax=\"modal\">\r\n  <div class=\"modal-header\">\r\n    Header\r\n    <button data-target=\"modal-example\" class=\"modal-trigger\">\r\n      <i class=\"fas fa-times\"><\/i> <!-- Use font awesome -->\r\n    <\/button>\r\n  <\/div>\r\n  <div class=\"modal-content\">\r\n    Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores dolorum eum in totam amet soluta! Id distinctio iusto\r\n    voluptatum ipsam officia, odit neque, fuga, commodi totam repellendus deserunt quod laborum? Lorem ipsum dolor sit amet consectetur\r\n    adipisicing elit. Assumenda nostrum doloribus quisquam minima minus animi voluptatum illo illum. Vel, labore iure aut sed nobis\r\n    officiis itaque molestias rerum natus vero.\r\n  <\/div>\r\n  <div class=\"modal-footer\">\r\n    Footer\r\n  <\/div>\r\n<\/div>\r\n\r\n<button class=\"btn rounded-1 primary press modal-trigger\" data-target=\"modal-example\">OPEN MODAL<\/button>\r\n\r\n<!-- Falling modal -->\r\n<div class=\"modal shadow-1 white falling\" id=\"modal-example\" data-ax=\"modal\">\r\n  <div class=\"modal-header\">Header<\/div>\r\n\r\n  <div class=\"divider\"><\/div>\r\n\r\n  <div class=\"modal-content\">\r\n    Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores dolorum eum in totam amet soluta! Id distinctio iusto\r\n    voluptatum ipsam officia, odit neque, fuga, commodi totam repellendus deserunt quod laborum? Lorem ipsum dolor sit amet consectetur\r\n    adipisicing elit. Assumenda nostrum doloribus quisquam minima minus animi voluptatum illo illum. Vel, labore iure aut sed nobis\r\n    officiis itaque molestias rerum natus vero. <br \/>\r\n    Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores dolorum eum in totam amet soluta! Id distinctio iusto\r\n    voluptatum ipsam officia, odit neque, fuga, commodi totam repellendus deserunt quod laborum? Lorem ipsum dolor sit amet consectetur\r\n    adipisicing elit. Assumenda nostrum doloribus quisquam minima minus animi voluptatum illo illum. Vel, labore iure aut sed nobis\r\n    officiis itaque molestias rerum natus vero.\r\n  <\/div>\r\n\r\n  <div class=\"divider\"><\/div>\r\n\r\n  <div class=\"modal-footer\">\r\n    <button data-target=\"modal-example\" class=\"ml-auto btn shadow-1 rounded-1 small primary modal-trigger\">Close<\/button>\r\n  <\/div>\r\n<\/div>\r\n\r\n<button class=\"btn rounded-1 primary press modal-trigger\" data-target=\"modal-example\">OPEN MODAL<\/button>"
+      ]
+    },
+    "Axentix Password Form": {
+      "scope": "window",
+      "prefix": "tg:ax:password-form",
+      "body": [
+        "Not available yet"
+      ]
+    },
+    "Axentix Table": {
+      "scope": "window",
+      "prefix": "tg:ax:table",
+      "body": [
+        "Not available yet"
+      ]
+    },
+    "Axentix Table Alt": {
+      "scope": "window",
+      "prefix": "tg:ax:table-alt",
+      "body": [
+        "Not available yet"
+      ]
+    },
+    "Axentix Template": {
+      "scope": "window",
+      "prefix": "tg:ax:template",
+      "body": [
+        "<!DOCTYPE html>\r\n<html>\r\n  <head>\r\n    <title>Starter template - Axentix<\/title>\r\n    <meta charset=\"utf-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" \/>\r\n    <link rel=\"stylesheet\" href=\"https:\/\/cdn.jsdelivr.net\/npm\/axentix@1.0.0\/dist\/css\/axentix.min.css\" \/>\r\n  <\/head>\r\n\r\n  <body class=\"layout\">\r\n    <header>\r\n      <nav class=\"navbar shadow-1 primary\">\r\n        <button class=\"btn rounded-1 white hide-md-up sidenav-trigger small mr-2\" data-target=\"main-sidenav\">\r\n          Menu\r\n        <\/button>\r\n        <a href=\"#\" target=\"_blank\" class=\"navbar-brand\">Axentix<\/a>\r\n        <div class=\"navbar-menu ml-auto\">\r\n          <a class=\"navbar-link active hide-sm-down\" href=\"#\">Link 1<\/a>\r\n          <a class=\"navbar-link hide-sm-down\" href=\"#\">Link 2<\/a>\r\n          <a class=\"navbar-link hide-sm-down\" href=\"#\">Link 3<\/a>\r\n          <div id=\"navbar-dropdown\" data-ax=\"dropdown\" class=\"dropdown\" data-dropdown-prevent-viewport=\"true\">\r\n            <a class=\"navbar-link dropdown-trigger\" href=\"#\">Dropdown<\/a>\r\n            <div class=\"dropdown-content white shadow-1 right-aligned\">\r\n              <a class=\"dropdown-item\" href=\"#\">Item 1<\/a>\r\n              <a class=\"dropdown-item\" href=\"#\">Item 2<\/a>\r\n            <\/div>\r\n          <\/div>\r\n        <\/div>\r\n      <\/nav>\r\n    <\/header>\r\n\r\n    <div class=\"sidenav white shadow-1\" id=\"main-sidenav\" data-ax=\"sidenav\">\r\n      <div class=\"sidenav-header\">\r\n        <img src=\"https:\/\/useaxentix.com\/img\/axentix.svg\" alt=\"\" class=\"sidenav-logo\" \/>\r\n      <\/div>\r\n\r\n      <a href=\"#\" class=\"sidenav-link active\">Link 1<\/a>\r\n      <a href=\"#\" class=\"sidenav-link\">Link 2<\/a>\r\n      <a href=\"#\" class=\"sidenav-link\">Link 3<\/a>\r\n    <\/div>\r\n\r\n    <main>\r\n      <h1 class=\"txt-center font-w300 mx-2\">Hello from Axentix !<\/h1>\r\n\r\n      <div class=\"container mt-5\">\r\n        <div class=\"card rounded-2 shadow-1\">\r\n          <div class=\"card-header\">Material form example<\/div>\r\n\r\n          <div class=\"card-content\">\r\n            <form class=\"form-material\">\r\n              <div class=\"grix xs1 sm2\">\r\n                <div class=\"form-field\">\r\n                  <label for=\"firstname\">Firstname<\/label>\r\n                  <input type=\"text\" class=\"form-control\" id=\"firstname\" \/>\r\n                <\/div>\r\n                <div class=\"form-field\">\r\n                  <label for=\"firstname\">Lastname<\/label>\r\n                  <input type=\"text\" class=\"form-control\" id=\"firstname\" placeholder=\"Toto\" \/>\r\n                <\/div>\r\n              <\/div>\r\n\r\n              <button type=\"button\" class=\"btn rounded-1 press secondary mx-auto mt-4\">Submit<\/button>\r\n            <\/form>\r\n          <\/div>\r\n        <\/div>\r\n      <\/div>\r\n    <\/main>\r\n\r\n    <footer class=\"footer primary\">\r\n      Copyright \u00A9 2020 - Example\r\n    <\/footer>\r\n\r\n    <script src=\"https:\/\/cdn.jsdelivr.net\/npm\/axentix@1.0.0\/dist\/js\/axentix.min.js\"><\/script>\r\n  <\/body>\r\n<\/html>"
+      ]
+    }
+  }
+  
