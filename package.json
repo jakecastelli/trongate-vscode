@@ -109,6 +109,14 @@
       {
         "language": "php",
         "path": "./snippets/frontend/skeleton.json"
+      },
+      {
+        "language": "html",
+        "path": "./snippets/frontend/axentix.json"
+      },
+      {
+        "language": "php",
+        "path": "./snippets/frontend/axentix.json"
       }
     ],
     "keybindings": [
