@@ -17,12 +17,12 @@ export function activate(context: vscode.ExtensionContext) {
     // If the user messed with the settings, we put them back to default
     userFrameworkOption = "Bootstrap 4";
   }
+
   statusBar = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 100);
   statusBar.text = `${userFrameworkOption} in use`;
   statusBar.command = "trongate.selectNitroFramework";
+  statusBar.tooltip = "Click to select your CSS Framework for this project";
   statusBar.show();
-
-  // vscode.window.setStatusBarMessage(`${userFrameworkOption} in use`);
 
   let nitro = vscode.commands.registerCommand("trongate.insertSnippet", (args) => {
     vscode.commands.executeCommand(`editor.action.insertSnippet`, {
