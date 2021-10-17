@@ -42,7 +42,7 @@ export function activate(context: vscode.ExtensionContext) {
       vscode.window.showInformationMessage(`You have successfully selected ${userFrameworkOption} Framework`);
       await vscode.workspace
         .getConfiguration()
-        .update("trongate.userFrameworkOption", userFrameworkOption, vscode.ConfigurationTarget.Global);
+        .update("trongate.userFrameworkOption", userFrameworkOption, vscode.ConfigurationTarget.Workspace);
 
       statusBar.text = `${userFrameworkOption} in use`;
       statusBar.show();
