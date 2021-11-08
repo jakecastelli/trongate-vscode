@@ -15,7 +15,7 @@ export function activate(context: vscode.ExtensionContext) {
   //@ts-ignore
   if (!Object.keys(cssFramework).includes(userFrameworkOption)) {
     // If the user messed with the settings, we put them back to default
-    userFrameworkOption = "Bootstrap 4";
+    userFrameworkOption = "Trongate";
   }
 
   statusBar = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 100);
@@ -39,7 +39,7 @@ export function activate(context: vscode.ExtensionContext) {
       }
       //@ts-ignore
       userFrameworkOption = opt;
-      vscode.window.showInformationMessage(`You have successfully selected ${userFrameworkOption} Framework`);
+      vscode.window.showInformationMessage(`You have successfully selected the ${userFrameworkOption} CSS Framework`);
       await vscode.workspace
         .getConfiguration()
         .update("trongate.userFrameworkOption", userFrameworkOption, vscode.ConfigurationTarget.Workspace);

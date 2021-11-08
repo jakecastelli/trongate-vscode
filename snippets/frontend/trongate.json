@@ -1,0 +1,91 @@
+{
+  "Trongate Button": {
+    "scope": "window",
+    "prefix": "tg:t:button",
+    "body": [
+      "<!-- Trongate Buttons (ref: https:\/\/trongate.io\/trongatecss)  -->\r\n\r\n<button>Button<\/button>\r\n<button class=\"alt\">Button<\/button>\r\n\r\n<p>\r\n  <a href=\"https:\/\/trongate.io\">Here's an ordinary text link<\/a>\r\n  <a href=\"https:\/\/trongate.io\" class=\"button\">This link looks like a button<\/a>\r\n  <a href=\"https:\/\/trongate.io\" class=\"button alt\">This link looks like an alternative button<\/a>\r\n<\/p>\r\n"
+    ]
+  },
+  "Trongate Button Alt": {
+    "scope": "window",
+    "prefix": "tg:t:button-alt",
+    "body": [
+      "<!-- Trongate Buttons (ref: https:\/\/trongate.io\/trongatecss)  -->\r\n\r\n<p>\r\n    <button>Normal Button<\/button> \r\n    <button class=\"alt\">Normal Button<\/button>\r\n<\/p>\r\n<p class=\"smaller\">\r\n    <button>Smaller Button<\/button> \r\n    <button class=\"alt\">Smaller Button<\/button>\r\n<\/p>\r\n<p class=\"large\">\r\n    <button>Large Button<\/button> \r\n    <button class=\"alt\">Large Button<\/button>\r\n<\/p>\r\n\r\n<p>\r\n    <button class=\"danger\">Red Button<\/button>\r\n    <button class=\"gold\">Gold Button<\/button>\r\n<\/p>\r\n\r\n<style>\r\n    .smaller {\r\n      font-size: 0.9em;\r\n    }\r\n\r\n    .large {\r\n        font-size: 1.2em;\r\n    }\r\n    .danger {\r\n        background-color: #ff0000;\r\n        border: 1px #ff0000 solid;\r\n    }\r\n\r\n    .danger:hover {\r\n        background-color: #dd0000;\r\n        border: 1px #dd0000 solid;\r\n    }\r\n\r\n    .gold {\r\n        background:linear-gradient(to right, #bf953f, #fcf6ba, #f0d69d, #fbf5b7, #aa771c);\r\n        border: 1px #bf953f solid;\r\n        color: #7f693b;\r\n        font-weight: bold;\r\n        text-transform: uppercase;\r\n    }\r\n\r\n    .gold:hover {\r\n        color: #645330;\r\n        border: 1px #645330 solid;\r\n    }\r\n<\/style>\r\n"
+    ]
+  },
+  "Trongate Contact Form": {
+    "scope": "window",
+    "prefix": "tg:t:contact",
+    "body": [
+      "<h1>Get In Touch<\/h1>\r\n<?php\r\nvalidation_errors();\r\necho form_open('contact\/submit');\r\necho form_label('Name');\r\n$${1:attr}['placeholder'] = 'Enter your name here';\r\n$${1:attr}['autocompleted'] = 'off';\r\necho form_input('name', $${2:name}, $${1:attr});\r\n\r\necho form_label('Email');\r\n$${1:attr}['placeholder'] = 'Enter your email address here';\r\necho form_email('email', $${3:email}, $${1:attr});\r\n\r\necho form_label('Message');\r\n$${1:attr}['placeholder'] = 'Enter your message here';\r\n$${1:attr}['rows'] = 7;\r\necho form_textarea('message', $${4:message}, $${1:attr});\r\n\r\necho form_submit('submit', 'Submit');\r\necho anchor(BASE_URL, 'Cancel', array ('class' => 'button alt'));\r\necho form_close();\r\n?>\r\n"
+    ]
+  },
+  "Trongate Download URL": {
+    "scope": "window",
+    "prefix": "tg:t:url",
+    "body": ["<!-- Trongate Buttons (ref: https:\/\/trongate.io\/trongatecss)  -->\r\n\r\n<link rel=\"stylesheet\" href=\"<?= BASE_URL ?>css\/trongate.css\">"]
+  },
+  "Trongate Form": {
+    "scope": "window",
+    "prefix": "tg:t:form",
+    "body": [
+      "<form action=\"#\">\r\n<label>First Name<\/label>\r\n<input type=\"text\" name=\"firstname\" placeholder=\"Enter your first name here\">\r\n<label>Last Name<\/label>\r\n<input type=\"text\" name=\"lastname\" placeholder=\"Enter your last name here\">\r\n<label>City<\/label>\r\n<select name=\"city\">\r\n<option value=\"\" selected=\"\">Select city...<\/option>\r\n<option value=\"1\">London<\/option>\r\n<option value=\"2\">Paris<\/option>\r\n<option value=\"3\">New York<\/option>\r\n<\/select>\r\n<label>Email Address<\/label>\r\n<input type=\"email\" name=\"email\"  placeholder=\"Enter your email address here\">\r\n<label>Description<\/label>\r\n<textarea name=\"description\" rows=\"5\" placeholder=\"Use this space to enter a description\"><\/textarea>\r\n<button>Submit<\/button>\r\n<a href=\"#\" class=\"button alt\">Cancel<\/a>\r\n<p><input type=\"checkbox\" name=\"join\" value=\"1\" checked=\"\"> Add me to the mailing list<\/p>\r\n<?php\r\necho form_close();\r\n?>\r\n"
+    ]
+  },
+  "Trongate Grid": {
+    "scope": "window",
+    "prefix": "tg:t:grid",
+    "body": [
+      ""
+    ]
+  },
+  "Trongate Info Page": {
+    "scope": "window",
+    "prefix": "tg:t:info",
+    "body": [
+      ""
+    ]
+  },
+  "Trongate Login Form": {
+    "scope": "window",
+    "prefix": "tg:t:login",
+    "body": [
+      "<form>\r\n  <div class=\"form-group\">\r\n    <label for=\"exampleInputEmail1\">Email address<\/label>\r\n    <input type=\"email\" class=\"form-control\" id=\"exampleInputEmail1\" aria-describedby=\"emailHelp\">\r\n    <small id=\"emailHelp\" class=\"form-text text-muted\">We'll never share your email with anyone else.<\/small>\r\n  <\/div>\r\n  <div class=\"form-group\">\r\n    <label for=\"exampleInputPassword1\">Password<\/label>\r\n    <input type=\"password\" class=\"form-control\" id=\"exampleInputPassword1\">\r\n  <\/div>\r\n  <div class=\"form-group form-check\">\r\n    <input type=\"checkbox\" class=\"form-check-input\" id=\"exampleCheck1\">\r\n    <label class=\"form-check-label\" for=\"exampleCheck1\">Remember me<\/label>\r\n  <\/div>\r\n  <button type=\"submit\" class=\"btn btn-primary\">Submit<\/button>\r\n<?php\r\necho form_close();\r\n?>\r\n"
+    ]
+  },
+  "Trongate Modal": {
+    "scope": "window",
+    "prefix": "tg:t:modal",
+    "body": [
+      "<!-- Trongate Javascript examples (ref: https:\/\/trongate.io\/javascript)  -->\r\n\r\n<button onclick=\"openModal('demo-modal')\">Launch Demo Modal<\/button>\r\n\r\n<div class=\"modal\" id=\"demo-modal\">\r\n    <div class=\"modal-heading\">Demo Modal<\/div>\r\n    <div class=\"modal-body\">\r\n        <h3>Modal Body<\/h3>\r\n        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<\/p>\r\n        <p>\r\n            <button onclick=\"closeModal()\">Close Modal<\/button>\r\n        <\/p>\r\n    <\/div>\r\n<\/div>\r\n"
+    ]
+  },
+  "Trongate Password Form": {
+    "scope": "window",
+    "prefix": "tg:t:password-form",
+    "body": [
+      "<form>\r\n  <div class=\"form-group\">\r\n    <label for=\"exampleInputPassword1\">Password<\/label>\r\n    <input type=\"password\" name=\"pword\" class=\"form-control\" id=\"exampleInputPassword1\">\r\n  <\/div>\r\n  <div class=\"form-group\">\r\n    <label for=\"exampleInputPassword2\">Repeat Password<\/label>\r\n    <input type=\"password\" name=\"repeat_pword\" class=\"form-control\" id=\"exampleInputPassword2\">\r\n  <\/div>\r\n  <button type=\"submit\" class=\"btn btn-primary\">Submit<\/button>\r\n<?php\r\necho form_close();\r\n?>\r\n"
+    ]
+  },
+  "Trongate Table": {
+    "scope": "window",
+    "prefix": "tg:t:table",
+    "body": [
+      "<table>\r\n    <tr>\r\n        <th>First Name<\/th>\r\n        <th>Last Name<\/th>\r\n        <th>Email Address<\/th>\r\n        <th>City<\/th>\r\n    <\/tr>\r\n    <tr>\r\n        <td>Eric<\/td>\r\n        <td>Clapton<\/td>\r\n        <td>eric@example.com<\/td>\r\n        <td>London<\/td>\r\n    <\/tr>\r\n    <tr>\r\n        <td>Lou<\/td>\r\n        <td>Reed<\/td>\r\n        <td>lou@example.com<\/td>\r\n        <td>New York<\/td>\r\n    <\/tr>\r\n    <tr>\r\n        <td>Kate<\/td>\r\n        <td>Bush<\/td>\r\n        <td>kate@example.com<\/td>\r\n        <td>Maidstone<\/td>\r\n    <\/tr>\r\n<\/table>\r\n"
+    ]
+  },
+  "Trongate Table Alt": {
+    "scope": "window",
+    "prefix": "tg:t:table-alt",
+    "body": [
+      ""
+    ]
+  },
+  "Trongate Template": {
+    "scope": "window",
+    "prefix": "tg:t:template",
+    "body": [
+      "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n\t<meta charset=\"UTF-8\">\r\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n\t<!-- <link rel=\"stylesheet\" href=\"https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/font-awesome\/4.7.0\/css\/font-awesome.min.css\"> -->\r\n\t<link rel=\"stylesheet\" href=\"https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/font-awesome\/6.0.0-beta2\/css\/fontawesome.min.css\">\r\n\t<link rel=\"stylesheet\" href=\"http:\/\/localhost\/ums\/css\/trongate.css\">\r\n\t<link rel=\"stylesheet\" href=\"http:\/\/localhost\/ums\/css\/app.css\">\r\n    <!-- don't change anything above here -->\r\n    <!-- add your own stylesheet below here -->\r\n\t\t<script src=\"https:\/\/kit.fontawesome.com\/3b3a9b75fc.js\" crossorigin=\"anonymous\"><\/script>\r\n\t\t<title>UMS Advantage<\/title><\/head>\r\n<body>\r\n\t<div class=\"wrapper\">\r\n\t<header>\r\n\t\t<div id=\"header-sm\">\r\n\t\t\t<div id=\"hamburger\" onclick=\"openSlideNav()\">\r\n\t\t\t\t&#9776;\r\n\t\t\t<\/div>\r\n\t\t\t<div class=\"logo\">\r\n\t\t\t\t<a href=\"http:\/\/localhost\/ums\/\">UMS<\/a>\t\t\t<\/div>\r\n\t\t\t<div><a href=\"http:\/\/localhost\/ums\/members\/your_account\"><i class=\"fa fa-user\"><\/i><\/a><\/div>\r\n\t\t<\/div>\r\n\t\t<div id=\"header-lg\">\r\n\t\t\t<div class=\"logo\">\r\n\t\t\t\t<a href=\"http:\/\/localhost\/ums\/\">UMS<\/a>\t\t\t<\/div>\r\n\t\t\t<div>\r\n\t\t\t\t<ul id=\"top-nav\">\r\n\t\t\t\t    <li><a href=\"http:\/\/localhost\/ums\/\"><i class=\"fa fa-home\"><\/i> Home<\/a><\/li>\r\n\t\t\t\t\t\t<li><a href=\"http:\/\/localhost\/ums\/\"><i class=\"fa fa-lightbulb-o\"><\/i> About Us<\/a><\/li><li><a href=\"http:\/\/localhost\/ums\/\"><i class=\"fa fa-street-view\"><\/i> Our Values<\/a><\/li><li><a href=\"http:\/\/localhost\/ums\/contact\"><i class=\"fa fa-send\"><\/i> Get In Touch<\/a><\/li><li><a href=\"http:\/\/localhost\/ums\/members\/your_account\"><i class=\"fa fa-user\"><\/i> Login<\/a><\/li>\t\t\t\t\t\t\r\n\t\t\t\t<\/ul>\r\n\t\t\t<\/div>\r\n\t\t<\/div>\r\n\t<\/header>\r\n\t<main class=\"container\"><h1>Congratulations<\/h1>\r\n<h2>It Totally Works!<\/h2>\r\n<p>This page is being generated dynamically by the Trongate Framework.<\/p>\r\n<p>To edit this page, go to: modules\/welcome\/views\/welcome.php<\/p>\r\n<p>To explore the documentation go to <a href=\"https:\/\/trongate.io\/docs_m\/contents\">https:\/\/trongate.io\/docs_m\/contents<\/a><\/p>\r\n\r\n<\/main>\r\n<\/div>\r\n\t<footer>\r\n\t\t<div class=\"container\">\r\n            <!-- it's okay to remove the links and content here - everything is cool (DC) -->\r\n\t\t\t<div>&copy; Copyright 2021 UMS Advantage<\/div>\r\n\t\t\t<div><a href=\"https:\/\/trongate.io\">Powered by Trongate<\/a><\/div>\r\n\t\t<\/div>\r\n\t<\/footer>\r\n    <div id=\"slide-nav\">\r\n        <div id=\"close-btn\" onclick=\"closeSlideNav()\">&times;<\/div>\r\n        <ul auto-populate=\"true\"><\/ul>\r\n    <\/div>\r\n<script src=\"http:\/\/localhost\/ums\/js\/app.js\"><\/script>\r\n<\/body>\r\n<\/html>\r\n"
+    ]
+  }
+}
