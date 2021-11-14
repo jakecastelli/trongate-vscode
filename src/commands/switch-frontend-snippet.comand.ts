@@ -1,12 +1,11 @@
 import { QuickPickItem, QuickPickOptions, window } from "vscode";
 
 export const cssFramework = {
-  Trongate: "Trongate CSS Framework",
   "Boostrap 4": "Boostrap 4 CSS Framework",
-  Defiant: "Defiant CSS Framework",
-  Milligram: "Milligram CSS Framework",
-  Materialize: "Materialize CSS Framework",
-  Skeleton: "Skeleton CSS Framework",
+  Defiant: "Defiant Frontend Framework",
+  Milligram: "Milligram Framework",
+  Materialize: "Materialize Framework",
+  Skeleton: "Skeleton Framework",
 };
 
 export const cssFrameworkQuickPickOptions: QuickPickOptions = {

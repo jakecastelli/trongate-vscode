@@ -109,14 +109,6 @@
       {
         "language": "php",
         "path": "./snippets/frontend/skeleton.json"
-      },
-      {
-        "language": "html",
-        "path": "./snippets/frontend/trongate.json"
-      },
-      {
-        "language": "php",
-        "path": "./snippets/frontend/trongate.json"
       }
     ],
     "keybindings": [
