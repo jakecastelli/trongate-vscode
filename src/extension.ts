@@ -39,7 +39,9 @@ export function activate(context: vscode.ExtensionContext) {
       }
       //@ts-ignore
       userFrameworkOption = opt;
+
       vscode.window.showInformationMessage(`You have successfully selected the ${userFrameworkOption} CSS Framework`);
+
       await vscode.workspace
         .getConfiguration()
         .update("trongate.userFrameworkOption", userFrameworkOption, vscode.ConfigurationTarget.Workspace);
