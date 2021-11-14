@@ -157,6 +157,6 @@
 		"body": [
 			"<?= ${1|BASE_URL,WEBSITE_NAME,OUR_NAME,OUR_TELNUM,OUR_ADDRESS,OUR_EMAIL_ADDRESS|} ?>"
 		],
-		"description": "echo variables"
+		"description": "echo variable"
   }
 }
