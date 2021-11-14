@@ -17,7 +17,7 @@
     "scope": "window",
     "prefix": "tg:t:contact",
     "body": [
-      "<h1>Get In Touch<\/h1>\r\n<?php\r\nvalidation_errors();\r\necho form_open('contact\/submit');\r\necho form_label('Name');\r\n$${1:attr}['placeholder'] = 'Enter your name here';\r\n$${1:attr}['autocompleted'] = 'off';\r\necho form_input('name', $${2:name}, $${1:attr});\r\n\r\necho form_label('Email');\r\n$${1:attr}['placeholder'] = 'Enter your email address here';\r\necho form_email('email', $${3:email}, $${1:attr});\r\n\r\necho form_label('Message');\r\n$${1:attr}['placeholder'] = 'Enter your message here';\r\n$${1:attr}['rows'] = 7;\r\necho form_textarea('message', $${4:message}, $${1:attr});\r\n\r\necho form_submit('submit', 'Submit');\r\necho anchor(BASE_URL, 'Cancel', array ('class' => 'button alt'));\r\necho form_close();\r\n?>\r\n"
+      "<h1>Get In Touch<\/h1>\r\n<!-- Add your php variables from your controler (name, email & message) -->\r\n<?php\r\nvalidation_errors();\r\necho form_open('contact\/submit');\r\necho form_label('Name');\r\n$${1:attr}['placeholder'] = 'Enter your name here';\r\n$${1:attr}['autocompleted'] = 'off';\r\necho form_input('name', $${2:name}, $${1:attr});\r\n\r\necho form_label('Email');\r\n$${1:attr}['placeholder'] = 'Enter your email address here';\r\necho form_email('email', $${3:email}, $${1:attr});\r\n\r\necho form_label('Message');\r\n$${1:attr}['placeholder'] = 'Enter your message here';\r\n$${1:attr}['rows'] = 7;\r\necho form_textarea('message', $${4:message}, $${1:attr});\r\n\r\necho form_submit('submit', 'Submit');\r\necho anchor(BASE_URL, 'Cancel', array ('class' => 'button alt'));\r\necho form_close();\r\n?>\r\n"
     ]
   },
   "Trongate Download URL": {
@@ -36,14 +36,14 @@
     "scope": "window",
     "prefix": "tg:t:grid",
     "body": [
-      ""
+      "<!-- Trongate lets you use your own grid, go to the docs here>  url https:\/\/trongate.io\/trongatecss -->\r\n"
     ]
   },
   "Trongate Info Page": {
     "scope": "window",
     "prefix": "tg:t:info",
     "body": [
-      ""
+      "<!-- Trongate CSS documentation url https:\/\/trongate.io\/trongatecss -->\r\n\r\n<h3>Adding A Container (optional)<\/h3>\r\n<div class=\"container\">\r\n    Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga reprehenderit, natus numquam molestiae, nobis esse quod enim inventore omnis aspernatur quos obcaecati unde dicta harum cum officiis quam amet molestias ad quae cumque impedit eveniet! Quas vero cupiditate excepturi aspernatur, tempore repudiandae odit atque sequi rem quibusdam reiciendis adipisci a doloribus odio laudantium necessitatibus illo voluptatum veniam itaque fugit ab pariatur asperiores dicta? Voluptatum quia officiis temporibus dolorum nostrum, mollitia adipisci fuga molestiae porro ea, voluptatem atque eaque? Tempore tenetur, nisi, in officiis voluptatem consectetur minus nemo libero porro, quaerat non aspernatur! Doloremque nesciunt aperiam sint ullam expedita praesentium laboriosam.\r\n<\/div>\r\n<p>NOTE: This page uses a container class to restrict the width of the content.<\/p>\r\n\r\n<h3>Typography<\/h3>\r\n<p>Trongate CSS uses the Tahoma font. Tahoma is a web safe font which means it's available on all modern browsers without any need to upload another font family. Tahoma is not as commonly used as other web safe fonts like Arial and Verdana. So, you can be sure that your fonts will stand out from the crowd. Since there's nothing to load, on the fonts front, it also means that your pages will load in an incredibly fast time.<\/p>\r\n<h1>Here is a headline<\/h1>\r\n<h2>This is a sub headline that uses the h2 tag<\/h2>\r\n<h3>Here's an example of h3 tags in action<\/h3>\r\n<h4>Here's an h4 tag<\/h4>\r\n<p>Here's the kind of font that gets produced with paragraph tags.<\/p>\r\n<p><i>Here's an example of some italic text.<\/i><\/p>\r\n<p><b><i>Here is some bold text.<\/b><\/p>\r\n<p><b>This text is bold and italic<\/i><<\/b><\/p>\r\n\r\n<h3>Text Alignment<\/h3>\r\n<p>Text can be easily aligned to the left, right or center with the following classes:<\/p>\r\n<ol>\r\n    <li>text-left<\/li>\r\n    <li>text-right<\/li>\r\n    <li>text-center<\/li>\r\n<\/ol>\r\n<p>For example, the code below add center alignment to a headline:<\/p>\r\n\r\n<!-- Example text center -->\r\n<h1 class=\"text-center\">Here is a headline<\/h1>\r\n\r\n<h3>Floating Elements<\/h3>\r\n<p>Similarly, elements can be floated left or right by adding the following classes:<\/p>\r\n<ol>\r\n    <li>float-left<\/li>\r\n    <li>float-right<\/li>\r\n<\/ol>\r\n<p>For example, the code below sends a button to the right hand side of the page:<\/p>\r\n\r\n<!-- Example float right -->\r\n<button class=\"float-right\">Button<\/button>\r\n"
     ]
   },
   "Trongate Login Form": {
@@ -78,7 +78,7 @@
     "scope": "window",
     "prefix": "tg:t:table-alt",
     "body": [
-      ""
+      "<!-- Add your array of rows from your controler -->\r\n<table>\r\n    <thead>\r\n        <tr>\r\n            <th>#<\/th>\r\n            <th>First<\/th>\r\n            <th>Last<\/th>\r\n            <th>Handle<\/th>\r\n        <\/tr>\r\n    <\/thead>\r\n    <tbody>\r\n        <?php \r\n        $${1:count} = 0;\r\n        foreach ($${2:rows} as $${3:row}) {\r\n            $${1:count}++;\r\n            ?>\r\n            <tr>\r\n                <th><?= $${1:count} ?><\/th>\r\n                <td><?= $${3:row}->first ?><\/td>\r\n                <td><?= $${3:row}->last ?><\/td>\r\n                <td><?= $${3:row}->handle ?><\/td>\r\n            <\/tr>\r\n        <?php\r\n        }\r\n        ?>\r\n    <\/tbody>\r\n<\/table>\r\n"
     ]
   },
   "Trongate Template": {
