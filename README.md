@@ -83,7 +83,7 @@ A desktop app created by David Connelly originally for [Speed Coding Academy](ht
 
 Use `ctrl+win+alt+/` to bring up the dropdown selector to select your frontend framework
 
-- [Trongate](trongate.io) > tg:t
+- [Trongate](https://trongate.io/docs_m/information/introducing-trongate-css) > tg:t
 - [Bootstrap 4](https://getbootstrap.com/) > tg:b
 - [Defiant](https://defiantcss.com/) > tg:d
 - [Materialize](https://materializecss.com/) > tg:ma
