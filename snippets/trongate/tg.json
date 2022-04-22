@@ -41,7 +41,7 @@
       "\t//\\$this->module('security');",
       "\t//\\$this->security->_make_sure_allowed();",
       "\t",
-      "\t\\$submit = \\$this->input('submit', true);",
+      "\t\\$submit = post('submit', 'true');",
       "\t",
       "\tif (\\$submit == 'Submit') {",
       "\t",
@@ -157,6 +157,6 @@
 		"body": [
 			"<?= ${1|BASE_URL,WEBSITE_NAME,OUR_NAME,OUR_TELNUM,OUR_ADDRESS,OUR_EMAIL_ADDRESS|} ?>"
 		],
-		"description": "echo variable"
+		"description": "echo variables"
   }
 }
